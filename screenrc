@@ -1,0 +1,53 @@
+# DETAILS : My GNU screen configuration file
+# REVISION: 1.0
+# AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
+# CREATED : 23 Aug 2006 10:20:19
+# MODIFIED: 09/06/14 08:58:19 IST
+
+activity "%c activity -> %n%f %t"
+multiuser on                    #Allow people to attach to my screen
+addacl raviks                   #Allow these people full control
+aclchg aledesma +rwx "#?"
+aclchg  ,!aledesma -rwx "#?"    #Allow everyone else readonly access
+
+#shell bash                      # make shell in every window a login shell. ex, 'shell -$SHELL'
+#term xterm-color                # Enable 256 color term. ex. xterm-256color, screen-256color-bce
+#escape ``
+
+allpartial off                  # Refresh entire screen on window change
+startup_message off             # No startup messages
+altscreen on                    # after closing vim, don't leave characters behind
+vbell off                       # no annoying bells
+defflow off                     # Instead of 'auto'
+deflogin off                    # Do not register the window in utmp
+autodetach on
+pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
+defbce on                       # erase background with current bg color
+defmonitor off
+maptimeout 0
+defscrollback 1000
+maxwin 9                        # With more than 5 windows, screen takes too much memory.
+shelltitle '$ |bash'
+nonblock on                     # Don't block command output if terminal stops responding. ex. ssh connection timeout
+
+#caption always "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+hardstatus on
+hardstatus alwayslastline
+hardstatus string '%{gk}[%{G}%H%{g}][%=%{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%=%{g}][%{Y}%l%{g}]%{=b C}[%M/%d %c]%{W}'
+
+# Following settings till 'defbce' required for vim colors to work correctly on screen
+# http://stackoverflow.com/questions/1630013/vim-colorschemes-in-screen-putty
+# terminfo and termcap for nice 256 color terminal allow bold colors - necessary for some reason
+attrcolor b ".I"
+
+# tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm|xterm-256color 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+termcapinfo xterm|xterms|xs|rxvt|xterm-256color ti@:te@     # Enables shift-PgUp & shift-PgDn
+
+# Initial set of screens(No more than 5). Takes too much memory.
+# Syntax: screen -t <name> <command>    Names: dumbledore darkwing launchpad gandolph tom jerry
+# expect -c "set timeout 3; spawn ssh raviks@abc; expect '%'; send bash\\r; expect '$'; interact"   - doesn't control terminal well
+screen -t donald bash   # dev
+screen -t yoda bash     # scratchpad
+screen -t alladin bash  # test
+select 0                                                    # goto main window

@@ -1,0 +1,52 @@
+Credentials:
+============
+  AUTHOR: @AUTHOR@, @AUTHOR_EMAIL@
+ CREATED: @CREATED_DATE@
+MODIFIED: @CREATED_DATE@
+ LICENSE: @COPYRIGHT@
+
+Symptoms:
+=========
+Describe problem as understood
+Provide configuration details
+Give pointers/links to related discussion
+Provide steps to reproduce (if any)
+
+Artifacts:
+==========
+JUNOS Release   :
+Router Model    :
+Logs Location   :
+
+Code Path:
+==========
+Keep track of codepaths involved in given error
+
+Observations:
+=============
+Provide observation points with supporting details like logs, cmd outputs, etc
+Try to explain the sequence of how error happened and surrounding facts
+
+Analysis:
+=========
+Given the observation points above, provide the analysis of error as understood
+Categorize one or more problems found during observation for better clarity
+
+Open Questions:
+===============
+List any open queries, doubts, assumptions requiring further validation
+
+Root Cause:
+===========
+Provide the root cause of the error.
+
+Fix Provided:
+=============
+Categorize the fixes provided as per the problems outlined in "Analysis" section
+Identify any problems not fixed, and anything that is to be addressed
+
+Fix Validation:
+===============
+Provide discrete steps to validate the fix provided.
+Provide pointers to necessary logs captured to validate the fix.
+

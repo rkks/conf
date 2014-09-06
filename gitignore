@@ -1,0 +1,117 @@
+# tar files
+*.7z
+*.bz2
+*.cpio
+*.gz
+*.jar
+*.rar
+*.tar
+*.tgz
+*.zip
+*.dmg
+*.img
+
+# obj files
+*.9
+*.O
+*.a
+*.bin
+*.bin2
+*.com
+*.exe
+*.dll
+*.class
+*.i
+*.o
+*.obj
+*.o.*
+*.ko
+*.so
+*.out
+*.map
+*.ld
+*.lds
+*.elf
+
+# devel backlog
+*.keep
+*.orig
+*.rej
+*.save
+*.swp
+*.log
+*~
+
+# binary files
+*.dvi
+*.eps
+*.gif
+*.jpeg
+*.jpg
+*.pdf
+*.png
+*.ps
+*.sgml
+*.tex
+*.gcov
+
+# version control
+.bzr
+.bzrignore
+.bzrtags
+.cvsignore
+.git
+.gitignore
+.hg
+.hgignore
+.hgrags
+.svn
+.svnignore
+BitKeeper
+CVS
+cvsignore
+RCS
+SCCS
+
+# tagging
+cscope.*
+TAGS
+tags
+
+# my build
+*.doxygen
+findinc
+
+# linux stuff
+*.aux
+*.grep
+*.grp
+*.moc
+*.mod
+*.mod.c
+*.symtypes
+*.symvers
+*.tab.c
+*.tab.h
+*.tmpl
+*.updt
+*.ver
+*_MODULES
+*_gray256.c
+*_vga16.c
+*load
+*unload
+_darcs
+
+# IDE stuff (eclipse)
+.cdtproject
+.nv.pre-cmds-done
+.project
+.tmp_versions*
+.mailmap
+.microcode-link
+.mm
+.arch-ids
+
+# terminal multiplexer
+*.pid

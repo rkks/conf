@@ -1,0 +1,72 @@
+§%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+== comment.end-of-line-comment == append ==
+# <CURSOR>
+§%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+== comment.frame ==
+# <CURSOR>
+§%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+== comment.function ==
+# DETAIL: <CURSOR>
+# PARAMS: 
+# RETURN: 
+§%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+== comment.file-description == start ==
+#!/bin/bash
+#  DETAILS: <CURSOR>
+#  CREATED: |DATE| |TIME|
+# MODIFIED: |DATE| |TIME|
+# REVISION: 1.0
+#
+#   AUTHOR: |AUTHOR|, |EMAIL|
+#  LICENCE: |COPYRIGHT|
+
+# Warn unset vars as error, Verbose (echo each command), Enable debug mode
+#set -uvx
+
+#HOME=$(echo "/homes/"$(id -nu))
+PATH=/usr/bin:/usr/sbin:.:/auto/opt/bin:/bin
+
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi
+
+usage()
+{
+    echo "usage: |FILENAME| []"
+}
+
+# Each shell script has to be independently testable.
+# It can then be included in other files for functions.
+main()
+{
+    if [ "$#" == "0" ]; then
+        usage
+        exit 1
+    fi
+
+    case $1 in
+        *)
+            usage
+            ;;
+    esac
+    exit 0
+}
+
+if [ "$(basename $0)" == "$(basename |FILENAME|)" ]; then
+    main $*
+fi
+# VIM: ts=4:sw=4:sts=4:expandtab
+§%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+== comment.keyword-bug == append ==
+ # :BUG:|DATE| |TIME|:|AUTHORREF|: <CURSOR>
+== comment.keyword-todo == append ==
+ # :TODO:|DATE| |TIME|:|AUTHORREF|: <CURSOR>
+== comment.keyword-tricky == append ==
+ # :TRICKY:|DATE| |TIME|:|AUTHORREF|: <CURSOR>
+== comment.keyword-warning == append ==
+ # :WARNING:|DATE| |TIME|:|AUTHORREF|: <CURSOR>
+== comment.keyword-workaround == append ==
+ # :WORKAROUND:|DATE| |TIME|:|AUTHORREF|: <CURSOR>
+== comment.keyword-keyword == append ==
+ # :|?KEYWORD:u|:|DATE| |TIME|:|AUTHORREF|: <CURSOR>
+§%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,94 @@
+[user]
+    name = Ravikiran K.S.
+    email = ravikirandotks@gmail.com
+
+[diff]
+    color = auto
+    rename = copy
+#    tool = mydiff
+
+#[difftool "mydiff"]
+#    cmd = diff -Nwup $LOCAL $REMOTE
+
+[gc]
+    auto = 1
+
+[merge]
+    summary = true
+
+[pager]
+    color = true
+
+[status]
+    color = auto
+
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+    ui = true
+    pager = true
+
+[core]
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    # Don't mess with line-endings. Will corrupt binaries, tarballs, etc.
+    autocrlf = false
+    safecrlf = warn
+    editor = vim
+
+[alias]
+    cia = commit -a             # commit/checkin everything
+    cmd = !git config -l | grep alias | cut -c 7-   # show all git aliases. 'config --get-regexp alias' gives no-color output
+    conb= checkout -b           # checkout to a new branch
+    dir = diff -p -W -r HEAD    # show all changes from last commit in files tracked: staged & unstaged. --no-prefix --no-prompt
+
+    create  = !bash -c 'git init && cp -f ~/conf/gitattributes .gitattributes && cp -f ~/conf/gitignore .gitignore && git add . && git commit -m \"First commit\"'  # initialize git repo
+    amend       = commit --amend            # fix last commit
+    branchall   = branch -avr               # all branches, verbose, recursive. show commit messages on branch list
+    diffstat    = diff --stat -r HEAD       # show summary of all changes from last commit
+    changelog   = log --pretty=format:\" * %s\"     # Display commits summary
+    hist        = log --date=short --pretty=format:\"%h %ad | %s %d [%cn]\" --graph # history (date=local doesn't help)
+    taglist     = tag -l                    # show commit messages on tag list
+    unadd       = reset HEAD                # un-add files from tracking index (still uncommitted new files)
+
+    # 'git add -u' - add deleted files, but not new files. 'git add .' - add current & new files, but not deleted files.
+    aa = !sh -c 'git add . && git add -u'   # 'git aa' - add all deleted, modified, and new files.
+    co = checkout                           # <branch> - checkout branch & make it current branch. <file> - Undo changes.
+    cp = cherry-pick -x                     # copy a commit from another branch with source info
+    gk = !gitk --all&
+    gx = !gitx --all
+    lg = log -W -p HEAD master              # timeline
+    li = ls-files -o                        # show all ignored files
+    ls = log --name-status -r --oneline     # list of files changed. ex, cvs update. --date=short --pretty=format:\"%H | %ad\"
+    lu = ls-files -o --exclude-standard     # list all untracked (new) files
+    lx = log --all --graph --decorate --simplify-by-decoration  # graph
+    rc = rebase --continue
+    rs = rebase --skip
+    ra = rebase --abort
+    ru = remote -v                          # show all remote urls
+    sh = show
+    st = status                             # repo status
+    wc = log --stat --no-merges HEAD        # list all commit filenames, stats; excluding merges. Enhanced whatchanged
+
+    chunkyadd = add --patch                 # stage commits chunk by chunk
+    dump = cat-file -p
+    filelog = log -u                        # show changes to a file
+    type = cat-file -t
+    undo = reset --hard HEAD                # DANGEROUS: Remove last commit, set up work tree exactly as it was before
+    uncommit = reset --soft HEAD^           # Remove last commit, but do not touch the working tree (files untouched)
+
+    # 1. switching back to the master branch from my generic "dev" branch
+    # 2. pulling from the remote
+    # 3. switching back to "dev"
+    # 4. rebasing "dev" against "master"
+    # 5. switching back to "master"
+    # 6. merging in the changes from "dev"
+    # 7. and finally running git wtf to show me what all my branches look like after the merge before I do a push.
+    publish = !git checkout master && git pull && git checkout dev && git rebase master && git checkout master && git merge dev && git wtf
+
+[commit]
+    template = ~/conf/template/gitcommit
+
+[push]
+	default = matching      #simple

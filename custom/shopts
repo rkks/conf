@@ -1,0 +1,26 @@
+[[ $- != *i* ]] && { return; }  # interactive shell
+
+if [ "$UNAMES" != "SunOS" ]; then
+    stty stop '' -ixoff;    # Avoid terminal being hung by Ctrl-s
+    stty erase '^?';        # Make backspace work on all terminals.
+fi
+
+# Default Enabled: expand_aliases, hostcomplete (complete server name from $HOSTFILE), extglob.
+# ${BASH_VERSION%%[^0-9.]*} - gives complete version including '.' as in 3.4.2
+[[ $(echo ${BASH_VERSION%%[^0-9]*}) -ge 4 ]] && { shopt -qs autocd; }   # cd's to given directory name without cd command
+shopt -qs cdspell        # Correct minor spelling errors in cd command.
+shopt -qs histappend     # Append to history rather than overwrite. Too much stuff
+shopt -qs checkwinsize   # Check window after each command
+shopt -qs dotglob        # Files beginning with . to be returned in the results of path-name expansion.
+shopt -qs checkhash      # Double check hashes if broken
+shopt -qu mailwarn       # disable new mail warning
+shopt -qs interactive_comments       # allow comments in interactive shell too
+shopt -qs no_empty_cmd_completion    # no command completion is empty line (<tab> with no char input)
+
+# Unused: set -o vi (enable vi mode), noclobber (prevent overwriting files with >), ignoreeof (stops ctrl+d from logging out)
+set -o notify                   # notify of bg job completion immediately
+set history=10000               # History Control
+set bell-style visible
+set completion-ignore-case on
+set match-hidden-files on
+set show-all-if-ambiguous on

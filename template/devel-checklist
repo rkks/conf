@@ -1,0 +1,96 @@
+Credentials:
+============
+  AUTHOR: @AUTHOR@, @AUTHOR_EMAIL@
+ CREATED: @CREATED_DATE@
+MODIFIED: @CREATED_DATE@
+ LICENSE: @COPYRIGHT@
+
+Requirements:
+=============
+Describe in your own words:-
+What needs to be developed?
+What problems does it solve?
+What problems could it lead to? (directly/indirectly)
+What are the alternatives to solve the same problem?
+Give pointers/links to related discussion
+
+AI: Document problem statement, assumptions, requirements, and any supporting
+information that could help in understanding the work.
+
+Dependencies:
+=============
+Do you have all the information required to implement solution?
+Does this solution depend on some other work/person/hardware/resource?
+Do you know where to look for related details needed during implementation?
+Do you have required hardware/software resources to implement solution?
+Do you have understanding of different hw/sw interfaces that you'll have to touch?
+
+AI: Identify and list down all dependencies to get the work done. Assign different
+timelines by which dependencies need to be met so as to minimize the impact.
+
+Timelines:
+==========
+Estimate the time that it takes to implement the given solution.
+Use Work Breakdown Structure (WBS) and dependencies to calculate the work estimates.
+Use past experience, expert opinions, data from similar works in past to derive estimate
+Considering bounded rationality on given estimates, identify estimate review cycles
+Calculate dependencies, unknowns, and risks into estimated period.
+Clearly identify critical milestones, dependencies, risks, and assumptions.
+
+AI: Identify, Share and Negotiate the timelines with management.
+
+Testing:
+========
+Do you understand different interfaces and parts of system that need to be tested?
+How do you plan to test the implementation of solution? (staged/non-staged/emulated)
+What kind of testing are covered in scope? (unit/integration/system/performance)
+Do you have necessary tools and resources requried to do the testing?
+When do you consider the testing to be complete? How do you do measurement?
+
+AI: Identify testing requirements, list down dependencies and form a plan.
+
+Implementation:
+===============
+How do you plan to implement the solution? (in parts/as whole/logical divides)
+How do you plan to verify if all the codepaths written will be exercised?
+How do you plan to ensure that implemented solution addresses all requirements?
+Do you understand different tools/traces/approaches/best-practices to debug?
+Do you understand coding standards, conventions, and dependencies?
+
+AI: Develop a design and outline of how implementation will be done and tested?
+
+Review/Analysis:
+================
+What are review methods are used to ensure quality of implementation?
+What code verification tools are used to ensure correctness?
+What measures are taken to ensure stability of code? (Smoke, Regression tests)
+
+AI: Send for review, run appropriate tools to uncover issues, implement changes,
+retest, rework, resanitize, refactor.
+
+Documentation:
+==============
+Does the implementation require external documentation?
+What internal documents capture the implmentation details, design decisions,
+trade-offs, constraints, assumptions, and any related conversations?
+
+AI: Write required documents capturing changes, side-effects, known issues,
+open items, future considerations, assumptions, pre-requisites, etc.
+
+SCM Commit:
+===========
+Is code properly documented, consistently formatted, copyrighted, annotated?
+Are all test results in place - test plan, test logs, performance numbers?
+Are all review records in place - comments/dispositions, tool logs, metrics?
+Are all documents in place - internal, external, logs, mails, docs, chats?
+
+AI: Collect all artifacts. Commit them to required places in SCM and tag them.
+
+Handover:
+=========
+Who is responsible to independently verify and test the changes?
+Is tester equipped with knowledge of pre-requisites and expected behavior?
+What is the criteria for handover?
+
+AI: Handover the work done to responsible person and ensure that he is
+equipped with relevant details to take it forward.

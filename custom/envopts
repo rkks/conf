@@ -1,0 +1,72 @@
+# Environmental options
+
+# vim & gnome-terminal support 256 colours. debian/ubuntu need ncurses-term package
+# Works for most environments. Should be set in ~/.profile for Fedora
+[[ -z "$TMUX" ]] && term
+
+test -n MAILCHECK && unset MAILCHECK    # fuck that 'you have new mail' shit
+
+: ${HOSTFILE=~/.ssh/known_hosts}        # complete hostnames from this file
+#: ${INPUTRC=~/.inputrc}                 # readline config
+
+CLICOLOR=1 # This will enable colors in ls by default
+
+PRINTER=termite
+ENSCRIPT=-2r
+BLOCKSIZE=K;                        # Enable grouping of thousands in ls output
+
+FTP_PASSIVE_MODE=YES                # Netscreen Issue.
+: ${FTP_PASSIVE:=1}                 # always use PASSIVE mode ftp. local to current shell, no need to export.
+FIGNORE="~:CVS:#:.pyc:.swp:.swa:apache-solr-*"  # ignore backups, CVS directories, python bytecode, vim swap files
+
+# Note: Use bash explicitly to support process substitution which in turn suppresses "Vim: Reading from stdin..." warning.
+#MANPAGER='bash -c "vim -MRn -c \"set ft=man nomod nolist nospell nonu\" \ -c \"nm q :qa!<CR>\" -c \"nm <end> G\" -c \"nm <home> gg\"</dev/tty <(col -b)"'
+export PAGER=less;      # Export is required for it to work
+
+# Locale Stuff - ANSI - For Grep
+LC_ALL=C
+LANG=C
+
+# History Control. No need to define HISTFILE. ~/.bash_history will do.
+[[ "${BASH_VERSINFO[0]}" -le 2 ]] && HISTCONTROL=ignoreboth || HISTCONTROL=ignorespace:ignoredups:erasedups
+HISTIGNORE="&:ls:ll:la:l:pwd:exit:c:clear:cd:a:b:his:history:exit"
+HISTSIZE=10000                          # lines of command history to store in memory before flushing to history file
+HISTFILESIZE=10000                      # lines of command to store in history "file"
+GLOBIGNORE=".:.."
+PROMPT_COMMAND="history -a; history -n"     # write current cmd & re-read bash_history each time loading $PS1 prompt.
+
+(own firefox)   && BROWSER=$FIREFOX         # for xdg-open
+(own svn)   && { export SVN_EDITOR=vim; }    # SVN stuff
+(own git)   && { export GIT_EDITOR=vim; }    # GIT stuff
+# CVS stuff. CVSROOT=:pserver:${USER}@cvs:/cvs/abc OR cvs:/cvs/abc;
+(own cvs)   && { export CVS_EDITOR=vim; CVS_RSH=$(which ssh 2>/dev/null); CVSIGNORE=$HOME/.cvsignore; }
+# CSCOPE_EDITOR is unnecessary with EDITOR defined. For vim, emacs CSCOPE_LINEFLAG_AFTER_FILE=yes; not needed.
+(own vim)   && { export EDITOR=vim; export VISUAL=vim; }    # for mc/cvs/svn/etc. 'export' is must, else confuses cscope
+
+if [ "FreeBSD" != "$UNAMES" ] || [ "SunOS" != "$UNAMES" ]; then
+    if own tput && tput setaf 1 >&/dev/null; then
+        # Adjust the less highlight colors
+        LESS_TERMCAP_so="$(printf 'rev\nbold\nsetaf 3\n' | tput -S)"
+        LESS_TERMCAP_se="$(tput sgr0)"
+        color_prompt=yes
+    fi
+fi
+
+# works cross-platform
+if own grep; then
+    GREP_COLOR="0;35"
+    # Some machines require: '--exclude=\*~ --exclude=\*.svn\* --exclude=\*.git\* --exclude=cscope\*'
+    GREP_OPTIONS='--binary-files=without-match --color=auto --exclude=*~ --exclude=CVS --exclude=*.svn* --exclude=*.git* --exclude=cscope* --exclude=tags'
+fi
+
+# Java Stuff
+if own javac; then
+    export JAVA_HOME=~/tools/linux/jdk
+    #export JAVA_FONTS=/usr/share/fonts/truetype
+fi
+
+# Ant Stuff. Ant requires CLASSPATH be unset. Otherwise, export CLASSPATH=.
+if own ant; then
+    export ANT_HOME=~/tools/linux/ant
+    export ANT_OPTS="-Xmx256M -Dbuild.sysclasspath=ignore"
+fi

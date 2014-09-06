@@ -1,0 +1,56 @@
+#Global Environment variables
+
+# construct PATH
+COMMON_PATHS="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+SOLARIS_PATHS="/usr/gnu/bin:/usr/xpg4/bin:/usr/ucb:/usr/X11R6/bin:/usr/X11R6/lib"
+USER_PATHS="$HOME/scripts/bin:$HOME/tools/bin"
+USER_LINUX_PATHS="$HOME/tools/bin/linux"
+USER_FREEBSD_PATHS="$HOME/tools/bin/freebsd"
+USER_SOLARIS_PATHS="$HOME/tools/bin/solaris"
+# /volume/perl/bin: also contain bash. Conflicts with /bin/bash.
+
+# construct LD_LIBRARY_PATH path
+COMMON_LIBRARY_PATHS="/usr/local/lib"
+
+# construct manpath
+USER_MANPATHS="$HOME/tools/rsnapshot/man"
+USER_LINUX_MANPATHS="$HOME/tools/linux/splint/man:$HOME/tools/linux/git/share/man:$HOME/tools/linux/ctags/share/man"
+USER_LINUX_MANPATHS+=":$HOME/tools/linux/ncurses/man:$HOME/tools/linux/cscope/share/man:$HOME/tools/linux/gmake/share/man"
+USER_LINUX_MANPATHS+=":$HOME/tools/linux/rsync/man:$HOME/tools/linux/global/share/man:$HOME/tools/linux/p7zip/man"
+USER_LINUX_MANPATHS+=":$HOME/tools/linux/ncdu/share/man:$HOME/tools/linux/lighttpd/share/man"
+USER_LINUX_MANPATHS+=":$HOME/tools/linux/tmux/share/man:$HOME/tools/linux/vim/share/man:$HOME/tools/linux/jdk/man"
+USER_FREEBSD_MANPATHS="$HOME/tools/freebsd/git/share/man:$HOME/tools/freebsd/ctags/share/man:$HOME/tools/freebsd/splint/man"
+USER_FREEBSD_MANPATHS+=":$HOME/tools/freebsd/cscope/share/man:$HOME/tools/freebsd/vim/share/man:$HOME/tools/freebsd/ncurses/man"
+USER_FREEBSD_MANPATHS+=":$HOME/tools/freebsd/gmake/share/man:$HOME/tools/freebsd/rsync/share/man:$HOME/tools/freebsd/global/share/man"
+USER_FREEBSD_MANPATHS+=":$HOME/tools/freebsd/p7zip/man:$HOME/tools/freebsd/ncdu/share/man"
+USER_FREEBSD_MANPATHS+=":$HOME/tools/freebsd/lighttpd/share/man:$HOME/tools/freebsd/tmux/share/man:$HOME/tools/freebsd/wget/share/man"
+COMMON_MANPATHS="/usr/X11R6/man:/usr/share/man:/usr/local/man"
+SOLARIS_MANPATHS="/usr/openwin/man:/usr/man"
+
+# For perl to locate any module in @INC, path should be either in PATH or PERL5LIB
+#USER_PERL5LIB_PATHS="$HOME/tools/perl-5.16.1/lib:$HOME/tools/perl-5.16.1/site/lib"
+
+NEW_PATH=$COMMON_PATHS;
+NEW_MANPATH=$COMMON_MANPATHS;
+NEW_LD_LIBRARY_PATH=$COMMON_LIBRARY_PATHS;
+[[ "$UNAMES" == "SunOS" ]]      && { NEW_PATH="$USER_SOLARIS_PATHS:$SOLARIS_PATHS:$NEW_PATH"; NEW_MANPATH="$SOLARIS_MANPATHS:$NEW_MANPATH"; }
+[[ "$UNAMES" == "FreeBSD" ]]    && { NEW_PATH="$USER_FREEBSD_PATHS:$NEW_PATH"; NEW_MANPATH="$USER_FREEBSD_MANPATHS:$NEW_MANPATH"; }
+[[ "$UNAMES" == "Linux" ]]      && { NEW_PATH="$USER_LINUX_PATHS:$NEW_PATH"; NEW_MANPATH="$USER_LINUX_MANPATHS:$NEW_MANPATH"; }
+[[ -f $COMPANY_CONFS/toolrc ]] && { source $COMPANY_CONFS/toolrc; NEW_PATH="$ABC_PATHS:$NEW_PATH"; NEW_MANPATH="$ABC_MANPATHS:$NEW_MANPATH"; }
+NEW_PATH="$USER_PATHS:$NEW_PATH";
+NEW_MANPATH="$USER_MANPATHS:$NEW_MANPATH"
+#NEW_PERL5LIB="$USER_PERL5LIB_PATHS";
+
+pvalid NEW_PATH; pvalid NEW_LD_LIBRARY_PATH; pvalid NEW_MANPATH; pvalid NEW_PERL5LIB;
+
+# don't loose existing paths before updating new ones. a terrible mistake people make
+unset PATH; unset LD_LIBRARY_PATH; unset MANPATH;   # unset PERL5LIB;
+export PATH="$NEW_PATH"; export LD_LIBRARY_PATH="$NEW_LD_LIBRARY_PATH"; export MANPATH="$NEW_MANPATH";  # export PERL5LIB="$NEW_PERL5LIB";
+unset NEW_PATH; unset NEW_LD_LIBRARY_PATH; unset NEW_MANPATH;   # unset NEW_PERL5LIB;
+
+# cleanup what we do not need further
+unset USER_PATHS; unset USER_LINUX_PATHS; unset USER_FREEBSD_PATHS; unset USER_SOLARIS_PATHS;    # unset USER_PERL5LIB_PATHS;
+unset COMMON_PATHS; unset LINUX_PATHS; unset SOLARIS_PATHS; unset ABC_PATHS;
+unset COMMON_LIBRARY_PATHS; unset LINUX_MANPATHS; unset SOLARIS_MANPATHS; unset ABC_MANPATHS;
+
+log DEBUG "[EXPORT] PATH: $PATH LD_LIBRARY_PATH: $LD_LIBRARY_PATH MANPATH: $MANPATH PERL5LIB: $PERL5LIB"

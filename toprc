@@ -1,0 +1,14 @@
+RCfile for "top with windows"		# shameless braggin'
+Id:a, Mode_altscr=0, Mode_irixps=1, Delay_time=3.000, Curwin=0
+Def	fieldscur=AEHIOQTWKNMbcdfgjplrsuvyzX
+	winflags=32121, sortindx=10, maxtasks=0
+	summclr=1, msgsclr=6, headclr=3, taskclr=0
+Job	fieldscur=ABcefgjlrstuvyzMKNHIWOPQDX
+	winflags=32057, sortindx=0, maxtasks=0
+	summclr=6, msgsclr=6, headclr=7, taskclr=6
+Mem	fieldscur=ANOPQRSTUVbcdefgjlmyzWHIKX
+	winflags=32057, sortindx=13, maxtasks=0
+	summclr=1, msgsclr=2, headclr=0, taskclr=4
+Usr	fieldscur=ABDECGfhijlopqrstuvyzMKNWX
+	winflags=32057, sortindx=4, maxtasks=0
+	summclr=3, msgsclr=3, headclr=2, taskclr=3

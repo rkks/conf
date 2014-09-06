@@ -1,0 +1,204 @@
+# regular bash usage aliases
+[[ "" == "$INTERACTIVE" ]] && return;
+
+# handy shortcuts
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+
+# single letter access to common tools
+alias a='alias'
+alias b='bash'
+alias c='clear'
+alias d='date'
+alias h='hostname -s'
+alias j='jobs -l'
+alias t='telnet'
+alias z='[[ -z $COLORS_THEME ]] && { light; export COLORS_THEME=light; } || { dark; unset COLORS_THEME; }'
+
+# safety measures. avoid common mistakes
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+
+# common options
+alias bc='bc -q'
+alias grep='grep -E --color=auto'
+alias more='less'
+alias mkdir='mkdir -pv'
+alias ssh='ssh -q'
+
+# handy abbrevations
+alias cal3='cal -3'             # show 3 months
+alias dfh=$(echo "df -h")       # disk freespace is human
+alias dush='du -sh'             # disk usage is human
+alias filesize='du -k'          # works on all platforms. alternate: 'stat -c "%s"' on Linux, 'stat -f "%z"' on FreeBSD
+alias greprns='grep -rns'
+alias l='ls'
+alias l.='ls .*'
+alias la='ls -a'
+alias lh='ls -lh'
+alias ll='ls -l'
+alias lld='ls -lUd */'
+alias lr='ls -lR'
+alias lss='ls -AlhqS'                    # long ls by size
+alias ltr='ls -ltr'
+alias psf='ps -f'
+alias lsx='ls -Nalin'                    # 'power' ls. --color=never
+alias psmem='ps aux | sort -brk 4 | head'
+alias pstop='ps -eo pcpu,pid,user,args | sort -r -k1 | less'
+alias psux='ps -ux'
+alias tf='tail -f'
+
+# typing mistakes
+alias xs='cd'
+alias vo='vi'
+
+alias paths="cat $COMPANY_CONFS/paths"
+alias machines='cat $COMPANY_CONFS/machines'
+
+# Admin Power Tools
+(own dstat)     && alias dstata='dstat -cdngmsply --bw'
+(own minicom)   && alias minicom='minicom -c on'
+(own pgrep)     && alias pgrep='pgrep -u $(id -nu)'
+(own pkill)     && alias pkill='pkill -u $(id -nu)'
+(own wget)      && alias wgetr='wget -c -o wget.log -t 3 -b -r -w5 --random-wait -l2 -np -k'   # to resume from where left off: wget -c -o wget.log -t 3 -b
+(own xterm)     && alias xt='xterm -fa courier -fs 14 &' # -geometry 120x48 -ls -font -*-courier-medium-r-*-*-20-*-*-*-*-*-iso8859-* -bg black -fg white
+
+# devel stuff
+(own autoexpect) && alias autoexpecta='autoexpect -f script-`date +%Y%m%d-%T`.exp'
+(own ctags)     && alias ctb='ctags --extra=+q --fields=afmikKlnsSz --c++-kinds=+p -a -R > /dev/null 2>&1'   # Exuberant ctags options
+(own gcc)       && alias gccg='gcc -g3 -gdwarf-2 -ggdb'     #Compiling with debug and macro info put into binary
+(own git)       && alias g='git'
+(own gmake)     && alias make='gmake -s'
+(own hexdump)   && alias hexdumpc='hexdump -C'              # canonical hex dump
+(own od)        && alias hd='od -Ax -tx1z -v'               # what most people want from od (hexdump)
+(own script)    && alias scripta='script -a script-$(date +%Y%m%d-%T).log'
+
+if own curl; then
+    alias curl='curl -# -O -J -L'   # -J: resolve name from header, -L: handle redirects, -C - : continue from where left off
+    alias webhdr='curl -I'
+fi
+
+# version control aliases
+if own cleartool; then
+    alias catcs='ct catcs | grep -v "#" | grep -v "^$"'
+    alias ci='ct ci -nc'
+    alias cl='perl /clearcase/admin/tools/tcm/clearlicense.pl -a'
+    alias co='ct co -c "Updating files ........................ " '
+    alias coun='ct co -unr -c "Updating file ......................... " '
+    alias ct='cleartool'
+    alias ctclean='mkdir tmp; mv `find . -name "*.keep"` tmp/'
+    alias ctd='ct diff -serial_format -pred -opt -blank_ignore '
+    alias ctdiff='ct diff -serial_format -opt -blank_ignore '
+    alias ctupdate='ct update -log log'
+    alias edcs='ct edcs'
+    alias findhijacked='ct ls -recurse | grep "hijacked"'
+    alias lsco='ct lsco -cview -s -r'
+    alias lscoall='ct lsco -avobs -areplicas -s -r'
+    alias lscovob='ct lsco -cview -avobs -s'
+    alias lshis='ct lshis '
+    alias lspriv='ct lsprivate'
+    alias lsview='ct lsview | grep rkks | grep "\*"'
+    alias lsvtree='ct lsvtree '
+    alias mkbrtype='ct mkbrtype -nc -pbranch'
+    alias mkelem='ct mkelem -c "Creating a new element ............... "'
+    alias mklbtype='ct mklbtype -nc -global'
+    alias pwv='ct pwv'
+    alias setcs='ct setcs '
+    alias setview='ct setview'
+    alias unco='ct unco -rm'    # -rm flag removes .keep files
+    alias xc='xclearcase'
+fi
+
+# dev environment
+if own cscope; then
+    alias css='cscope_tag.sh -g 0'        #symbol
+    alias csg='cscope_tag.sh -g 1'        #global
+    alias csd='cscope_tag.sh -g 2'        #called
+    alias csc='cscope_tag.sh -g 3'        #calling
+    alias cst='cscope_tag.sh -g 4'        #text search
+    alias csa='cscope_tag.sh -g 5'        #change text
+    alias cse='cscope_tag.sh -g 6'        #egrep
+    alias csf='cscope_tag.sh -g 7'        #file
+    alias csi='cscope_tag.sh -g 8'        #include
+    alias csl='cscope -de -p 3'  # No '-f cscope.out -R' options. Confuses cscope
+    alias csb='cscope -cUbeR > /dev/null 2>&1'    # For small code. no inverted index -q.
+    alias kscope='cscope -ck -p3'                # kernel symbols
+fi
+
+if own cvs; then
+    alias cvsci='cvs commit'
+    alias cvsco='cvs update'
+fi
+
+if own diff; then
+    alias diffc='diff -Ncrp --exclude-from=$CUSTOM_CONFS/diffexclude --speed-large-files'   # -a is dangerous
+    alias diffqr='diff -qr --exclude-from=$CUSTOM_CONFS/diffexclude --speed-large-files'    # -a is dangerous
+    alias diffu='diff -Nurp --exclude-from=$CUSTOM_CONFS/diffexclude --speed-large-files'   # Never use -rns. When piping is used, -n creates nuances
+fi
+
+if own find; then
+    alias cloc="find . -name \*.[ch] -exec wc -l {} \; | awk '{ sum += $1; } END { print sum; }'"
+    alias findbig='find . -type f -exec ls -s {} \; | sort -n -r | head -5'
+    alias finddup='find -not -empty -type f -printf "%s\n" | sort -rn | uniq -d | xargs -I{} -n1 find -type f -size {}c -print0 | xargs -0 md5sum | sort | uniq -w32 --all-repeated=separate'
+fi
+
+if own gdb; then
+    alias bt='echo 0 | gdb -batch-silent -ex "run" -ex "set logging overwrite on" -ex "set logging file gdb.bt" -ex "set logging on" -ex "set pagination off" -ex "handle SIG33 pass nostop noprint" -ex "echo backtrace:\n" -ex "backtrace full" -ex "echo \n\nregisters:\n" -ex "info registers" -ex "echo \n\ncurrent instructions:\n" -ex "x/16i \$pc" -ex "echo \n\nthreads backtrace:\n" -ex "thread apply all backtrace" -ex "set logging off" -ex "quit" --args'            # bt $crashing_application to get the crash information.
+    alias gdb='gdb -q'
+fi
+
+if own netstat; then
+    alias netstatp='netstat -upatent'           # -tulpn | grep :80
+    alias netstatc='netstat -eeptu'             # connected sockets
+    alias netstatl='netstat -leeptu'            # listening sockets
+fi
+
+if own objdump; then
+    alias objdump-dbg='objdump -d -S --file-start-context --prefix-addresses -l'
+    alias objdump-sane='objdump -C -S -r -R -l'   # disassemble with source code. -DRTgrstx doesnt work
+fi
+
+if own screen; then
+    alias sls='screen -ls'
+    alias sx='screen -x'
+fi
+
+if own vim; then
+    alias v="vim -u ~/.vimrc -R"
+    alias vd="vim -u ~/.vimrc -d"
+    alias vi='vim -u ~/.vimrc'
+    alias vt="vim -u ~/.vimrc -t"
+fi
+
+if [ "$UNAMES" == "FreeBSD" ]; then
+    alias ls='ls -G'
+    (own ping)  && alias pingf='ping -c 5'              # fast ping. Only root user can give -i.2
+elif [ "$UNAMES" == "Linux" ]; then
+    alias ls='ls --color=auto -F'
+    (own free)  && alias memfree='free -m'              # available memory
+    (own fuser) && alias fusern='fuser -v -n'           # [tcp, udp, sctp] <port>. who is using given port
+    (own ping)  && alias pingf='ping -c 5 -s.2'         # fast ping
+    (own xrdb)  && alias Xdefaults='xrdb -load ~/.Xdefaults'
+else
+    alias ls='ls --color=auto -F'
+fi
+
+if own mkdir.sh; then
+    alias mkprdir='mkdir.sh -p'
+    alias mkrlidir='mkdir.sh -r'
+    alias mkprojdir='mkdir.sh -j'
+    alias mktestdir='mkdir -p test-$(date +%d%b%Y)'
+fi
+
+if own tmux.sh; then
+    alias tl='tmux.sh -l'
+    alias ta='tmux.sh -a'
+    alias tmux='tmux -2'    # always assume 256 color support. Key to bright colors
+fi
+
+[[ "$COMPANY" == "ABC" ]]   && { source $COMPANY_CONFS/alias; }
+

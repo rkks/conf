@@ -1,0 +1,5 @@
+#aterm*font: -xos4-terminus-medium-r-normal-*-12-120-72-72-c-60-iso10646-1
+#xterm.Font: xft:Terminus:pixelsize=8
+#urxvt*font: -xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso10646-1
+# This doesn't work on solaris machines. Better not replace
+xterm*font: -*-courier-medium-r-*-*-14-*-*-*-*-*-iso8859-*

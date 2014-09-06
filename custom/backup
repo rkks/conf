@@ -1,0 +1,5 @@
+# IMP: Base name of each directory must be unique otherwise will be overwritten.
+/homes/raviks/scripts
+/homes/raviks/work
+/homes/raviks/notes
+/homes/raviks/test
