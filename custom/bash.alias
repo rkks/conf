@@ -200,5 +200,5 @@ if own tmux.sh; then
     alias tmux='tmux -2'    # always assume 256 color support. Key to bright colors
 fi
 
-[[ "$COMPANY" == "ABC" ]]   && { source $COMPANY_CONFS/alias; }
+[[ -f $COMPANY_CONFS/alias ]]   && { source $COMPANY_CONFS/alias; }
 

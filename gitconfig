@@ -53,7 +53,7 @@
     unadd       = reset HEAD                # un-add files from tracking index (still uncommitted new files)
 
     # 'git add -u' - add deleted files, but not new files. 'git add .' - add current & new files, but not deleted files.
-    aa = !sh -c 'git add . && git add -u'   # 'git aa' - add all deleted, modified, and new files.
+    aa = !sh -c 'git add --all . && git add -u'   # 'git aa' - add all deleted, modified, and new files.
     co = checkout                           # <branch> - checkout branch & make it current branch. <file> - Undo changes.
     cp = cherry-pick -x                     # copy a commit from another branch with source info
     gk = !gitk --all&
