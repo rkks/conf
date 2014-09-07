@@ -1,6 +1,6 @@
 [[ $- != *i* ]] && { return; }  # interactive shell
 
-if [ "$UNAMES" != "SunOS" ]; then
+if [ "$UNAMES" != "SunOS" -o "$UNAMES" != "Darwin" ]; then
     stty stop '' -ixoff;    # Avoid terminal being hung by Ctrl-s
     stty erase '^?';        # Make backspace work on all terminals.
 fi

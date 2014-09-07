@@ -16,6 +16,8 @@ if ( $UNAMES =~ FreeBSD ) then
     set path = (~/tools/bin/freebsd ~/tools/bin ~/scripts/bin $path)
 else if ( $UNAMES =~ Linux ) then
     set path = (~/tools/bin/linux ~/tools/bin ~/scripts/bin $path)
+else if ( $UNAMES =~ Darwin ) then
+    set path = (~/scripts/bin /usr/bin /bin /usr/sbin /sbin /usr/local/bin /opt/X11/bin $path)
 endif
 
 # skip remaining setup if not an interactive shell

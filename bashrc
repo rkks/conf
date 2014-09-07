@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 09/06/14 10:26:04 IST
+# MODIFIED: 09/07/14 15:22:08 IST
 # REVISION: 1.0
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
@@ -24,7 +24,7 @@ umask 0022          # override default umask in /etc/profile. 0022 is too limiti
 
 # Global info. Available to all sub-shells
 export COMPANY='ABC'                       # company name JUNIPER, CISCO, STOKE, CCPU, LTP
-export UNAMES=$(uname -s)                  # machine type: Linux, FreeBSD, SunOS
+export UNAMES=$(uname -s)                  # machine type: Linux, FreeBSD, Darwin, SunOS
 export SCRIPT_LOGS=$HOME/.logs             # script logs
 export CUSTOM_CONFS=$HOME/conf/custom      # user configs (not system recognized)
 export COMPANY_CONFS=$HOME/company/conf    # company specific configs
@@ -33,6 +33,7 @@ export UTIL_SCRIPTS=$HOME/scripts/utils/bash    # util scripts to be sourced
 export PATH="~/scripts/bin:~/tools/bin:/usr/gnu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin:."
 [[ "$UNAMES" == "FreeBSD" ]] && { export PATH="~/tools/bin/freebsd:$PATH"; }
 [[ "$UNAMES" == "Linux" ]] && { export PATH="~/tools/bin/linux:$PATH"; }
+[[ "$UNAMES" == "Darwin" ]] && { export PATH="$PATH:/opt/X11/bin"; }
 
 #======================================= Basic Utils =========================================
 s="$UTIL_SCRIPTS/bash_utils.sh"; test -f $s && { source $s; unset s; } || { echo "[ERROR] $s not found"; exit $ENOENT; }
@@ -47,12 +48,10 @@ source_script "$UTIL_SCRIPTS/devel_utils.sh";   # Bash Functions. Always sourced
 #======================================= Extended Utils =========================================
 [[ -z "$BASH_VERSION" || -z "$PS1" || -z "$INTERACTIVE" ]] && return  # No further sourcing if not interactive shell
 
-# $HOME/.alias could be sourced twice -- once here, second by bash. Avoiding confusion by explicit sourcing other files.
-# Use '<ctrl><alt>e' OR '<esc><ctrl>e' to expand alias inline(readline shortcut).
-#/etc/bash_completion - no bash autocompletions at the moment. more problems than benefits
-EXTENDED_SCRIPTS+=" $CUSTOM_CONFS/shopts"           # Shell Opts
-EXTENDED_SCRIPTS+=" $CUSTOM_CONFS/envopts"          # Environmental Opts
-EXTENDED_SCRIPTS+=" $CUSTOM_CONFS/bash.alias"       # bash aliases
+# Keep ~/.alias empty to avoid multiple times sourcing. No sourcing of /etc/bash_completion (more problems)
+EXTENDED_SCRIPTS+=" $CUSTOM_CONFS/shopts"       # Shell Opts
+EXTENDED_SCRIPTS+=" $CUSTOM_CONFS/envopts"      # Environmental Opts
+EXTENDED_SCRIPTS+=" $CUSTOM_CONFS/bash.alias"   # Expand alias: '<ctrl><alt>e' OR '<esc><ctrl>e' (readline shortcut)
 source_script $EXTENDED_SCRIPTS && unset EXTENDED_SCRIPTS
 log DEBUG "[SOURCE] Extended Scripts Complete"
 

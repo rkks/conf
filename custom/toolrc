@@ -3,6 +3,7 @@
 # construct PATH
 COMMON_PATHS="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 SOLARIS_PATHS="/usr/gnu/bin:/usr/xpg4/bin:/usr/ucb:/usr/X11R6/bin:/usr/X11R6/lib"
+DARWIN_PATHS="/opt/X11/bin";    # original Darwin PATH: /usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
 USER_PATHS="$HOME/scripts/bin:$HOME/tools/bin"
 USER_LINUX_PATHS="$HOME/tools/bin/linux"
 USER_FREEBSD_PATHS="$HOME/tools/bin/freebsd"
@@ -30,26 +31,33 @@ SOLARIS_MANPATHS="/usr/openwin/man:/usr/man"
 # For perl to locate any module in @INC, path should be either in PATH or PERL5LIB
 #USER_PERL5LIB_PATHS="$HOME/tools/perl-5.16.1/lib:$HOME/tools/perl-5.16.1/site/lib"
 
-NEW_PATH=$COMMON_PATHS;
-NEW_MANPATH=$COMMON_MANPATHS;
-NEW_LD_LIBRARY_PATH=$COMMON_LIBRARY_PATHS;
-[[ "$UNAMES" == "SunOS" ]]      && { NEW_PATH="$USER_SOLARIS_PATHS:$SOLARIS_PATHS:$NEW_PATH"; NEW_MANPATH="$SOLARIS_MANPATHS:$NEW_MANPATH"; }
-[[ "$UNAMES" == "FreeBSD" ]]    && { NEW_PATH="$USER_FREEBSD_PATHS:$NEW_PATH"; NEW_MANPATH="$USER_FREEBSD_MANPATHS:$NEW_MANPATH"; }
-[[ "$UNAMES" == "Linux" ]]      && { NEW_PATH="$USER_LINUX_PATHS:$NEW_PATH"; NEW_MANPATH="$USER_LINUX_MANPATHS:$NEW_MANPATH"; }
-[[ -f $COMPANY_CONFS/toolrc ]] && { source $COMPANY_CONFS/toolrc; NEW_PATH="$ABC_PATHS:$NEW_PATH"; NEW_MANPATH="$ABC_MANPATHS:$NEW_MANPATH"; }
-NEW_PATH="$USER_PATHS:$NEW_PATH";
-NEW_MANPATH="$USER_MANPATHS:$NEW_MANPATH"
-#NEW_PERL5LIB="$USER_PERL5LIB_PATHS";
+NEW_PATH=$COMMON_PATHS; NEW_MANPATH=$COMMON_MANPATHS; NEW_LD_LIBRARY_PATH=$COMMON_LIBRARY_PATHS;
+if [ "$UNAMES" == "SunOS" ]; then
+    NEW_PATH="$USER_SOLARIS_PATHS:$SOLARIS_PATHS:$NEW_PATH"; NEW_MANPATH="$SOLARIS_MANPATHS:$NEW_MANPATH";
+elif [ "$UNAMES" == "FreeBSD" ]; then
+    NEW_PATH="$USER_FREEBSD_PATHS:$NEW_PATH"; NEW_MANPATH="$USER_FREEBSD_MANPATHS:$NEW_MANPATH";
+elif [ "$UNAMES" == "Linux" ]; then
+    NEW_PATH="$USER_LINUX_PATHS:$NEW_PATH"; NEW_MANPATH="$USER_LINUX_MANPATHS:$NEW_MANPATH";
+elif [ "$UNAMES" == "Darwin" ]; then
+    NEW_PATH="$DARWIN_PATHS:$NEW_PATH";
+fi
 
-pvalid NEW_PATH; pvalid NEW_LD_LIBRARY_PATH; pvalid NEW_MANPATH; pvalid NEW_PERL5LIB;
+if [ -f $COMPANY_CONFS/toolrc ]; then
+    source $COMPANY_CONFS/toolrc; NEW_PATH="$ABC_PATHS:$NEW_PATH"; NEW_MANPATH="$ABC_MANPATHS:$NEW_MANPATH";
+fi
+NEW_PATH="$USER_PATHS:$NEW_PATH"; NEW_MANPATH="$USER_MANPATHS:$NEW_MANPATH";
 
-# don't loose existing paths before updating new ones. a terrible mistake people make
-unset PATH; unset LD_LIBRARY_PATH; unset MANPATH;   # unset PERL5LIB;
-export PATH="$NEW_PATH"; export LD_LIBRARY_PATH="$NEW_LD_LIBRARY_PATH"; export MANPATH="$NEW_MANPATH";  # export PERL5LIB="$NEW_PERL5LIB";
-unset NEW_PATH; unset NEW_LD_LIBRARY_PATH; unset NEW_MANPATH;   # unset NEW_PERL5LIB;
+#NEW_PERL5LIB="$USER_PERL5LIB_PATHS"; pvalid NEW_PERL5LIB; unset PERL5LIB; export PERL5LIB="$NEW_PERL5LIB"; unset NEW_PERL5LIB; unset USER_PERL5LIB_PATHS;
+
+pvalid NEW_PATH; pvalid NEW_LD_LIBRARY_PATH; pvalid NEW_MANPATH;
+
+# don't loose existing paths before updating new ones. A terrible mistake newbies make
+unset PATH; unset LD_LIBRARY_PATH; unset MANPATH;
+export PATH="$NEW_PATH"; export LD_LIBRARY_PATH="$NEW_LD_LIBRARY_PATH"; export MANPATH="$NEW_MANPATH";
+unset NEW_PATH; unset NEW_LD_LIBRARY_PATH; unset NEW_MANPATH;
 
 # cleanup what we do not need further
-unset USER_PATHS; unset USER_LINUX_PATHS; unset USER_FREEBSD_PATHS; unset USER_SOLARIS_PATHS;    # unset USER_PERL5LIB_PATHS;
+unset USER_PATHS; unset USER_LINUX_PATHS; unset USER_FREEBSD_PATHS; unset USER_SOLARIS_PATHS;
 unset COMMON_PATHS; unset LINUX_PATHS; unset SOLARIS_PATHS; unset ABC_PATHS;
 unset COMMON_LIBRARY_PATHS; unset LINUX_MANPATHS; unset SOLARIS_MANPATHS; unset ABC_MANPATHS;
 

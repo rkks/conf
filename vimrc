@@ -2,7 +2,7 @@
 " REVISION: 1.0
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 09/06/14 22:55:42 IST
+" MODIFIED: 09/07/14 10:46:10 IST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -133,11 +133,12 @@ set tabstop=4                       " number of spaces for a <TAB>
 set softtabstop=4                   " how many spaces that vim uses when you hit <TAB>
 set shiftwidth=4                    " number of spaces to shift on >>, <<
 set nosmarttab
-set textwidth=80                    " maximum length of any line. Disable it
-set wrapmargin=0                    " auto-wrap magin. Disable it
-if v:version >= 703                 " Vim version 7.3 and above
-  set colorcolumn=+1                " highligh column after 'textwidth'. Alternate, if exists('+syntax')
-  set numberwidth=6                 " width of number column. Alternate, if exists('+linebreak')
+set textwidth=120                   " maximum length of any line
+set wrapmargin=0                    " disable auto-wrap magin
+" Vim ver 7.3+ has both colorcolumn (alternate, if exists('+syntax')) and numberwidth (alt, if exists('+linebreak'))
+if v:version >= 703
+  set colorcolumn=80                " To highlight column after 'textwidth', do 'set colorcolumn=+1'
+  set numberwidth=6                 " width of number column
 endif
 
 set winminheight=0                  " Allow windows to get fully squashed
