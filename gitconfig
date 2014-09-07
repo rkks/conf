@@ -45,7 +45,7 @@
 
     create  = !bash -c 'git init && cp -f ~/conf/gitattributes .gitattributes && cp -f ~/conf/gitignore .gitignore && git add . && git commit -m \"First commit\"'  # initialize git repo
     amend       = commit --amend            # fix last commit
-    branchall   = branch -avr               # all branches, verbose, recursive. show commit messages on branch list
+    branchall   = branch -avv               # all branches, verbose, recursive. show commit messages on branch list
     diffstat    = diff --stat -r HEAD       # show summary of all changes from last commit
     changelog   = log --pretty=format:\" * %s\"     # Display commits summary
     hist        = log --date=short --pretty=format:\"%h %ad | %s %d [%cn]\" --graph # history (date=local doesn't help)
