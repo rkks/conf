@@ -70,3 +70,6 @@ if own ant; then
     export ANT_HOME=~/tools/linux/ant
     export ANT_OPTS="-Xmx256M -Dbuild.sysclasspath=ignore"
 fi
+
+# Company overrides, specifics - if any
+[[ -f $COMPANY_CONFS/envopts ]] && { source $COMPANY_CONFS/envopts; }

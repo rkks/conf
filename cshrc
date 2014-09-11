@@ -92,7 +92,10 @@ stty erase '^?'     #  causes problem in vim
 #biff y
 
 # Set up some environment variables
-setenv COMPANY "ABC"
+setenv COMPANY_CONFS "$HOME/company/conf"
+if ( -e $COMPANY_CONFS/cshrc ) then
+    source $COMPANY_CONFS/cshrc
+endif
 
 #----------------------------------------------------------------
 # more aliases

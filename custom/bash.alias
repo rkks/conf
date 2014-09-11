@@ -56,9 +56,6 @@ alias tf='tail -f'
 alias xs='cd'
 alias vo='vi'
 
-alias paths="cat $COMPANY_CONFS/paths"
-alias machines='cat $COMPANY_CONFS/machines'
-
 # Admin Power Tools
 (own dstat)     && alias dstata='dstat -cdngmsply --bw'
 (own minicom)   && alias minicom='minicom -c on'
@@ -200,5 +197,4 @@ if own tmux.sh; then
     alias tmux='tmux -2'    # always assume 256 color support. Key to bright colors
 fi
 
-[[ -f $COMPANY_CONFS/alias ]]   && { source $COMPANY_CONFS/alias; }
-
+[[ -f $COMPANY_CONFS/bash.alias ]] && { source $COMPANY_CONFS/bash.alias; }

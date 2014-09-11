@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 09/07/14 15:22:08 IST
+# MODIFIED: 09/11/14 12:59:23 IST
 # REVISION: 1.0
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
@@ -23,7 +23,6 @@ umask 0022          # override default umask in /etc/profile. 0022 is too limiti
 #xhost +
 
 # Global info. Available to all sub-shells
-export COMPANY='ABC'                       # company name JUNIPER, CISCO, STOKE, CCPU, LTP
 export UNAMES=$(uname -s)                  # machine type: Linux, FreeBSD, Darwin, SunOS
 export SCRIPT_LOGS=$HOME/.logs             # script logs
 export CUSTOM_CONFS=$HOME/conf/custom      # user configs (not system recognized)
@@ -41,7 +40,8 @@ s="$UTIL_SCRIPTS/logger.sh"; test -f $s && { source $s; unset s; } || { echo "[E
 log_init INFO $SCRIPT_LOGS/bashrc.log         # After sourcing bashrc, user scripts should define their own log-file
 
 log NOTE "[SOURCE] Bash v$BASH_VERSION ($(id -un))";
-source_script "$CUSTOM_CONFS/toolrc";      # setup right paths before finding tool availability in bin_paths
+source_script "$COMPANY_CONFS/bashrc";      # company env specifics
+source_script "$CUSTOM_CONFS/toolrc";      # setup right paths
 source_script "$UTIL_SCRIPTS/devel_utils.sh";   # Bash Functions. Always sourced prior to .alias
 #log DEBUG "cmd:$0. Basic Util Scripts Complete"
 
