@@ -1,10 +1,9 @@
 # @(#)Cshrc 1.6 91/09/05 SMI
 #################################################################
 #
-#         .cshrc file
+#   .cshrc file
 #
-#         initial setup file for both interactive and noninteractive
-#         C-Shells
+#   initial setup file for interactive & noninteractive C-Shells
 #
 #################################################################
 umask 022
@@ -19,9 +18,7 @@ else if ( $UNAMES =~ Linux ) then
 else if ( $UNAMES =~ Darwin ) then
     set path = (~/scripts/bin /usr/bin /bin /usr/sbin /sbin /usr/local/bin /opt/X11/bin $path)
 endif
-
-# skip remaining setup if not an interactive shell
-if ($?USER == 0 || $?prompt == 0) exit
+set HOSTNAME = "`hostname`"
 
 #Framemaker
 #setenv FMHOME "/opt/adobe"
@@ -33,28 +30,21 @@ if ($?USER == 0 || $?prompt == 0) exit
 #Adjust Environment
 #setenv MANPATH "/usr/man /usr/local/man:/tools/2.5.1/local/man:/tools/local/man:/usr/openwin/man:/usr/share/man:/tools/elvis/SQA/tools/man:/usr/atria/doc/man:/opt/insure/man:/opt/forte/SUNWspro/man:/tools/SUNWspro/man:/tools/visual/SUNWspro/man"
 #setenv LD_LIBRARY_PATH "/usr/openwin/lib:/usr/dt/lib:/tools/2.5.1/local/lib:/tools/local/lib:/tools/SUNWspro/lib"
-
 #setenv OPENWINHOME "/usr/openwin"
 #setenv PARASOFT "/usr/local/parasoft/"
 #setenv LM_LICENSE_FILE ""
 #setenv SOLID_USER "$LOGNAME $LOGNAME"
 
-#----------------------------------------------------------------
-#         aliases for all shells
-#----------------------------------------------------------------
-alias ls        'ls --color=auto -F'
-alias b         'bash'
-alias sx        'screen -x'
-alias cp        'cp -i'
-alias mv        'mv -i'
-alias rm        'rm -i'
-alias pwd       'echo $cwd'
-alias back      'set back=$old; set old=$cwd; cd $back; pwd; unset back'
-alias open      'chmod +w'
+# Set up company specific environment
+setenv COMPANY_CONFS "$HOME/company/conf"
+if ( -e $COMPANY_CONFS/cshrc ) then
+    source $COMPANY_CONFS/cshrc
+endif
 
-#----------------------------------------------------------------
-#          settings  for interactive shells
-#----------------------------------------------------------------
+# skip remaining setup if not an interactive shell
+if ($?USER == 0 || $?prompt == 0) exit
+
+# settings  for interactive shells
 unset autologout
 
 if ($?prompt) then
@@ -75,9 +65,8 @@ if ($?prompt) then
     endif
 endif
 
-#----------------------------------------------------------------
 # set up prompts
-#----------------------------------------------------------------
+#setenv TERM xterm
 if ( $TERM =~ xterm ) then
     alias title 'echo ]2\;`whoami`@`hostname`\:$cwd'
     alias fileT 'echo ]2\;\!*'
@@ -91,15 +80,16 @@ stty sane
 stty erase '^?'     #  causes problem in vim
 #biff y
 
-# Set up some environment variables
-setenv COMPANY_CONFS "$HOME/company/conf"
-if ( -e $COMPANY_CONFS/cshrc ) then
-    source $COMPANY_CONFS/cshrc
-endif
-
-#----------------------------------------------------------------
-# more aliases
-#----------------------------------------------------------------
+# aliases for all shells
+alias ls        'ls --color=auto -F'
+alias b         'bash'
+alias sx        'screen -x'
+alias cp        'cp -i'
+alias mv        'mv -i'
+alias rm        'rm -i'
+alias pwd       'echo $cwd'
+alias back      'set back=$old; set old=$cwd; cd $back; pwd; unset back'
+alias open      'chmod +w'
 alias a         alias
 alias "ls"      "ls -F"
 alias hist      history
@@ -110,6 +100,3 @@ alias c         'clear'
 #alias tms 'tbl \!* | troff -t -ms >! troff.output &'    # troff -ms
 #alias tpr 'tbl \!* | troff -t -ms | lpr -t &'           # troff & print
 #alias ppr 'lpr -t \!* &'                                # print troffed
-
-#setenv TERM xterm
-

@@ -2,7 +2,7 @@
 " REVISION: 1.0
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 09/07/14 10:46:10 IST
+" MODIFIED: 09/12/14 11:14:09 IST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -114,7 +114,7 @@ set nocindent                       " no cindent initially - later enabled for C
 set smartindent                     " smart indent the files - disable for C in favor of cindent
 set autoread                        " watch for file changes
 set hidden                          " Allows new file to be opened without writing into current file. Later save.
-set expandtab                       " do not replace tabs with spaces.
+set expandtab                       " replace tabs with spaces.
 set noerrorbells                    " Quiet mode
 set wrap                            " Auto-Wrap overflowing text visually without inserting line breaks
 set linebreak                       " wrap line at words-breakers; defined by 'breakat'
