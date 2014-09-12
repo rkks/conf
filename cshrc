@@ -36,7 +36,7 @@ set HOSTNAME = "`hostname`"
 #setenv SOLID_USER "$LOGNAME $LOGNAME"
 
 # Set up company specific environment
-setenv COMPANY_CONFS "$HOME/company/conf"
+setenv COMPANY_CONFS "/ws/ravikks-sjc/company/conf"
 if ( -e $COMPANY_CONFS/cshrc ) then
     source $COMPANY_CONFS/cshrc
 endif
