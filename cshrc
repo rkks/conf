@@ -20,23 +20,11 @@ else if ( $UNAMES =~ Darwin ) then
 endif
 set HOSTNAME = "`hostname`"
 
-#Framemaker
-#setenv FMHOME "/opt/adobe"
-#set path = ($FMHOME/bin $path)
-
 #Code Size Compilation
 #set path = ($path /usr/temp/m68k-coff /usr/temp/m68k-coff/bin)
 
-#Adjust Environment
-#setenv MANPATH "/usr/man /usr/local/man:/tools/2.5.1/local/man:/tools/local/man:/usr/openwin/man:/usr/share/man:/tools/elvis/SQA/tools/man:/usr/atria/doc/man:/opt/insure/man:/opt/forte/SUNWspro/man:/tools/SUNWspro/man:/tools/visual/SUNWspro/man"
-#setenv LD_LIBRARY_PATH "/usr/openwin/lib:/usr/dt/lib:/tools/2.5.1/local/lib:/tools/local/lib:/tools/SUNWspro/lib"
-#setenv OPENWINHOME "/usr/openwin"
-#setenv PARASOFT "/usr/local/parasoft/"
-#setenv LM_LICENSE_FILE ""
-#setenv SOLID_USER "$LOGNAME $LOGNAME"
-
 # Set up company specific environment
-setenv COMPANY_CONFS "/ws/ravikks-sjc/company/conf"
+set COMPANY_CONFS = '/ws/ravikks-sjc/company/conf'
 if ( -e $COMPANY_CONFS/cshrc ) then
     source $COMPANY_CONFS/cshrc
 endif
@@ -96,7 +84,3 @@ alias hist      history
 alias lock      xlock
 alias cshrc     'source ~/.cshrc'
 alias c         'clear'
-#alias nms 'tbl \!* | nroff -ms | more'                  # nroff -ms
-#alias tms 'tbl \!* | troff -t -ms >! troff.output &'    # troff -ms
-#alias tpr 'tbl \!* | troff -t -ms | lpr -t &'           # troff & print
-#alias ppr 'lpr -t \!* &'                                # print troffed

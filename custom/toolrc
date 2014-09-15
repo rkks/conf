@@ -2,7 +2,7 @@
 
 # construct PATH
 COMMON_PATHS="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-SOLARIS_PATHS="/usr/gnu/bin:/usr/xpg4/bin:/usr/ucb:/usr/X11R6/bin:/usr/X11R6/lib"
+SOLARIS_PATHS="/usr/gnu/bin:/usr/xpg4/bin:/usr/ucb:/usr/X11R6/bin:/usr/X11R6/lib:/usr/openwin/bin"
 DARWIN_PATHS="/opt/X11/bin";    # original Darwin PATH: /usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
 USER_PATHS="$HOME/scripts/bin:$HOME/tools/bin"
 USER_LINUX_PATHS="$HOME/tools/bin/linux"
