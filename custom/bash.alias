@@ -9,7 +9,7 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
 # single letter access to common tools
-alias a='alias'
+alias a='source $CUSTOM_CONFS/bash.alias'
 alias b='bash'
 alias c='clear'
 alias d='date'

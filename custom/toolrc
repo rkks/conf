@@ -27,6 +27,7 @@ USER_FREEBSD_MANPATHS+=":$HOME/tools/freebsd/p7zip/man:$HOME/tools/freebsd/ncdu/
 USER_FREEBSD_MANPATHS+=":$HOME/tools/freebsd/lighttpd/share/man:$HOME/tools/freebsd/tmux/share/man:$HOME/tools/freebsd/wget/share/man"
 COMMON_MANPATHS="/usr/X11R6/man:/usr/share/man:/usr/local/man"
 SOLARIS_MANPATHS="/usr/openwin/man:/usr/man"
+LINUX_MANPATHS="/usr/man"
 
 # For perl to locate any module in @INC, path should be either in PATH or PERL5LIB
 #USER_PERL5LIB_PATHS="$HOME/tools/perl-5.16.1/lib:$HOME/tools/perl-5.16.1/site/lib"
@@ -37,7 +38,7 @@ if [ "$UNAMES" == "SunOS" ]; then
 elif [ "$UNAMES" == "FreeBSD" ]; then
     NEW_PATH="$USER_FREEBSD_PATHS:$NEW_PATH"; NEW_MANPATH="$USER_FREEBSD_MANPATHS:$NEW_MANPATH";
 elif [ "$UNAMES" == "Linux" ]; then
-    NEW_PATH="$USER_LINUX_PATHS:$NEW_PATH"; NEW_MANPATH="$USER_LINUX_MANPATHS:$NEW_MANPATH";
+    NEW_PATH="$USER_LINUX_PATHS:$NEW_PATH"; NEW_MANPATH="$USER_LINUX_MANPATHS:$LINUX_MANPATHS:$NEW_MANPATH";
 elif [ "$UNAMES" == "Darwin" ]; then
     NEW_PATH="$DARWIN_PATHS:$NEW_PATH";
 fi
