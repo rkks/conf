@@ -2,12 +2,15 @@
 " REVISION: 1.0
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 04/04/2013 22:48:10 IST
-" MODIFIED: 02/24/14 12:11:03 IST
+" MODIFIED: 09/16/14 19:01:44 IST
 " A good way to test colorscheme without leaving editor:
 " :w<CR>
 " :so %<CR>
 
-"these lines are suggested to be at the top of every colorscheme
+" These lines are suggested to be at the top of every colorscheme
+if has("gui_running")
+    finish
+endif
 
 "Clear the colors for any items that you don't like
 highlight clear

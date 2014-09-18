@@ -171,9 +171,13 @@ if own vim; then
     alias vt="vim -u ~/.vimrc -t"
 fi
 
-if [ "$UNAMES" == "FreeBSD" -o "$UNAMES" == "Darwin" ]; then
+if [ "$UNAMES" == "FreeBSD" ]; then
     alias ls='ls -G'
-    (own ping)  && alias pingf='ping -c 5 -i.2'              # fast ping. Only root user can give -i.2
+    (own ping)  && alias pingf='ping -c 5'              # Only root user can give -i.2 (fast ping)
+elif [ "$UNAMES" == "Darwin" ]; then
+    alias ls='ls -G'
+    (own ping)  && alias pingf='ping -c 5 -i.2'
+    alias gvim='open -a MacVim'
 elif [ "$UNAMES" == "Linux" ]; then
     alias ls='ls --color=auto -F'
     (own free)  && alias memfree='free -m'              # available memory

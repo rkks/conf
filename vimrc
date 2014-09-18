@@ -2,7 +2,7 @@
 " REVISION: 1.0
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 09/12/14 11:14:09 IST
+" MODIFIED: 09/16/14 18:50:14 IST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings

@@ -2,14 +2,15 @@
 " REVISION: 1.0
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 04/04/2013 22:48:10 IST
-" MODIFIED: 03/14/14 12:44:19 IST
-" A good way to test colorscheme without leaving editor:
-" :w<CR>
-" :so %<CR>
+" MODIFIED: 09/16/14 19:00:52 IST
+" A good way to test colorscheme without leaving editor: :w<CR> and then :so %<CR>
 
-"these lines are suggested to be at the top of every colorscheme
+" These lines are suggested to be at the top of every colorscheme
+if has("gui_running")
+    finish
+endif
 
-"Clear the colors for any items that you don't like
+" Clear the colors for any items that you don't like
 highlight clear
 if version > 580
     " no guarantees for version 5.8 & below, but this makes it stop complaining
@@ -17,15 +18,14 @@ if version > 580
         syntax reset
     endif
 endif
-" Name of the colorscheme
-let g:colors_name = "rkks"
-"Load the 'base' colorscheme
-"runtime colors/blue.vim
+let g:colors_name = "rkks"  " Name of the colorscheme
+"runtime colors/blue.vim    " Load the 'base' colorscheme
 
 set background&
 let &t_Co=256
 
 "Set up your new & improved colors
+"highlight <group-name> term=none cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 if &background == "light"
     if &t_Co > 255
         " syntax highlighting groups. 256 colors.
@@ -160,8 +160,6 @@ else
     endif
 endif
 
-" Unused
-"highlight <group-name> term=none cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 "    highlight ErrorMsg
 "    highlight FoldColumn
 "    highlight ModeMsg
@@ -175,4 +173,3 @@ endif
 "    highlight Menu
 "    highlight Scrollbar
 "    highlight Tooltip
-
