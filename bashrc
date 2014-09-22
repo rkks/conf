@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 09/15/14 14:17:04 IST
+# MODIFIED: 09/22/14 09:26:41 IST
 # REVISION: 1.0
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
@@ -26,7 +26,7 @@ export UNAMES=$(uname -s)                  # machine type: Linux, FreeBSD, Darwi
 export PATH="~/scripts/bin:~/tools/bin:/opt/X11/bin:/usr/gnu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin:."
 export SCRIPT_LOGS=$HOME/.logs             # script logs
 export CUSTOM_CONFS=$HOME/conf/custom      # user configs (not system recognized)
-export COMPANY_CONFS=$HOME/company/conf    # company specific configs
+export COMPANY_CONFS=$HOME/csco/conf       # company specific configs
 export UTIL_SCRIPTS=$HOME/scripts/utils/bash    # util scripts to be sourced
 
 #======================================= Basic Utils =========================================
