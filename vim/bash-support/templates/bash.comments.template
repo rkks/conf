@@ -20,40 +20,56 @@
 #   AUTHOR: |AUTHOR|, |EMAIL|
 #  LICENCE: |COPYRIGHT|
 
-# Warn unset vars as error, Verbose (echo each command), Enable debug mode
-#set -uvx
+#set -uvx   # Warn unset vars, Verbose (echo each command), Enable debug mode
 
-#HOME=$(echo "/homes/"$(id -nu))
 PATH=/usr/bin:/usr/sbin:.:/auto/opt/bin:/bin
 
-if [ -f ~/.bashrc ]; then
-    source ~/.bashrc
+if [ "|FILENAME|" == "$(basename $0)" ] && [ -f $HOME/.bashrc ]; then
+	source $HOME/.bashrc
+	log_init INFO $SCRIPT_LOGS/|FILENAME|.log
 fi
 
 usage()
 {
-    echo "usage: |FILENAME| []"
+	echo "Usage: |FILENAME| [-h|]"
+	echo "Options:"
+	echo "  -h          - print this help"
 }
 
 # Each shell script has to be independently testable.
 # It can then be included in other files for functions.
 main()
 {
-    if [ "$#" == "0" ]; then
-        usage
-        exit 1
-    fi
+    PARSE_OPTS="h"
+    local opts_found=0
+    while getopts ":$PARSE_OPTS" opt; do
+		case $opt in
+			[a-zA-Z0-9])
+			log DEBUG "-$opt was triggered, Parameter: $OPTARG"
+			local "opt_$opt"=1 && local "optarg_$opt"="$OPTARG"
+			;;
+		\?)
+			echo "Invalid option: -$OPTARG"; usage; exit $EINVAL
+			;;
+		:)
+			echo "[ERROR] Option -$OPTARG requires an argument";
+			usage; exit $EINVAL
+			;;
+		esac
+		shift $((OPTIND-1)) && OPTIND=1 && local opts_found=1;
+    done
 
-    case $1 in
-        *)
-            usage
-            ;;
-    esac
-    exit 0
+	if ((!opts_found)); then
+		usage && exit $EINVAL;
+	fi
+
+	((opt_h)) && { usage; }
+
+    exit 0;
 }
 
-if [ "$(basename $0)" == "$(basename |FILENAME|)" ]; then
-    main $*
+if [ "|FILENAME|" == "$(basename $0)" ]; then
+	main $*
 fi
 # VIM: ts=4:sw=4:sts=4:expandtab
 §%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -10,7 +10,7 @@ alias ......='cd ../../../../..'
 
 # single letter access to common tools
 alias a='source $CUSTOM_CONFS/bash.alias'
-alias b='bash'
+alias b='bash -norc -noprofile'
 alias c='clear'
 alias d='date'
 alias h='hostname -s'

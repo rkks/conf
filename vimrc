@@ -2,7 +2,7 @@
 " REVISION: 1.0
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 09/16/14 18:50:14 IST
+" MODIFIED: 09/29/14 16:01:52 IST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -111,7 +111,6 @@ set startofline                     " place cursor on non-white char of line
 
 set noautoindent                    " set automatic indenting - deprecated in favor of smartindent
 set nocindent                       " no cindent initially - later enabled for C files
-set smartindent                     " smart indent the files - disable for C in favor of cindent
 set autoread                        " watch for file changes
 set hidden                          " Allows new file to be opened without writing into current file. Later save.
 set expandtab                       " replace tabs with spaces.
@@ -123,11 +122,13 @@ set shiftround                      " Round indent to multiples of shiftwidth
 "set nostartofline                   " Set to keep cursor at same horizontal location during scrolling
 
 set ignorecase                      " makes searches case insensitive...
-set smartcase                       " ...if it didn't begin with a capital letter
 set showmatch                       " show matching brackets/braces/parantheses.
 set hlsearch                        " highlight matches
 set incsearch                       " show matches as regular expression typed
 set wrapscan                        " do scan cyclically
+
+set nosmartindent                     " smart indent the files - disable for C in favor of cindent
+set nosmartcase                       " ...if it didn't begin with a capital letter
 
 set tabstop=4                       " number of spaces for a <TAB>
 set softtabstop=4                   " how many spaces that vim uses when you hit <TAB>
@@ -223,7 +224,7 @@ map <Home> ^
 
 " Undo in insert mode.
 imap <c-z> <c-o>u
-nnoremap <silent> <F2> :set smartindent!<cr>
+nnoremap <silent> <F2> :set smartindent!<Bar>:set smartcase!<cr>
 nnoremap <silent> <F3> :set ic!<cr>
 nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:%s/\n\{3,}/\r\r/e<Bar>:let @/=_s<Bar>:nohl<Bar> :retab<CR>
 nnoremap <silent> <F5> :if exists("syntax_on") <Bar>syntax off <Bar> else <Bar> syntax on <Bar> endif <CR>
