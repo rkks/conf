@@ -1,3 +1,12 @@
+/**
+ *  DETAILS: My indent configuration file.
+ *  CREATED: 09/30/14 20:11:05 PDT
+ * MODIFIED: 10/01/14 08:43:26 IST
+ * REVISION: 1.0
+ *
+ *   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
+ *  LICENSE: Copyright (c) 2014, Ravikiran K.S.
+ */
 /* comments */
 --format-first-column-comments  /* -fc1. format comments in first column */
 --format-all-comments           /* -fca. format all comments */
@@ -19,7 +28,6 @@
 --declaration-indentation4      /* -di4. indent declarations to column */
 --continuation-indentation0     /* -ci0. no extra indent on continued stmt. */
 --line-comments-indentation0    /* -d0. no line comment indentation */
---indent-label-4                /* -il-4. indent each level {} to */
 
 --line-length80                 /* -l80. text wrap margin for code */
 --comment-line-length80         /* -lc80. text wrap margin for comments */
