@@ -1,8 +1,7 @@
 # DETAILS : My GNU screen configuration file
-# REVISION: 1.0
 # AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 # CREATED : 23 Aug 2006 10:20:19
-# MODIFIED: 09/06/14 08:58:19 IST
+# MODIFIED: 10/06/14 14:14:55 IST
 
 activity "%c activity -> %n%f %t"
 multiuser on                    #Allow people to attach to my screen

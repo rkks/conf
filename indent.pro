@@ -1,8 +1,7 @@
 /**
  *  DETAILS: My indent configuration file.
  *  CREATED: 09/30/14 20:11:05 PDT
- * MODIFIED: 10/01/14 08:43:26 IST
- * REVISION: 1.0
+ * MODIFIED: 10/06/14 14:14:59 IST
  *
  *   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
  *  LICENSE: Copyright (c) 2014, Ravikiran K.S.

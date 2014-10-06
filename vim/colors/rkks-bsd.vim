@@ -1,8 +1,7 @@
 " DETAILS : My vim color file
-" REVISION: 1.0
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 04/04/2013 22:48:10 IST
-" MODIFIED: 09/16/14 19:00:52 IST
+" MODIFIED: 10/06/14 14:15:27 IST
 " A good way to test colorscheme without leaving editor: :w<CR> and then :so %<CR>
 
 " These lines are suggested to be at the top of every colorscheme
