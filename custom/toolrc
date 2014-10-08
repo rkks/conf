@@ -5,9 +5,9 @@ COMMON_PATHS+=":/usr/X11R6/lib:/usr/openwin/bin"
 COMMON_MANPATHS="/usr/openwin/man:/usr/man:/usr/X11R6/man:/usr/share/man:/usr/local/man"
 COMMON_LD_LIBRARY_PATHS="/usr/local/lib"
 
-USER_PATHS="$HOME/scripts/bin:$HOME/tools/$UNAMES/bin:$HOME/tools/bin"
-USER_MANPATHS="$HOME/tools/$UNAMES/man:$HOME/tools/rsnapshot/man"
-USER_LD_LIBRARY_PATHS="$HOME/tools/$UNAMES/lib"
+USER_PATHS="$SCRIPTS/bin:$TOOLS/bin:$TOOLS/sbin"
+USER_MANPATHS="$TOOLS/man:$HOME/tools/rsnapshot/man"
+USER_LD_LIBRARY_PATHS="$TOOLS/lib"
 #USER_PERL5LIB_PATHS="$HOME/tools/perl-5.16.1/lib"  # For perl to locate module in @INC
 
 NEW_PATH="$USER_PATHS:$COMMON_PATHS";

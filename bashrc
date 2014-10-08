@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 10/06/14 14:14:46 IST
+# MODIFIED: 10/08/14 11:22:26 IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -18,16 +18,20 @@ umask 0022          # override default umask in /etc/profile. 0022 is too limiti
 # Global info. Available to all sub-shells
 : ${HOME=~}         # $(echo "/homes/"$(id -nu)) creates problem on machines where users are not mounted on /homes
 : ${SHDEBUG=no}     # Debugging is disabled by default
-: ${HOSTNAME=$(uname -n)}   # hostname setting
-export SHELL=$BASH         # complete path is necessary. otherwise, breaks 'script'./bin/bash
-export UNAMES=$(uname -s)  # machine type: Linux, FreeBSD, Darwin, SunOS
-export PATH="~/scripts/bin:~/tools/bin:/opt/X11/bin:/usr/gnu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin:."
+export HOSTNAME=$(uname -n) # hostname setting
+export SHELL=$BASH          # complete path is necessary. otherwise, breaks 'script'./bin/bash
+export UNAMES=$(uname -s)   # machine type: Linux, FreeBSD, Darwin, SunOS
+export PATH=".:~/scripts/bin:~/tools/$UNAMES/bin:/usr/gnu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 [[ -f ~/.bashrc.pre ]] && { source ~/.bashrc.pre; }
+export CONFS=$HOME/confs
+export DOWNLOADS=$HOME/downs
+export SCRIPTS=$HOME/scripts
+export TOOLS=$HOME/tools/$UNAMES
 export SCRIPT_LOGS=$HOME/.logs             # script logs
 export CUSTOM_CONFS=$HOME/conf/custom      # user configs (not system recognized)
 export COMPANY_CONFS=$HOME/csco/conf       # company specific configs
-export UTIL_SCRIPTS=$HOME/scripts/utils/bash    # util scripts to be sourced
+export UTIL_SCRIPTS=$SCRIPTS/utils/bash    # util scripts to be sourced
 
 #======================================= Basic Utils =========================================
 s="$UTIL_SCRIPTS/bash_utils.sh"; test -f $s && { source $s; unset s; } || { echo "[ERROR] $s not found"; exit $ENOENT; }
