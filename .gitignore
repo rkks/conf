@@ -92,3 +92,5 @@ _darcs
 
 # terminal multiplexer
 *.pid
+.netrwhist
+.DS_Store
