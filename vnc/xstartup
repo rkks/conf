@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Uncomment the following two lines for normal desktop:
+# Uncomment the following two lines for regular desktop:
 # unset SESSION_MANAGER
 # exec /etc/X11/xinit/xinitrc
 [ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
@@ -9,12 +9,10 @@
 xsetroot -solid grey
 vncconfig -iconic &
 
-#export XKL_XMODMAP_DISABLE=1
-startfluxbox &
-
 # Start terminal with some attribute
-#-geometry 80x24+10+10 -title "$VNCDESKTOP Desktop" -bg white -fn 8x13 &
-xterm -geometry 120x48 -ls -font -*-courier-medium-r-*-*-16-*-*-*-*-*-iso8859-* &
+# Unused: -geometry 80x24+10+10 -font -*-courier-medium-r-*-*-16-*-*-*-*-*-iso8859-* -fn 8x13 &
+xterm -geometry 100x20 -fa courier -fs 12 -ls -title "$VNCDESKTOP Desktop" -bg white &
 
-# Windows managers: #metacity & #awesome & #startkde & #Xvnc & #X11 & #wmaker & #startx & #/etc/X11/Xsession
+#export XKL_XMODMAP_DISABLE=1
+# Window manager: #metacity & #awesome & #startkde & #Xvnc & #X11 & #wmaker & #startx & #/etc/X11/Xsession #startfluxbox &
 twm &

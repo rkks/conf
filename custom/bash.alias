@@ -62,12 +62,12 @@ alias vo='vi'
 (own pgrep)     && alias pgrep='pgrep -u $(id -nu)'
 (own pkill)     && alias pkill='pkill -u $(id -nu)'
 (own wget)      && alias wgetr='wget -c -o wget.log -t 3 -b -r -w5 --random-wait -l2 -np -k'   # to resume from where left off: wget -c -o wget.log -t 3 -b
-(own xterm)     && alias xt='xterm -fa courier -fs 14 &' # -geometry 120x48 -ls -font -*-courier-medium-r-*-*-20-*-*-*-*-*-iso8859-* -bg black -fg white
+(own xterm)     && alias xt='xterm -fa courier -fs 12 -geometry 100x20 -ls &'
 
 # devel stuff
 (own autoexpect) && alias autoexpecta='autoexpect -f script-`date +%Y%m%d-%T`.exp'
-(own ctags)     && alias ctb='ctags --extra=+q --fields=afmikKlnsSz --c++-kinds=+p -a -R > /dev/null 2>&1'   # Exuberant ctags options
-(own gcc)       && alias gccg='gcc -g3 -gdwarf-2 -ggdb'     #Compiling with debug and macro info put into binary
+(own ctags)     && alias ctb='ctags --extra=+q --fields=afmikKlnsSz --c++-kinds=+p -a -R > /dev/null 2>&1'   # Exuberant ctags
+(own gcc)       && alias gccg='gcc -g3 -gdwarf-2 -ggdb'     # include debug & macro info in binary
 (own git)       && alias g='git'
 (own gmake)     && alias make='gmake -s'
 (own hexdump)   && alias hexdumpc='hexdump -C'              # canonical hex dump
