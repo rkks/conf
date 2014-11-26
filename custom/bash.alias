@@ -73,7 +73,8 @@ alias vo='vi'
 (own hexdump)   && alias hexdumpc='hexdump -C'              # canonical hex dump
 (own od)        && alias hd='od -Ax -tx1z -v'               # what most people want from od (hexdump)
 (own script)    && alias scripta='script -a script-$(date +%Y%m%d-%T).log'
-(own vncserver) && alias vncserver='vncserver -geometry 1440x900'   # if copy-paste doesnt work, start 'vncconfig &'
+(own vncserver) && alias vncserver='vncserver -geometry 1600x900'   # if copy-paste doesnt work, start 'vncconfig &'
+(own konsole)   && alias konsole='konsole --notabbar --vt_sz 100x20 &'
 
 if own curl; then
     alias curl='curl -# -O -J -L'   # -J: resolve name from header, -L: handle redirects, -C - : continue from where left off
