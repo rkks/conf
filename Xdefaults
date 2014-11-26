@@ -1,5 +1,34 @@
-#aterm*font: -xos4-terminus-medium-r-normal-*-12-120-72-72-c-60-iso10646-1
-#xterm.Font: xft:Terminus:pixelsize=8
-#urxvt*font: -xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso10646-1
-# This doesn't work on solaris machines. Better not replace
-xterm*font: -*-courier-medium-r-*-*-14-*-*-*-*-*-iso8859-*
+#  DETAILS: Xterm configurations sourced by xrdb.
+#  CREATED: 07/01/10 10:14:13 IST
+# MODIFIED: 11/26/14 13:14:51 IST
+#
+#   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
+#  LICENCE: Copyright (c) 2013, Ravikiran K.S.
+
+# For new X config, $ rdb ~/.Xdefaults. To append config, $ rdb -merge ~/.Xdefaults
+
+# To know supported fonts: $ fc-list
+Xft.antialias:  true
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+
+xterm*VT100.geometry:     100x20
+!xterm*faceName:           Courier:style=Regular:size=14
+xterm*font:               -*-courier-medium-r-*-*-14-*-*-*-*-*-*-*
+xterm*dynamicColors:      true
+xterm*utf8:               2
+xterm*eightBitInput:      true
+xterm*saveLines:          4096
+xterm*scrollKey:          true
+xterm*scrollTtyOutput:    false
+xterm*scrollBar:          true
+xterm*rightScrollBar:     true
+xterm*jumpScroll:         true
+xterm*multiScroll:        true
+xterm*toolBar:            false
+XTerm*selectToClipboard:  true
+
+XTerm*VT100.*translations:      #override \
+        Meta <KeyPress> C:  select-end(CLIPBOARD, CUT_BUFFER0) \n
+        Meta <KeyPress> V:  insert-selection(CLIPBOARD, CUT_BUFFER0) \n
+
