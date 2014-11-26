@@ -1,12 +1,12 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 10/08/14 11:22:26 IST
+# MODIFIED: 11/20/14 14:13:36 IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
 
 [[ $BASH != *bash* ]] && { echo "Not a bash shell "; return $EINVAL; }      # any inconsistency
-[[ $- == *i* ]] && { INTERACTIVE=yes; PS1="[\D{%b/%d} \t|\u@\h:\w]$ "; }    # interactive shell.
+[[ $- == *i* ]] && { INTERACTIVE=yes; PS1="[\D{%b/%d}|\t|\u@\h:\w]$ "; }    # interactive shell.
 [[ $0 == -* ]]  && { LOGIN=yes; } || { unset LOGIN; }                       # detect login shell
 
 #======================================= PreLoad =========================================

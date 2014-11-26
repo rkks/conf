@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/raviks/conf/vnc'
-let g:netrw_dirhist_2='/Users/ravikks/Cisco/Software'
-let g:netrw_dirhist_3='/Users/ravikks/Cisco/scripts'
-let g:netrw_dirhist_4='/Users/ravikks/company/conf'
-let g:netrw_dirhist_5='/Users/ravikks/Cisco'
-let g:netrw_dirhist_6='/Users/ravikks/csco'
