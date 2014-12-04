@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 11/20/14 14:13:36 IST
+# MODIFIED: 12/04/14 08:27:28 IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -31,17 +31,17 @@ export TOOLS=$HOME/tools/$UNAMES
 export SCRIPT_LOGS=$HOME/.logs             # script logs
 export CUSTOM_CONFS=$HOME/conf/custom      # user configs (not system recognized)
 export COMPANY_CONFS=$HOME/csco/conf       # company specific configs
-export UTIL_SCRIPTS=$SCRIPTS/utils/bash    # util scripts to be sourced
+export USCRIPTS=$SCRIPTS/utils             # util scripts to be sourced
 
 #======================================= Basic Utils =========================================
-s="$UTIL_SCRIPTS/bash_utils.sh"; test -f $s && { source $s; unset s; } || { echo "[ERROR] $s not found"; exit $ENOENT; }
-s="$UTIL_SCRIPTS/log_utils.sh"; test -f $s && { source $s; unset s; } || { echo "[ERROR] $s not found"; exit $ENOENT; }
+s="$USCRIPTS/bash/bash_utils.sh"; test -f $s && { source $s; unset s; } || { echo "[ERROR] $s not found"; exit $ENOENT; }
+s="$USCRIPTS/bash/log_utils.sh"; test -f $s && { source $s; unset s; } || { echo "[ERROR] $s not found"; exit $ENOENT; }
 log_init INFO $SCRIPT_LOGS/bashrc.log         # After sourcing bashrc, user scripts should define their own log-file
 
 log NOTE "[SOURCE] Bash v$BASH_VERSION ($(id -un))";
 source_script "$COMPANY_CONFS/bashrc";      # company env specifics
 source_script "$CUSTOM_CONFS/toolrc";      # setup right paths
-source_script "$UTIL_SCRIPTS/dev_utils.sh";   # Bash Functions. Always sourced prior to .alias
+source_script "$USCRIPTS/bash/dev_utils.sh";   # Bash Functions. Always sourced prior to .alias
 log DEBUG "cmd:$0. Basic Util Scripts Complete"
 
 #======================================= Extended Utils =========================================

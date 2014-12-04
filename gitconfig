@@ -68,6 +68,7 @@
     ra = rebase --abort
     ru = remote -v                          # show all remote urls
     sh = show
+    sm = show -m                            # show merge diff
     st = status                             # repo status
     wc = log --stat --no-merges HEAD        # list all commit filenames, stats; excluding merges. Enhanced whatchanged
 

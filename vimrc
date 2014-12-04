@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 10/29/14 10:50:28 IST
+" MODIFIED: 12/04/14 17:38:09 IST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -44,15 +44,9 @@ endfunction
 endif
 
 " lighgrey is choice of color by default. ctermbg=240 for zenburn
+" For subsequent matches, replace 2match with subsequent number.
 "if !exists("*HandleMyBufEnter")
 "function! HandleMyBufEnter()
-"    " Keep redundant whitespaces away. Another pattern /\s\+$\| \+\ze\t/
-"    highlight RedundantSpaces ctermbg=lightgrey
-"    match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
-"    " Keep consistency checker happy /\%80v.*/. vim7.2 onwards use colorcolumn
-"    highlight OverLength ctermbg=lightgrey
-"    2match OverLength /\%81v.\+/
-"    " For subsequent matches, replace 2match with subsequent number.
 "endfunction
 "endif
 
@@ -139,6 +133,10 @@ set wrapmargin=0                    " disable auto-wrap magin
 if v:version >= 703
   set colorcolumn=80                " To highlight column after 'textwidth', do 'set colorcolumn=+1'
   set numberwidth=6                 " width of number column
+else
+  highlight OverLength ctermbg=lightgrey
+  " vim7.2 onwards use colorcolumn
+  match OverLength /\%81v.\+/
 endif
 
 set winminheight=0                  " Allow windows to get fully squashed
@@ -267,8 +265,10 @@ if !exists("autocommands_loaded")
     " remember last read line
     au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
-    " Handle highlighting of inconsistencies - |cpp|pl|pm|sh|py|exp|mk|xml. call HandleMyBufEnter()
-    autocmd! BufEnter *.[chx] match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
+    " Highlight extra whitespace - *.[ch] Or *.[cpp|pl|pm|sh|py|exp|mk|xml] does not work
+    "Other regex: /^\s* \s*\|\s\+$/
+    autocmd BufEnter * match RedundantSpaces /\s\+$\| \+\ze\t\|\t/ 
+    autocmd BufEnter * set ts=4 sw=4 sts=4
 
     let autocommands_loaded = 1
 endif
