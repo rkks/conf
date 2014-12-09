@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 12/04/14 08:27:28 IST
+# MODIFIED: 12/09/14 16:46:07 IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -47,11 +47,11 @@ log DEBUG "cmd:$0. Basic Util Scripts Complete"
 #======================================= Extended Utils =========================================
 [[ -z "$BASH_VERSION" || -z "$PS1" || -z "$INTERACTIVE" ]] && return  # No further sourcing if not interactive shell
 
-# Keep ~/.alias empty to avoid multiple times sourcing. No sourcing of /etc/bash_completion (more problems)
-EXTENDED_SCRIPTS+=" $CUSTOM_CONFS/shopts"       # Shell Opts
-EXTENDED_SCRIPTS+=" $CUSTOM_CONFS/envopts"      # Environmental Opts
-EXTENDED_SCRIPTS+=" $CUSTOM_CONFS/bash.alias"   # Expand alias: '<ctrl><alt>e' OR '<esc><ctrl>e' (readline shortcut)
-source_script $EXTENDED_SCRIPTS && unset EXTENDED_SCRIPTS
+# ~/.alias is empty to avoid multiple sourcing. /etc/bash_completion not sourced (more problems)
+EXT_SCRIPTS="$EXT_SCRIPTS $CUSTOM_CONFS/shopts"       # Shell Opts
+EXT_SCRIPTS="$EXT_SCRIPTS $CUSTOM_CONFS/envopts"      # Environmental Opts
+EXT_SCRIPTS="$EXT_SCRIPTS $CUSTOM_CONFS/bash.alias"   # Expand alias: '<ctrl><alt>e' OR '<esc><ctrl>e' (readline shortcut)
+source_script $EXT_SCRIPTS && unset EXT_SCRIPTS
 log DEBUG "[SOURCE] Extended Scripts Complete"
 
 test -n "$INTERACTIVE" -a -n "$LOGIN" && (uname -npsr; uptime)
