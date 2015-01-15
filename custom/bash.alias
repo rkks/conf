@@ -28,7 +28,8 @@ alias bc='bc -q'
 alias grep='grep -E --color=auto'
 alias more='less'
 alias mkdir='mkdir -pv'
-alias ssh='ssh -q'
+alias ssh="ssh -Ck"       # -v to debug, -q for quiet. autossh is useless
+
 
 # handy abbrevations
 alias cal3='cal -3'             # show 3 months
