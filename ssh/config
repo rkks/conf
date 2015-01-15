@@ -7,3 +7,5 @@ Host *
     ServerAliveCountMax 2
     ControlPath ~/.ssh/master-%r@%h:%p
     ControlMaster auto
+    TCPKeepAlive yes
+
