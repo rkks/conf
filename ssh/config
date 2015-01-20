@@ -2,10 +2,9 @@ ForwardX11 no
 ForwardAgent no
 StrictHostKeyChecking no
 GSSAPIAuthentication no
-Host *
-    ServerAliveInterval 10
-    ServerAliveCountMax 2
-    ControlPath ~/.ssh/master-%r@%h:%p
-    ControlMaster auto
-    TCPKeepAlive yes
-
+#Host *
+#    ServerAliveInterval 10
+#    ServerAliveCountMax 2
+#    ControlPath ~/.ssh/master-%r@%h:%p
+#    ControlMaster auto
+#    TCPKeepAlive yes
