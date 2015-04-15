@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 12/04/14 17:38:09 IST
+" MODIFIED: 02/04/15 21:45:35 PST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -293,7 +293,7 @@ endif
 "endif
 
 " default colors first. Put color scheme before any other color settings. Colorscheme depends on terminal settings.
-colors rkks-bsd "buttercream trivial256 light/inkpot zenburn test/habiLight peachpuff all/ir_black dark/oceandeep peaksea
+colors peachpuff "peaksea light/inkpot trivial256 buttercream rkks-linux zenburn test/habiLight all/ir_black dark/oceandeep
 
 " Highlight custom data type defines
 syn keyword ncType uint ubyte ulong uint64_t uint32_t uint16_t uint8_t boolean_t int64_t int32_t int16_t int8_t boolean u_int64_t u_int32_t u_int16_t u_int8_t u_int_t

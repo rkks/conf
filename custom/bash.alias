@@ -31,7 +31,6 @@ alias more='less'
 alias mkdir='mkdir -pv'
 alias ssh="ssh -Ck"       # -v to debug, -q for quiet. autossh is useless
 
-
 # handy abbrevations
 alias cal3='cal -3'             # show 3 months
 alias dfh=$(echo "df -h")       # disk freespace is human
@@ -203,6 +202,21 @@ if own tmux.sh; then
     alias tl='tmux.sh -l'
     alias ta='tmux.sh -a'
     alias tmux='tmux -2'    # always assume 256 color support. Key to bright colors
+fi
+
+if own convert.sh; then
+    alias h2d='convert.sh -f h -t d'
+    alias o2d='convert.sh -f o -t d'
+    alias b2d='convert.sh -f b -t d'
+    alias h2o='convert.sh -f h -t o'
+    alias d2o='convert.sh -f d -t o'
+    alias b2o='convert.sh -f b -t o'
+    alias h2b='convert.sh -f h -t b'
+    alias o2b='convert.sh -f o -t b'
+    alias d2b='convert.sh -f d -t b'
+    alias d2h='convert.sh -f d -t h'
+    alias o2h='convert.sh -f o -t h'
+    alias b2h='convert.sh -f b -t h'
 fi
 
 [[ -f $COMPANY_CONFS/bash.alias ]] && { source $COMPANY_CONFS/bash.alias; }
