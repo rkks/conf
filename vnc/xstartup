@@ -8,7 +8,8 @@
 [ -r $HOME/.Xdefaults ] && xrdb $HOME/.Xdefaults
 
 xsetroot -solid grey
-vncconfig -iconic &
+#vncconfig -iconic &
+vncconfig SendPrimary=1 -iconic -nowin &
 
 #xterm -geometry 100x20 -fa courier -fs 12 -ls -title "$VNCDESKTOP Desktop" -bg white &
 konsole --notabbar --vt_sz 100x20 &
