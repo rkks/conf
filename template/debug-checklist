@@ -2,21 +2,21 @@ Credentials:
 ============
   AUTHOR: @AUTHOR@, @AUTHOR_EMAIL@
  CREATED: @CREATED_DATE@
-MODIFIED: @CREATED_DATE@
+MODIFIED: 01/22/16 08:40:19 IST
  LICENSE: @COPYRIGHT@
 
 Symptoms:
 =========
 Describe problem as understood
-Provide configuration details
 Give pointers/links to related discussion
 Provide steps to reproduce (if any)
 
 Artifacts:
 ==========
 Version/Release:
-Hardware Model :
+Hardware/Model :
 Logs Location  :
+Config Location:
 
 Code Path:
 ==========
@@ -49,4 +49,3 @@ Fix Validation:
 ===============
 Provide discrete steps to validate the fix provided.
 Provide pointers to necessary logs captured to validate the fix.
-

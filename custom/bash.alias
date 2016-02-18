@@ -76,6 +76,11 @@ alias xs='cd'
 (own vncserver) && alias vncserver='vncserver -geometry 1600x900'   # if copy-paste doesnt work, start 'vncconfig &'
 (own konsole)   && alias konsole='konsole --notabbar --vt_sz 100x20 &'
 
+if own apachectl; then
+    alias web='cd /Library/WebServer/Documents/'
+    alias cgi='cd /Library/WebServer/CGI-Executables/'
+fi
+
 if own curl; then
     alias curl='curl -# -O -J -L'   # -J: resolve name from header, -L: handle redirects, -C - : continue from where left off
     alias webhdr='curl -I'

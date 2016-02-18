@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 02/12/16 02:30:53 PST
+" MODIFIED: 02/17/16 22:44:42 PST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -127,7 +127,7 @@ set tabstop=4                       " number of spaces for a <TAB>
 set softtabstop=4                   " how many spaces that vim uses when you hit <TAB>
 set shiftwidth=4                    " number of spaces to shift on >>, <<
 set nosmarttab
-set textwidth=160                   " maximum length of any line
+set textwidth=120                   " maximum length of any line
 set wrapmargin=0                    " disable auto-wrap magin
 " Vim ver 7.3+ has both colorcolumn (alternate, if exists('+syntax')) and numberwidth (alt, if exists('+linebreak'))
 if v:version >= 703
