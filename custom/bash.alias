@@ -55,7 +55,6 @@ alias tf='tail -f'
 
 # typing mistakes
 alias xs='cd'
-alias vo='vi'
 
 # Admin Power Tools
 (own dstat)     && alias dstata='dstat -cdngmsply --bw'
@@ -168,10 +167,13 @@ if own screen; then
 fi
 
 if own vim; then
-    alias v="vim -u ~/.vimrc -R"
-    alias vd="vim -u ~/.vimrc -d"
+    alias vo='vim -u ~/.vimrc'                  # typo
+    alias v="vim -u ~/.vimrc -R"                # read-only
+    alias vd="vim -u ~/.vimrc -d"               # diff mode
     alias vi='vim -u ~/.vimrc'
-    alias vt="vim -u ~/.vimrc -t"
+    alias vt="vim -u ~/.vimrc -t"               # input <ctags-file-name>
+    alias vp='vim -u ~/.vimrc --noplugin'       # no plugins
+    alias vu='vim -u NONE --noplugin'           # no ~/.vimrc, no plugins
 fi
 
 if [ "$UNAMES" == "FreeBSD" ]; then
