@@ -1,5 +1,5 @@
 # regular bash usage aliases
-[[ "" == "$INTERACTIVE" ]] && return;
+[[ -z $IUSER ]] && return;
 
 # handy shortcuts
 alias -- -='cd -'
@@ -17,7 +17,7 @@ alias d='date'
 alias h='hostname -s'
 alias j='jobs -l'
 alias t='telnet'
-alias z='ps1_theme dark'
+alias z='ps1_toggle light'
 
 # safety measures. avoid common mistakes
 alias cp='cp -i'

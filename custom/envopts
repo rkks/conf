@@ -1,5 +1,7 @@
 # Environmental options
 
+ulimit -c 100000000 # '-c unlimited' fails for non-root user. use 'ulimit -S -c 0' to disable core dumps.
+
 # vim & gnome-terminal support 256 colours. debian/ubuntu need ncurses-term package
 # Works for most environments. Should be set in ~/.profile for Fedora
 [[ -z "$TMUX" ]] && term
@@ -35,6 +37,10 @@ HISTFILESIZE=10000              # lines of command to store in history "file"
 HISTFILE="$HOME/.bash_history"  # whenever HOME is redefined to a new lcoation
 GLOBIGNORE=".:.."
 PROMPT_COMMAND="history -a; history -n"     # write current cmd & re-read bash_history each time loading $PS1 prompt.
+
+# X11-over-ssh enables clients to open GUI apps natively. connect as: 'ssh user@host -X'
+#xhost +                    # allow clients from any host. For 'cannot open display' problem.
+#export DISPLAY='<IP>:0.0'    # if 'cannot open display' problem still not solved
 
 (own firefox)   && BROWSER=$FIREFOX         # for xdg-open
 (own svn)   && { export SVN_EDITOR=vim; }    # SVN stuff

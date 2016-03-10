@@ -1,3 +1,10 @@
+#  DETAILS: bash development helper configuration to be sourced.
+#  CREATED: 02/03/16 05:29:10 IST
+# MODIFIED: 03/10/16 06:08:33 PST
+#
+#   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
+#  LICENCE: Copyright (c) 2013, Ravikiran K.S.
+
 export CONFS=$HOME/confs
 export DOWNLOADS=$HOME/downs
 export SCRIPTS=$HOME/scripts
@@ -15,7 +22,7 @@ log_init INFO $SCRPT_LOGS/bashrc.log         # After sourcing bashrc, user scrip
 log NOTE "[SOURCE] cmd:$0. Basic Util Scripts Complete. Bash v$BASH_VERSION ($(id -un))"
 
 #======================================= Extended Utils =========================================
-[[ -z "$BASH_VERSION" || -z "$PS1" || -z "$INTERACTIVE" ]] && return  # No further sourcing if not interactive shell
+[[ -z $BASH_VERSION || -z $PS1 || -z $IUSER ]] && return  # No further sourcing if not interactive shell
 
 # ~/.alias is empty to avoid multiple sourcing. /etc/bash_completion not sourced (more problems)
 EXT_SCRIPTS="$CUST_CONFS/toolrc";                   # setup right paths
