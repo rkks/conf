@@ -73,4 +73,4 @@ if own ant; then
 fi
 
 # Company overrides, specifics - if any
-[[ -f $COMPANY_CONFS/envopts ]] && { source $COMPANY_CONFS/envopts; }
+[[ -f $COMP_CONFS/envopts ]] && { source $COMP_CONFS/envopts; }

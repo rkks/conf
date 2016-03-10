@@ -10,14 +10,14 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
 # single letter access to common tools
-alias a='source $CUSTOM_CONFS/bash.alias'
-alias b='bash -norc -noprofile'
+alias a='source $CUST_CONFS/bash.alias'
+alias b='env -i bash -norc -noprofile'
 alias c='clear'
 alias d='date'
 alias h='hostname -s'
 alias j='jobs -l'
 alias t='telnet'
-alias z='[[ -z $COLORS_THEME ]] && { light; export COLORS_THEME=light; } || { dark; unset COLORS_THEME; }'
+alias z='ps1_theme dark'
 
 # safety measures. avoid common mistakes
 alias cp='cp -i'
@@ -26,6 +26,7 @@ alias rm='rm -i'
 
 # common options
 alias bc='bc -q'
+alias bash='env -i bash'
 alias grep='grep -E --color=auto'
 alias more='less'
 alias mkdir='mkdir -pv'
@@ -139,9 +140,9 @@ if own cvs; then
 fi
 
 if own diff; then
-    alias diffc='diff -Ncrp --exclude-from=$CUSTOM_CONFS/diffexclude --speed-large-files'   # -a is dangerous
-    alias diffqr='diff -qr --exclude-from=$CUSTOM_CONFS/diffexclude --speed-large-files'    # -a is dangerous
-    alias diffu='diff -Nurp --exclude-from=$CUSTOM_CONFS/diffexclude --speed-large-files'   # Never use -rns. When piping is used, -n creates nuances
+    alias diffc='diff -Ncrp --exclude-from=$CUST_CONFS/diffexclude --speed-large-files'   # -a is dangerous
+    alias diffqr='diff -qr --exclude-from=$CUST_CONFS/diffexclude --speed-large-files'    # -a is dangerous
+    alias diffu='diff -Nurp --exclude-from=$CUST_CONFS/diffexclude --speed-large-files'   # Never use -rns. When piping is used, -n creates nuances
 fi
 
 if own find; then
@@ -181,23 +182,6 @@ if own vim; then
     alias vu='vim -u NONE --noplugin'           # no ~/.vimrc, no plugins
 fi
 
-if [ "$UNAMES" == "FreeBSD" ]; then
-    alias ls='ls -G'
-    (own ping)  && alias pingf='ping -c 5'              # Only root user can give -i.2 (fast ping)
-elif [ "$UNAMES" == "Darwin" ]; then
-    alias ls='ls -G'
-    (own ping)  && alias pingf='ping -c 5 -i.2'
-    alias gvim='open -a MacVim'
-elif [ "$UNAMES" == "Linux" ]; then
-    alias ls='ls --color=auto -F'
-    (own free)  && alias memfree='free -m'              # available memory
-    (own fuser) && alias fusern='fuser -v -n'           # [tcp, udp, sctp] <port>. who is using given port
-    (own ping)  && alias pingf='ping -c 5 -s.2'         # fast ping
-    (own xrdb)  && alias Xdefaults='xrdb -load ~/.Xdefaults'
-else
-    alias ls='ls --color=auto -F'
-fi
-
 if own mkdir.sh; then
     alias mkprdir='mkdir.sh -p'
     alias mkrlidir='mkdir.sh -r'
@@ -231,4 +215,22 @@ if own network.sh; then
     alias nslookupa='network.sh -d'
 fi
 
-[[ -f $COMPANY_CONFS/bash.alias ]] && { source $COMPANY_CONFS/bash.alias; }
+if [ "$UNAMES" == "FreeBSD" ]; then
+    alias ls='ls -G'
+    (own ping)  && alias pingf='ping -c 5'              # Only root user can give -i.2 (fast ping)
+elif [ "$UNAMES" == "Darwin" ]; then
+    alias ls='ls -G'
+    (own ping)  && alias pingf='ping -c 5 -i.2'
+    alias gvim='open -a MacVim'
+elif [ "$UNAMES" == "Linux" ]; then
+    alias ls='ls --color=auto -F'
+    (own free)  && alias memfree='free -m'              # available memory
+    (own fuser) && alias fusern='fuser -v -n'           # [tcp, udp, sctp] <port>. who is using given port
+    (own ping)  && alias pingf='ping -c 5 -s.2'         # fast ping
+    (own xrdb)  && alias Xdefaults='xrdb -load ~/.Xdefaults'
+    (own zcat)  && alias gzcat=/bin/zcat
+else
+    alias ls='ls --color=auto -F'
+fi
+
+[[ -f $COMP_CONFS/bash.alias ]] && { source $COMP_CONFS/bash.alias; }

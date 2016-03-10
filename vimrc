@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 02/17/16 22:44:42 PST
+" MODIFIED: 03/07/16 00:27:43 PST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -164,8 +164,8 @@ set diffopt=filler,iwhite,context:3 " ignore white, also show 3 context lines
 set sessionoptions+=unix,slash      " Store session info in Unix format.
 set comments=sl:/*,mb:*,elx:*/      " comment format
 set rulerformat=%15(%c%V\ %p%%%)    " how to display ruler
-set viminfo='5,\"50,:20,%,n~/.viminfo      " remember last read line. Where-
-"'5 = Remember marks for last 5 files. \"50 = Remember 50 lines each from registers
+set viminfo='5,\"10,:20,%,n~/.viminfo      " remember last read line. Where-
+"'5 = Remember marks for last 5 files. \"10 = Remember 50 lines each from registers
 ":20 = Number of cmd-line history saved. "~/_viminfo = Name of file to use.
 set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif " don't suggest obj files
 

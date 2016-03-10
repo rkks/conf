@@ -1,0 +1,26 @@
+export CONFS=$HOME/confs
+export DOWNLOADS=$HOME/downs
+export SCRIPTS=$HOME/scripts
+export TOOLS=$HOME/tools/$UNAMES
+export SCRPT_LOGS=$HOME/.logs           # script logs
+export CUST_CONFS=$HOME/conf/custom     # user configs (not system recognized)
+export COMP_CONFS=$HOME/csco/conf       # company specific configs
+export UTL_SCRPTS=$SCRIPTS/utils        # util scripts to be sourced
+
+#======================================= Basic Utils =========================================
+s="$UTL_SCRPTS/bash/bash_utils.sh"; test -f $s && { source $s; unset s; } || { echo "[ERROR] $s not found"; exit $ENOENT; }
+s="$UTL_SCRPTS/bash/log_utils.sh"; test -f $s && { source $s; unset s; } || { echo "[ERROR] $s not found"; exit $ENOENT; }
+s="$UTL_SCRPTS/bash/dev_utils.sh"; test -f $s && { source $s; unset s; } || { echo "[ERROR] $s not found"; exit $ENOENT; }
+log_init INFO $SCRPT_LOGS/bashrc.log         # After sourcing bashrc, user scripts should define their own log-file
+log NOTE "[SOURCE] cmd:$0. Basic Util Scripts Complete. Bash v$BASH_VERSION ($(id -un))"
+
+#======================================= Extended Utils =========================================
+[[ -z "$BASH_VERSION" || -z "$PS1" || -z "$INTERACTIVE" ]] && return  # No further sourcing if not interactive shell
+
+# ~/.alias is empty to avoid multiple sourcing. /etc/bash_completion not sourced (more problems)
+EXT_SCRIPTS="$CUST_CONFS/toolrc";                   # setup right paths
+EXT_SCRIPTS="$EXT_SCRIPTS $CUST_CONFS/shopts"       # Shell Opts
+EXT_SCRIPTS="$EXT_SCRIPTS $CUST_CONFS/envopts"      # Environmental Opts
+EXT_SCRIPTS="$EXT_SCRIPTS $CUST_CONFS/bash.alias"   # Expand alias: '<ctrl><alt>e' OR '<esc><ctrl>e' (readline shortcut)
+source_script $EXT_SCRIPTS && unset EXT_SCRIPTS
+log DEBUG "[SOURCE] Extended Scripts Complete"
