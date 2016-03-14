@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 02/06/15 12:14:26 IST
+" MODIFIED: 03/07/16 00:27:43 PST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -164,9 +164,9 @@ set diffopt=filler,iwhite,context:3 " ignore white, also show 3 context lines
 set sessionoptions+=unix,slash      " Store session info in Unix format.
 set comments=sl:/*,mb:*,elx:*/      " comment format
 set rulerformat=%15(%c%V\ %p%%%)    " how to display ruler
-set viminfo='5,\"100,:10,%,n~/.viminfo      " remember last read line. Where-
-"'10 = Remember marks for last 10 files. \"100 = Remember 100 lines each from registers
-":10 = Number of cmd-line history saved. "~/_viminfo = Name of file to use.
+set viminfo='5,\"10,:20,%,n~/.viminfo      " remember last read line. Where-
+"'5 = Remember marks for last 5 files. \"10 = Remember 50 lines each from registers
+":20 = Number of cmd-line history saved. "~/_viminfo = Name of file to use.
 set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif " don't suggest obj files
 
 set statusline=                         " clear statusline when vimrc is reloaded
@@ -187,6 +187,8 @@ set statusline+=col:%03c%2V\ (%03p%%)\  " column, offset and percentage through 
 set makeprg=gmake       " make utility name & compiler options. ex, makeprg=make\ \CC=gcc
 set tags=$PWD/tags;/    " Tags location, semicolon separated. Juniper: /volume/build/junos/head/daily/current/TAGS
 "set csprg=/bin/cscope  " set cscope path. We don't need it.
+
+set clipboard=exclude:.*                " important for fast vim loading. disables vim querying X server for clipboard
 " Settings ================================================================
 
 " Author (Now defined from within Templates) ==============================
@@ -293,7 +295,7 @@ endif
 "endif
 
 " default colors first. Put color scheme before any other color settings. Colorscheme depends on terminal settings.
-colors rkks-bsd "buttercream trivial256 light/inkpot zenburn test/habiLight peachpuff all/ir_black dark/oceandeep peaksea
+colors peachpuff "peaksea light/inkpot trivial256 buttercream rkks-linux zenburn test/habiLight all/ir_black dark/oceandeep
 
 " Highlight custom data type defines
 syn keyword ncType uint ubyte ulong uint64_t uint32_t uint16_t uint8_t boolean_t int64_t int32_t int16_t int8_t boolean u_int64_t u_int32_t u_int16_t u_int8_t u_int_t

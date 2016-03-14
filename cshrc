@@ -24,9 +24,9 @@ set HOSTNAME = "`hostname`"
 #set path = ($path /usr/temp/m68k-coff /usr/temp/m68k-coff/bin)
 
 # Set up company specific environment
-set COMPANY_CONFS = '/ws/ravikks-sjc/csco/conf'
-if ( -e $COMPANY_CONFS/cshrc ) then
-    source $COMPANY_CONFS/cshrc
+set COMP_CONFS = '/ws/ravikks-sjc/csco/conf'
+if ( -e $COMP_CONFS/cshrc ) then
+    source $COMP_CONFS/cshrc
 endif
 
 # skip remaining setup if not an interactive shell
