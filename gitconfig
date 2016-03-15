@@ -36,6 +36,7 @@
     autocrlf = false
     safecrlf = warn
     editor = vim
+	excludesfile = /Users/ravikks/.gitignore_global
 
 [alias]
     cia = commit -a             # commit/checkin everything
@@ -93,3 +94,9 @@
 
 [push]
 	default = matching      #simple
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
