@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 03/10/16 06:12:27 PST
+# MODIFIED: 03/27/16 19:18:29 IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -13,8 +13,9 @@
 #set -uvx   # debugging. exec 2> ~/bash.$$.log && exit 0
 umask 0022  # override default umask in /etc/profile. 0022 is too limiting, 0077 is too liberal.
 
-# Global info. Available to all sub-shells. HOME always defined.
-# [[ -z $HOME ]] && export HOME=~;                  # $(echo "/homes/"$(id -nu)) creates problem on non-cisco machines
+# Global info. Available to all sub-shells.
+# $(echo "/homes/"$(id -nu)) creates problem on non-cisco machines
+[[ -z $HOME ]]      && export HOME=~                # $HOME undefined when bash run with 'env -i'.
 : ${SHDEBUG=no}                                     # Debugging is disabled by default
 [[ -z $HOSTNAME ]]  && export HOSTNAME=$(uname -n)  # hostname setting
 [[ -z $SHELL ]]     && export SHELL=$BASH           # complete path is necessary. otherwise, breaks 'script'./bin/bash
