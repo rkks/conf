@@ -215,6 +215,10 @@ if own network.sh; then
     alias nslookupa='network.sh -d'
 fi
 
+if own VBoxManage; then
+    alias vboxmanage='VBoxManage'
+fi
+
 if [ "$UNAMES" == "FreeBSD" ]; then
     alias ls='ls -G'
     (own ping)  && alias pingf='ping -c 5'              # Only root user can give -i.2 (fast ping)
