@@ -17,7 +17,7 @@ alias d='date'
 alias h='hostname -s'
 alias j='jobs -l'
 alias t='telnet'
-alias z='ps1_toggle light'
+alias z='export PS1_COLOR=light; ps1_prompt; bash_dircolors'
 
 # safety measures. avoid common mistakes
 alias cp='cp -i'
