@@ -6,6 +6,8 @@ ulimit -c 100000000 # '-c unlimited' fails for non-root user. use 'ulimit -S -c 
 # Works for most environments. Should be set in ~/.profile for Fedora
 [[ -z "$TMUX" ]] && term
 
+export TERM=xterm-256color              # default terminal option
+
 test -n MAILCHECK && unset MAILCHECK    # fuck that 'you have new mail' shit
 
 : ${HOSTFILE=~/.ssh/known_hosts}        # complete hostnames from this file
