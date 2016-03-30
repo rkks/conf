@@ -1,6 +1,6 @@
 #  DETAILS: bash development helper configuration to be sourced.
 #  CREATED: 02/03/16 05:29:10 IST
-# MODIFIED: 03/30/16 14:34:21 IST
+# MODIFIED: 03/30/16 14:42:35 IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -18,8 +18,8 @@ export UTL_SCRPTS=$SCRIPTS/utils        # util scripts to be sourced
 s="$UTL_SCRPTS/bash/bash_utils.sh"; test -f $s && { source $s; unset s; } || { echo "[ERROR] $s not found"; exit $ENOENT; }
 s="$UTL_SCRPTS/bash/log_utils.sh"; test -f $s && { source $s; unset s; } || { echo "[ERROR] $s not found"; exit $ENOENT; }
 s="$UTL_SCRPTS/bash/dev_utils.sh"; test -f $s && { source $s; unset s; } || { echo "[ERROR] $s not found"; exit $ENOENT; }
-log_init INFO $SCRPT_LOGS/bashrc.log         # After sourcing bashrc, user scripts should define their own log-file
-log NOTE "[SOURCE] cmd:$0. Basic Util Scripts Complete. Bash v$BASH_VERSION ($(id -un))"
+log_init INFO $SCRPT_LOGS/$(basename $0).log            # After sourcing bashrc, user scripts should define their own log-file
+log NOTE "[SOURCE] cmd:$0. Basic Utils Complete. Bash v$BASH_VERSION ($(id -un))"
 
 #======================================= Extended Utils =========================================
 [[ -z $BASH_VERSION || -z $PS1 || -z $IUSER ]] && return  # No further sourcing if not interactive shell
