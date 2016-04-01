@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 03/30/16 14:36:53 IST
+# MODIFIED: 04/01/16 01:42:24 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -22,7 +22,6 @@ umask 0022  # override default umask in /etc/profile. 0022 is too limiting, 0077
 [[ -z $UNAMES ]]    && export UNAMES=$(uname -s)    # machine type: Linux, FreeBSD, Darwin, SunOS
 [[ -f ~/.home ]]    && export HOME=$(cat ~/.home);  # over-ride home directory
 export PATH=".:~/scripts/bin:~/tools/$UNAMES/bin:~/bin:/usr/gnu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-UPATH="~/csco/scripts/bin:$UPATH"
 
 [[ -e ~/.bashrc.ext ]] && { source ~/.bashrc.ext; }     # External bashrc.
 # Do not print anything on .bashrc end. Because .profile sources this and causes prompt on Ubuntu GUI login
