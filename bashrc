@@ -1,9 +1,11 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 04/01/16 01:42:24 PDT
+# MODIFIED: 04/01/16 01:50:56 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
+
+# Always leave the code you're editing a little better than you found it
 
 [[ $BASH != *bash* ]] && { echo "Not a bash shell "; return $EINVAL; }                      # any inconsistency
 [[ $- == *i* ]] && { IUSER=yes; export PS1="[\D{%b/%d} \t|\w]$ "; } || { unset IUSER; }     # interactive shell.
@@ -23,6 +25,7 @@ umask 0022  # override default umask in /etc/profile. 0022 is too limiting, 0077
 [[ -f ~/.home ]]    && export HOME=$(cat ~/.home);  # over-ride home directory
 export PATH=".:~/scripts/bin:~/tools/$UNAMES/bin:~/bin:/usr/gnu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
-[[ -e ~/.bashrc.ext ]] && { source ~/.bashrc.ext; }     # External bashrc.
+[[ -e ~/.bashrc.ext ]] && { source ~/.bashrc.ext; }         # External bashrc.
+test -n "$IUSER" && { alias rk="source ~/.bashrc.dev"; }    # Never-ever source bashrc.dev in .bashrc. Breaks external scripts
+
 # Do not print anything on .bashrc end. Because .profile sources this and causes prompt on Ubuntu GUI login
-test -n "$IUSER" && { alias rk=". ~/.bashrc.dev"; }
