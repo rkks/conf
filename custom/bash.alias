@@ -61,7 +61,6 @@ alias xs='cd'
 (own minicom)   && alias minicom='minicom -c on'
 (own pgrep)     && alias pgrep='pgrep -u $(id -nu)'
 (own pkill)     && alias pkill='pkill -u $(id -nu)'
-(own wget)      && alias wgetr='wget -c -o wget.log -t 3 -b -r -w5 --random-wait -l2 -np -k'   # to resume from where left off: wget -c -o wget.log -t 3 -b
 (own xterm)     && alias xt='xterm -fa courier -fs 12 -geometry 100x20 -ls &'
 
 # devel stuff
@@ -216,6 +215,22 @@ fi
 
 if own VBoxManage; then
     alias vboxmanage='VBoxManage'
+fi
+
+if own wget; then
+    # -b/--background: run as a background job
+    # -c/--continue: continue with partially downloaded files
+    # -k/--convert-links: replace links within html to point to local links
+    # -p/--page-requisites: Download all meta-data/links as necessary to display html
+    # -E/--html-extension: if html content file doesn't have .html extension, add it
+    # -m/--mirror: Create local copy as exact mirror of online site
+    # -r/--recursive: recursive retrieval
+    # -np/--no-parent: do not crawl into parent directory as part of redirection (avoid loop)
+    # -o logfile/--output-file=logfile: Log wget messages to logfile
+    # -t number/--tries=number: number of retries for given link
+    # -w seconds/--wait=seconds: wait these many seconds before retrieval (fool bot)
+    # --random-wait: if -w is provided, changes wait period to random
+    alias wgetr='wget -mrEbckp -o wget.log -t 3 -w5 --random-wait -np'
 fi
 
 if [ "$UNAMES" == "FreeBSD" ]; then
