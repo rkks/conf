@@ -1,6 +1,6 @@
 #  DETAILS: bash development helper configuration to be sourced.
 #  CREATED: 02/03/16 05:29:10 IST
-# MODIFIED: 03/28/16 17:36:27 IST
+# MODIFIED: 03/30/16 14:42:35 IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -31,3 +31,5 @@ EXT_SCRIPTS="$EXT_SCRIPTS $CUST_CONFS/envopts"      # Environmental Opts
 EXT_SCRIPTS="$EXT_SCRIPTS $CUST_CONFS/bash.alias"   # Expand alias: '<ctrl><alt>e' OR '<esc><ctrl>e' (readline shortcut)
 source_script $EXT_SCRIPTS && unset EXT_SCRIPTS
 log DEBUG "[SOURCE] Extended Scripts Complete"
+
+uname -npsr; uptime;
