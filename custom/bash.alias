@@ -67,7 +67,6 @@ alias xs='cd'
 # devel stuff
 (own autoexpect) && alias autoexpecta='autoexpect -f script-`date +%Y%m%d-%T`.exp'
 (own ctags)     && alias ctb='ctags --extra=+q --fields=afmikKlnsSz --c++-kinds=+p -a -R > /dev/null 2>&1'   # Exuberant ctags
-(own gcc)       && alias gccg='gcc -g3 -gdwarf-2 -ggdb'     # include debug & macro info in binary
 (own git)       && alias g='git'
 (own gmake)     && alias make='gmake -s'
 (own hexdump)   && alias hexdumpc='hexdump -C'              # canonical hex dump
@@ -150,6 +149,11 @@ if own find; then
     alias finddup='find -not -empty -type f -printf "%s\n" | sort -rn | uniq -d | xargs -I{} -n1 find -type f -size {}c -print0 | xargs -0 md5sum | sort | uniq -w32 --all-repeated=separate'
 fi
 
+if own gcc; then
+    alias gccs='gcc -Wa,-adhln -g'          # generate assembly mixed source code. redirect to .s file
+    alias gccg='gcc -g3 -gdwarf-2 -ggdb'    # include debug & macro info in binary
+fi
+
 if own gdb; then
     alias bt='echo 0 | gdb -batch-silent -ex "run" -ex "set logging overwrite on" -ex "set logging file gdb.bt" -ex "set logging on" -ex "set pagination off" -ex "handle SIG33 pass nostop noprint" -ex "echo backtrace:\n" -ex "backtrace full" -ex "echo \n\nregisters:\n" -ex "info registers" -ex "echo \n\ncurrent instructions:\n" -ex "x/16i \$pc" -ex "echo \n\nthreads backtrace:\n" -ex "thread apply all backtrace" -ex "set logging off" -ex "quit" --args'            # bt $crashing_application to get the crash information.
     alias gdb='gdb -q'
@@ -216,6 +220,7 @@ fi
 
 if own VBoxManage; then
     alias vboxmanage='VBoxManage'
+    alias vb='ssh ravikks@192.168.100.101'
 fi
 
 if [ "$UNAMES" == "FreeBSD" ]; then
