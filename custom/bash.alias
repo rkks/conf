@@ -230,7 +230,7 @@ if own wget; then
     # -t number/--tries=number: number of retries for given link
     # -w seconds/--wait=seconds: wait these many seconds before retrieval (fool bot)
     # --random-wait: if -w is provided, changes wait period to random
-    alias wgetr='wget -mrEbckp -o wget.log -t 3 -w5 --random-wait -np'
+    alias wgetr='wget -mrEbckp -o wget.log -t 3 -w 1 --random-wait -np'
 fi
 
 if [ "$UNAMES" == "FreeBSD" ]; then
