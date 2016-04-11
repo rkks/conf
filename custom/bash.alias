@@ -230,6 +230,7 @@ elif [ "$UNAMES" == "Darwin" ]; then
     alias ls='ls -G'
     (own ping)  && alias pingf='ping -c 5 -i.2'
     alias gvim='open -a MacVim'
+    alias wireshark='open -n /Applications/Wireshark.app'
 elif [ "$UNAMES" == "Linux" ]; then
     alias ls='ls --color=auto -F'
     (own free)  && alias memfree='free -m'              # available memory
