@@ -1,7 +1,8 @@
-HOME=/homes/raviks
-PATH=/usr/local/bin:/usr/sbin:/usr/bin:/bin
-MAILTO=raviks@abc.net
-#SHELL=/bin/bash        # Makes /usr/bin/script utility go mad
+# HOME/PATH/SHELL/MAILTO pre-defined by Cron. Only redefine the must.
+# Rest of the environment settings come from ~/.bashrc
+MAILTO=ravikks@cisco.com
+SHELL=/bin/bash
+BASH_ENV=~/.bashrc
 #.---------------- minute (0 - 59)
 #|  .------------- hour (0 - 23)
 #|  |  .---------- day of month (1 - 31)
@@ -10,5 +11,6 @@ MAILTO=raviks@abc.net
 #|  |  |  |  |
 #*  *  *  *  *  <command to be executed>
 # m h  dom mon dow   command
-# Run cron handler script at 10:30PM (20:30hrs) every day
-30 20 * * * /homes/raviks/scripts/bin/cron.sh -n >> /homes/raviks/.logs/cron.log 2>&1
+# Run cron handler script at 11:00PM (21:10hrs) every day
+00 21 * * * ~/scripts/bin/cron.sh -n >> ~/.logs/cron.log 2>&1
+#*/1 * * * * ~/scripts/bin/cron.sh -z >> ~/.logs/new.log 2>&1

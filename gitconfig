@@ -36,7 +36,7 @@
     autocrlf = false
     safecrlf = warn
     editor = vim
-	excludesfile = /Users/ravikks/.gitignore_global
+    excludesfile = /Users/ravikks/.gitignore_global
 
 [alias]
     cia = commit -a             # commit/checkin everything
@@ -59,6 +59,7 @@
     cp = cherry-pick -x                     # copy a commit from another branch with source info
     gk = !gitk --all&
     gx = !gitx --all
+    ig = status --ignored                   # ignored directory/files
     lg = log -W -p HEAD master              # timeline
     li = ls-files -o                        # show all ignored files
     ls = log --name-status -r --oneline     # list of files changed. ex, cvs update. --date=short --pretty=format:\"%H | %ad\"
@@ -93,10 +94,10 @@
     template = ~/conf/template/gitcommit
 
 [push]
-	default = matching      #simple
+    default = matching      #simple
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
