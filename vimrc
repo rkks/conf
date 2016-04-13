@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 03/07/16 00:27:43 PST
+" MODIFIED: 04/13/16 19:10:31 IST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -156,7 +156,7 @@ set foldmethod=syntax               " fold based on indentation. ex, manual
 
 set shortmess=aoI                   " Set vim to use abbrevations in place of 'long messages'. t - truncates
 set cinoptions=(0                   " C format options. Default: cinoptions='0{,0},0),:,0#,!^F,o,O,e'
-set background=light                " set background to dark/light. Doesn't matter as colorscheme will override this
+set background=light                " set background to dark/light. colorscheme may override this
 set visualbell t_vb=                " silence the bell, use a flash instead
 set virtualedit=block               " cursor goes anywhere only in Visual mode
 set isk+=_,$,@,%,#,-,?,%,&          " none of these should be word dividers, so make them not be
@@ -295,7 +295,7 @@ endif
 "endif
 
 " default colors first. Put color scheme before any other color settings. Colorscheme depends on terminal settings.
-colors peachpuff "peaksea light/inkpot trivial256 buttercream rkks-linux zenburn test/habiLight all/ir_black dark/oceandeep
+colors lucius   "peachpuff peaksea light/inkpot trivial256 buttercream rkks-linux zenburn test/habiLight all/ir_black dark/oceandeep
 
 " Highlight custom data type defines
 syn keyword ncType uint ubyte ulong uint64_t uint32_t uint16_t uint8_t boolean_t int64_t int32_t int16_t int8_t boolean u_int64_t u_int32_t u_int16_t u_int8_t u_int_t

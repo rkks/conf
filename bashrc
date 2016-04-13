@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 04/04/16 10:53:05 IST
+# MODIFIED: 04/13/16 13:46:20 IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -8,7 +8,7 @@
 # Always leave the code you're editing a little better than you found it
 
 [[ $BASH != *bash* ]] && { echo "Not a bash shell "; return $EINVAL; }                      # any inconsistency
-[[ $- == *i* ]] && { IUSER=yes; export PS1="[\D{%y/%b/%d} \t|\w]$ "; } || { unset IUSER; }     # interactive shell.
+[[ $- == *i* ]] && { IUSER=yes; export PS1="[\D{%b/%d} \t|\w]$ "; } || { unset IUSER; }     # interactive shell.
 [[ $0 == -* ]]  && { LOGIN=yes; } || { unset LOGIN; }                                       # detect login shell
 
 #======================================= PreLoad =========================================
