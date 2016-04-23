@@ -219,7 +219,7 @@ fi
 
 if own VBoxManage; then
     alias vboxmanage='VBoxManage'
-    alias vb='ssh ravikks@192.168.100.101'
+    alias vb='vbox.sh -c'
 fi
 
 if own wget; then
@@ -242,9 +242,10 @@ if [ "$UNAMES" == "FreeBSD" ]; then
     alias ls='ls -G'
     (own ping)  && alias pingf='ping -c 5'              # Only root user can give -i.2 (fast ping)
 elif [ "$UNAMES" == "Darwin" ]; then
-    alias ls='ls -G'
+    alias ls='gls --color=auto -F'                      # ls -G
     (own ping)  && alias pingf='ping -c 5 -i.2'
     alias gvim='open -a MacVim'
+    alias wireshark='open -n /Applications/Wireshark.app'
 elif [ "$UNAMES" == "Linux" ]; then
     alias ls='ls --color=auto -F'
     (own free)  && alias memfree='free -m'              # available memory
