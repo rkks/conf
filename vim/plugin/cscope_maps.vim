@@ -44,10 +44,11 @@ if has("cscope")
     set cspc=0
 
     " add any cscope database in current directory
-    if filereadable("cscope.out")
-        cs add cscope.out
-    " else add the database pointed to by environment variable
-    elseif $CSCOPE_DB != ""
+    "if filereadable("cscope.out")
+    "    cs add cscope.out
+    "endif
+    " add the database pointed to by environment variable (if set)
+    if $CSCOPE_DB != ""
         cs add $CSCOPE_DB
     endif
 
@@ -96,16 +97,18 @@ if has("cscope")
     " cscope search types
     " s - symbol, g - global definition, d - called funcs, c - calling funcs,
     " t - text search, e - egrep, f - find file, i - files including this file)
-    nmap <C-\>s :scs find s <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>g :scs find g <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>c :scs find c <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>t :scs find t <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>e :scs find e <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
-    nmap <C-\>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-    nmap <C-\>d :scs find d <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>s :csc find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>g :csc find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>c :csc find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>t :csc find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>e :csc find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>f :csc find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <C-\>i :csc find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <C-\>d :csc find d <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>a :csc add cscope.out<CR>
     nmap <C-\>h :csc help<CR>
-    nmap <C-\>n :csc show<CR>
+    nmap <C-\>k :csc kill 0<CR>
+    nmap <C-\>w :csc show<CR>
     nmap <C-\>r :csc reset<CR>
 
     nmap <C-\>css :scs find s 
