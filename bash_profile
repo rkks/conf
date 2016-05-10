@@ -2,5 +2,9 @@
 # you do not need to modify this file
 #
 if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
+    . ~/.bashrc;
+fi
+
+if [ -f ~/.bashrc.dev ]; then
+    . ~/.bashrc.dev;
 fi

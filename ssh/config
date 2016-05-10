@@ -8,3 +8,4 @@ GSSAPIAuthentication no
 #    ControlPath ~/.ssh/master-%r@%h:%p
 #    ControlMaster auto
 #    TCPKeepAlive yes
+StrictHostKeyChecking   no
