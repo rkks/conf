@@ -16,6 +16,7 @@ alias c='clear'
 alias d='date'
 alias h='hostname -s'
 alias j='jobs -l'
+alias l='ls'
 alias t='telnet'
 alias z='export PS1_COLOR=light; ps1_prompt; bash_dircolors'
 
@@ -37,7 +38,6 @@ alias dfh=$(echo "df -h")       # disk freespace is human
 alias dush='du -sh'             # disk usage is human
 alias filesize='du -k'          # works on all platforms. alternate: 'stat -c "%s"' on Linux, 'stat -f "%z"' on FreeBSD
 alias greprns='grep -rns'
-alias l='ls'
 alias l.='ls .*'
 alias la='ls -a'
 alias lh='ls -lh'
@@ -72,7 +72,7 @@ alias xs='cd'
 (own od)        && alias hd='od -Ax -tx1z -v'               # what most people want from od (hexdump)
 (own script)    && alias scripta='script -a script-$(date +%Y%m%d-%T).log'
 (own vncserver) && alias vncserver='vncserver -geometry 1600x900'   # if copy-paste doesnt work, start 'vncconfig &'
-(own konsole)   && alias konsole='konsole --notabbar --vt_sz 100x20 &'
+(own konsole)   && alias k='konsole --nomenubar --vt_sz 100x20 &'
 
 if own apachectl; then
     alias web='cd /Library/WebServer/Documents/'
