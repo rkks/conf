@@ -1,6 +1,6 @@
 [user]
-	name = Ravikiran Ks
-	email = ravikks@cisco.com
+    name = Ravikiran K.S.
+    email = ravikirandotks@gmail.com
 
 [diff]
     color = auto
@@ -95,11 +95,14 @@
 
 [push]
 	default = current
+
 [difftool "sourcetree"]
     cmd = opendiff \"$LOCAL\" \"$REMOTE\"
     path = 
+
 [mergetool "sourcetree"]
     cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
     trustExitCode = true
+
 [branch]
 	autosetuprebase = always
