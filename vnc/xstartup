@@ -2,18 +2,35 @@
 
 # Uncomment the following two lines for regular desktop:
 # unset SESSION_MANAGER
+# [ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+# [ -r $HOME/.Xdefaults ] && xrdb $HOME/.Xdefaults
 # exec /etc/X11/xinit/xinitrc
 
-[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
-[ -r $HOME/.Xdefaults ] && xrdb $HOME/.Xdefaults
+# Default xstartup tries to run complete desktop. We don't need
+# [ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
 
+# Set background as solid grey color. Any other color options can be chosen
 xsetroot -solid grey
-#vncconfig -iconic &
+# SendPrimary=1/0 : to enable/disable auto-copy of selected text. Iconify/No-window
 vncconfig SendPrimary=1 -iconic -nowin &
 
-#xterm -geometry 100x20 -fa courier -fs 12 -ls -title "$VNCDESKTOP Desktop" -bg white &
-konsole --notabbar --vt_sz 100x20 &
+# Start Window manager in order of preference:
+if which twm > /dev/null 2>&1; then twm &
+elif which fwvm2 > /dev/null 2>&1; then fwvm2 &
+elif which metacity > /dev/null 2>&1; then metacity &
+elif which awesome > /dev/null 2>&1; then awesome &
+elif which wmaker > /dev/null 2>&1; then wmaker &
+elif which startxfce > /dev/null 2>&1; then startxfce &
+elif which startfluxbox > /dev/null 2>&1; then startfluxbox &
+elif which startx > /dev/null 2>&1; then startx &
+elif which startkde > /dev/null 2>&1; then startkde &
+elif [ -x /etc/X11/Xsession ]; then /etc/X11/Xsession
+else
+    # No other window manager found
+    exec gnome-session &
+fi
 
-#export XKL_XMODMAP_DISABLE=1
-# Window manager: #metacity #awesome #startkde #X11 #wmaker #startx #startxfce #/etc/X11/Xsession #startfluxbox
-twm &
+# No xterm. Can not over-ride the copy/paste shortcuts on Mac
+#xterm -geometry 100x20 -fa courier -fs 12 -ls -title "$VNCDESKTOP Desktop" -bg white &
+konsole --nomenubar --vt_sz 160x40 -T "$VNCDESKTOP Desktop" --tn xterm &
+#vncserver-virtual -kill $DISPLAY

@@ -4,9 +4,8 @@ ulimit -c 100000000 # '-c unlimited' fails for non-root user. use 'ulimit -S -c 
 
 # vim & gnome-terminal support 256 colours. debian/ubuntu need ncurses-term package
 # Works for most environments. Should be set in ~/.profile for Fedora
-[[ -z "$TMUX" ]] && term
-
-export TERM=xterm                       # default terminal option. xterm-256color breaks cisco cli
+[[ -z $TMUX ]] && term
+[[ -z $TERM || "$TERM" == dumb ]] && export TERM=xterm     # default terminal option; xterm-256color breaks cisco cli
 
 test -n MAILCHECK && unset MAILCHECK    # fuck that 'you have new mail' shit
 
@@ -34,11 +33,11 @@ LANG=C
 # History Control.
 [[ "${BASH_VERSINFO[0]}" -le 2 ]] && HISTCONTROL=ignoreboth || HISTCONTROL=ignorespace:ignoredups:erasedups
 HISTIGNORE="&:ls:ll:la:l:pwd:exit:c:clear:cd:a:b:his:history:exit"
-HISTSIZE=10000                  # lines of command history to store in memory before flushing to history file
-HISTFILESIZE=10000              # lines of command to store in history "file"
+HISTSIZE=100000                 # lines of command history to store in memory before flushing to history file
+HISTFILESIZE=100000             # lines of command to store in history "file"
 HISTFILE="$HOME/.bash_history"  # whenever HOME is redefined to a new lcoation
 GLOBIGNORE=".:.."
-PROMPT_COMMAND="history -a; history -n"     # write current cmd & re-read bash_history each time loading $PS1 prompt.
+PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"    # write & re-read bash_history each time loading $PS1 prompt.
 
 # X11-over-ssh enables clients to open GUI apps natively. connect as: 'ssh user@host -X'
 #xhost +                    # allow clients from any host. For 'cannot open display' problem.
@@ -47,8 +46,6 @@ PROMPT_COMMAND="history -a; history -n"     # write current cmd & re-read bash_h
 (own firefox)   && BROWSER=$FIREFOX         # for xdg-open
 (own svn)   && { export SVN_EDITOR=vim; }    # SVN stuff
 (own git)   && { export GIT_EDITOR=vim; }    # GIT stuff
-# CVS stuff. CVSROOT=:pserver:${USER}@cvs:/cvs/abc OR cvs:/cvs/abc;
-(own cvs)   && { export CVS_EDITOR=vim; CVS_RSH=$(which ssh 2>/dev/null); CVSIGNORE=$HOME/.cvsignore; }
 # CSCOPE_EDITOR is unnecessary with EDITOR defined. For vim, emacs CSCOPE_LINEFLAG_AFTER_FILE=yes; not needed.
 (own vim)   && { export EDITOR=vim; export VISUAL=vim; }    # for mc/cvs/svn/etc. 'export' is must, else confuses cscope
 
@@ -59,6 +56,20 @@ if [ "FreeBSD" != "$UNAMES" ] || [ "SunOS" != "$UNAMES" ]; then
         LESS_TERMCAP_se="$(tput sgr0)"
         color_prompt=yes
     fi
+fi
+
+# clearcase stuff
+if own clearcase; then
+    export CC_DISABLE_MOTD=TRUE
+    export CC_DIFF_OPTS=-c5wp
+fi
+
+# CVS stuff. CVSROOT=:pserver:${USER}@cvs:/cvs/abc OR cvs:/cvs/abc;
+if own cvs; then
+    export CVS_EDITOR=vim
+    export CVS_RSH=ssh
+    CVS_RSH=$(which ssh 2>/dev/null)
+    CVSIGNORE=$HOME/.cvsignore;
 fi
 
 # works cross-platform

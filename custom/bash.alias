@@ -16,6 +16,7 @@ alias c='clear'
 alias d='date'
 alias h='hostname -s'
 alias j='jobs -l'
+alias l='ls'
 alias t='telnet'
 alias z='export PS1_COLOR=light; ps1_prompt; bash_dircolors'
 
@@ -26,7 +27,8 @@ alias rm='rm -i'
 
 # common options
 alias bc='bc -q'
-alias grep='grep -E --color=auto'
+alias grep='grep -E --color=always'                 # auto suppresses colors on non-tty like less paginations
+alias less='less -R'                                # for less to display colors
 alias more='less'
 alias mkdir='mkdir -pv'
 alias ssh="ssh -Ck"       # -v to debug, -q for quiet. autossh is useless
@@ -37,7 +39,6 @@ alias dfh=$(echo "df -h")       # disk freespace is human
 alias dush='du -sh'             # disk usage is human
 alias filesize='du -k'          # works on all platforms. alternate: 'stat -c "%s"' on Linux, 'stat -f "%z"' on FreeBSD
 alias greprns='grep -rns'
-alias l='ls'
 alias l.='ls .*'
 alias la='ls -a'
 alias lh='ls -lh'
@@ -72,7 +73,7 @@ alias xs='cd'
 (own od)        && alias hd='od -Ax -tx1z -v'               # what most people want from od (hexdump)
 (own script)    && alias scripta='script -a script-$(date +%Y%m%d-%T).log'
 (own vncserver) && alias vncserver='vncserver -geometry 1600x900'   # if copy-paste doesnt work, start 'vncconfig &'
-(own konsole)   && alias konsole='konsole --notabbar --vt_sz 100x20 &'
+(own konsole)   && alias k='konsole --nomenubar --vt_sz 100x20 &'
 
 if own apachectl; then
     alias web='cd /Library/WebServer/Documents/'
@@ -242,19 +243,19 @@ if [ "$UNAMES" == "FreeBSD" ]; then
     alias ls='ls -G'
     (own ping)  && alias pingf='ping -c 5'              # Only root user can give -i.2 (fast ping)
 elif [ "$UNAMES" == "Darwin" ]; then
-    alias ls='gls --color=auto -F'                      # ls -G
+    alias ls='gls --color=always -F'                      # ls -G
     (own ping)  && alias pingf='ping -c 5 -i.2'
     alias gvim='open -a MacVim'
     alias wireshark='open -n /Applications/Wireshark.app'
 elif [ "$UNAMES" == "Linux" ]; then
-    alias ls='ls --color=auto -F'
+    alias ls='ls --color=always -F'
     (own free)  && alias memfree='free -m'              # available memory
     (own fuser) && alias fusern='fuser -v -n'           # [tcp, udp, sctp] <port>. who is using given port
     (own ping)  && alias pingf='ping -c 5 -s.2'         # fast ping
     (own xrdb)  && alias Xdefaults='xrdb -load ~/.Xdefaults'
     (own zcat)  && alias gzcat=/bin/zcat
 else
-    alias ls='ls --color=auto -F'
+    alias ls='ls --color=always -F'
 fi
 
 [[ -f $COMP_CONFS/bash.alias ]] && { source $COMP_CONFS/bash.alias; }
