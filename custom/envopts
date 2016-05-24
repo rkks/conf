@@ -5,7 +5,7 @@ ulimit -c 100000000 # '-c unlimited' fails for non-root user. use 'ulimit -S -c 
 # vim & gnome-terminal support 256 colours. debian/ubuntu need ncurses-term package
 # Works for most environments. Should be set in ~/.profile for Fedora
 [[ -z $TMUX ]] && term
-[[ -z $TERM ]] && export TERM=xterm     # default terminal option; xterm-256color breaks some apps
+[[ -z $TERM || "$TERM" == dumb ]] && export TERM=xterm     # default terminal option; xterm-256color breaks cisco cli
 
 test -n MAILCHECK && unset MAILCHECK    # fuck that 'you have new mail' shit
 

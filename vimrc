@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 04/13/16 19:10:31 IST
+" MODIFIED: 05/24/16 01:41:39 PDT
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -280,7 +280,7 @@ endif
 " maintaining local terminal info data base as ~/.terminfo. commands are:
 " infocmp -L -1 xterm | sed -r 's/(max_colors)#.+/\1#256/' > /tmp/xterm
 " tic /tmp/xterm
-"if &term =~ "xterm"
+if &term =~ "xterm"
     let &t_Co=256       " 256 color --
     " restore screen after quitting. doesn't work
     "set t_ti=7[r[?47h t_te=[?47l8
@@ -292,10 +292,10 @@ endif
         set t_Sf=[3%dm    "set t_AB=[48;5;%dm
         set t_Sb=[4%dm    "set t_AF=[38;5;%dm
     endif
-"endif
+endif
 
 " default colors first. Put color scheme before any other color settings. Colorscheme depends on terminal settings.
-colors lucius   "peachpuff peaksea light/inkpot trivial256 buttercream rkks-linux zenburn test/habiLight all/ir_black dark/oceandeep
+"colors lucius   "peachpuff peaksea light/inkpot trivial256 buttercream rkks-linux zenburn test/habiLight all/ir_black dark/oceandeep
 
 " Highlight custom data type defines
 syn keyword ncType uint ubyte ulong uint64_t uint32_t uint16_t uint8_t boolean_t int64_t int32_t int16_t int8_t boolean u_int64_t u_int32_t u_int16_t u_int8_t u_int_t

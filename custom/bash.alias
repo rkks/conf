@@ -27,7 +27,8 @@ alias rm='rm -i'
 
 # common options
 alias bc='bc -q'
-alias grep='grep -E --color=auto'
+alias grep='grep -E --color=always'                 # auto suppresses colors on non-tty like less paginations
+alias less='less -R'                                # for less to display colors
 alias more='less'
 alias mkdir='mkdir -pv'
 alias ssh="ssh -Ck"       # -v to debug, -q for quiet. autossh is useless
@@ -242,19 +243,19 @@ if [ "$UNAMES" == "FreeBSD" ]; then
     alias ls='ls -G'
     (own ping)  && alias pingf='ping -c 5'              # Only root user can give -i.2 (fast ping)
 elif [ "$UNAMES" == "Darwin" ]; then
-    alias ls='gls --color=auto -F'                      # ls -G
+    alias ls='gls --color=always -F'                      # ls -G
     (own ping)  && alias pingf='ping -c 5 -i.2'
     alias gvim='open -a MacVim'
     alias wireshark='open -n /Applications/Wireshark.app'
 elif [ "$UNAMES" == "Linux" ]; then
-    alias ls='ls --color=auto -F'
+    alias ls='ls --color=always -F'
     (own free)  && alias memfree='free -m'              # available memory
     (own fuser) && alias fusern='fuser -v -n'           # [tcp, udp, sctp] <port>. who is using given port
     (own ping)  && alias pingf='ping -c 5 -s.2'         # fast ping
     (own xrdb)  && alias Xdefaults='xrdb -load ~/.Xdefaults'
     (own zcat)  && alias gzcat=/bin/zcat
 else
-    alias ls='ls --color=auto -F'
+    alias ls='ls --color=always -F'
 fi
 
 [[ -f $COMP_CONFS/bash.alias ]] && { source $COMP_CONFS/bash.alias; }
