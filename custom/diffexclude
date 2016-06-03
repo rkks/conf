@@ -226,3 +226,5 @@ vsyscall.lds
 wanxlfw.inc
 zImage*
 zconf.hash.c
+.CC
+.ACME
