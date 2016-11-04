@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 04/24/16 09:35:13 IST
+# MODIFIED: 06/02/16 23:24:06 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -17,6 +17,7 @@ umask 0022  # override default umask in /etc/profile. 0022 is too limiting, 0077
 
 # Global info. Available to all sub-shells.
 # $(echo "/homes/"$(id -nu)) creates problem on non-cisco machines
+[[ -z $USER ]]      && export USER=$(id -nu)        # just in case
 [[ -z $HOME ]]      && export HOME=~                # $HOME undefined when bash run with 'env -i'.
 : ${SHDEBUG=no}                                     # Debugging is disabled by default
 [[ -z $HOSTNAME ]]  && export HOSTNAME=$(uname -n)  # hostname setting
