@@ -1,0 +1,3 @@
+# Logout cleanup
+clear
+echo "$user logged out at `date`."
