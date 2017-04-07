@@ -5,6 +5,10 @@ COMMON_PATHS="$COMMON_PATHS:/usr/X11R6/bin:/usr/X11R6/lib:/usr/openwin/bin"
 COMMON_MANPATHS="/usr/openwin/man:/usr/man:/usr/X11R6/man:/usr/share/man:/usr/local/man"
 COMMON_LD_LIBRARY_PATHS="/usr/local/lib"
 
+# coreutils are installed on mac. They have prefix 'g'. To use with regular names
+# [Apr/13 13:54:36|~/dircolors-solarized-master]$ brew install coreutils
+# export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+# export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 DARWIN_PATHS="/usr/local/opt/coreutils/libexec/gnubin:/opt/local/bin:/opt/local/sbin"
 DARWIN_PATHS="$TOOLS/elasticsearch/bin:$TOOLS/kibana/bin:$TOOLS/logstash/bin:$DARWIN_PATHS"
 DARWIN_LD_LIBRARY_PATHS="/usr/local/Cellar/czmq/3.0.2_3/lib/:/usr/local/Cellar/zeromq/4.1.4/lib/:"

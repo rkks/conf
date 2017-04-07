@@ -81,7 +81,7 @@ if own apachectl; then
 fi
 
 if own curl; then
-    alias curl='curl -# -O -J -L'   # -J: resolve name from header, -L: handle redirects, -C - : continue from where left off
+    alias curld='curl -# -O -J -L'   # -J: resolve name from header, -L: handle redirects, -C - : continue from where left off
     alias webhdr='curl -I'
 fi
 
@@ -219,8 +219,9 @@ if own network.sh; then
 fi
 
 if own VBoxManage; then
-    alias vboxmanage='VBoxManage'
-    alias vb='vbox.sh -c'
+    alias vb='VBoxManage'
+    alias vbb='vbox.sh -b UbuntuLinux'
+    alias vbc='vbox.sh -c'
 fi
 
 if own wget; then
