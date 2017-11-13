@@ -40,6 +40,7 @@
 
 [alias]
     cia = commit -a             # commit/checkin everything
+    coa = !git checkout -- .    # undo all changes in current directory
     cmd = !git config -l | grep alias | cut -c 7-   # show all git aliases. 'config --get-regexp alias' gives no-color output
     conb= checkout -b           # checkout to a new branch
     dir = diff -p -W -r HEAD    # show all changes from last commit in files tracked: staged & unstaged. --no-prefix --no-prompt
@@ -50,6 +51,7 @@
     diffstat    = diff --stat -r HEAD       # show summary of all changes from last commit
     changelog   = log --pretty=format:\" * %s\"     # Display commits summary
     hist        = log --date=short --pretty=format:\"%h %ad | %s %d [%cn]\" --graph # history (date=local doesn't help)
+    rmpriv      = clean -df                 # delete untracked private files in repo
     taglist     = tag -l                    # show commit messages on tag list
     unadd       = reset HEAD                # un-add files from tracking index (still uncommitted new files)
 
