@@ -15,12 +15,12 @@ xsetroot -solid grey
 vncconfig SendPrimary=1 -iconic -nowin &
 
 # Start Window manager in order of preference:
-if which twm > /dev/null 2>&1; then twm &
+if which metacity > /dev/null 2>&1; then metacity &
+elif which startxfce4 > /dev/null 2>&1; then startxfce4 &
+elif which twm > /dev/null 2>&1; then twm &
 elif which fwvm2 > /dev/null 2>&1; then fwvm2 &
-elif which metacity > /dev/null 2>&1; then metacity &
 elif which awesome > /dev/null 2>&1; then awesome &
 elif which wmaker > /dev/null 2>&1; then wmaker &
-elif which startxfce > /dev/null 2>&1; then startxfce &
 elif which startfluxbox > /dev/null 2>&1; then startfluxbox &
 elif which startx > /dev/null 2>&1; then startx &
 elif which startkde > /dev/null 2>&1; then startkde &
@@ -32,5 +32,6 @@ fi
 
 # No xterm. Can not over-ride the copy/paste shortcuts on Mac
 #xterm -geometry 100x20 -fa courier -fs 12 -ls -title "$VNCDESKTOP Desktop" -bg white &
-konsole --nomenubar --vt_sz 160x40 -T "$VNCDESKTOP Desktop" --tn xterm &
+#konsole --nomenubar --vt_sz 160x40 -T "$VNCDESKTOP Desktop" --tn xterm &
+konsole --vt_sz 160x40 -T "$VNCDESKTOP Desktop" --tn xterm &
 #vncserver-virtual -kill $DISPLAY
