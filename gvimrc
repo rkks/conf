@@ -1,7 +1,7 @@
 " DETAILS : My gvim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 05/17/16 19:58:43 IST
+" MODIFIED: 03/25/17 08:06:59 IST
 
 " If ~/.vimrc is present, automagically sourced before ~/.gvimrc
 if has("gui_running")

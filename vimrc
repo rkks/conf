@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 04/20/17 02:26:49 PDT
+" MODIFIED: 11/12/17 22:05:37 PST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -31,7 +31,7 @@ function! UpdateTimeStamp()
         " Search for Last modified:
         let modified_line_no = search(s:timeStampLeader)
         " There is a match in first 10 lines Go to the : in modified:
-        if modified_line_no != 0 && modified_line_no < 15
+        if modified_line_no != 0 && modified_line_no < 8
             " Timestamp format: strftime("%d %b %Y %X")
             "exe 's/'.s:timeStampLeader.'.*/'.s:timeStampLeader.strftime("%d %m %y %X %Z")
             let tstamp = strftime('%m').'\/'.strftime('%d').'\/'.strftime('%y').strftime(' %H:%M:%S').strftime(' %Z')
@@ -127,7 +127,6 @@ set tabstop=4                       " number of spaces for a <TAB>
 set softtabstop=4                   " how many spaces that vim uses when you hit <TAB>
 set shiftwidth=4                    " number of spaces to shift on >>, <<
 set nosmarttab
-set textwidth=140                   " maximum length of any line
 set wrapmargin=0                    " disable auto-wrap magin
 " Vim ver 7.3+ has both colorcolumn (alternate, if exists('+syntax')) and numberwidth (alt, if exists('+linebreak'))
 if v:version >= 703
@@ -257,12 +256,18 @@ let g:explStartRight=1
 
 let g:BufferListWidth = 25
 let g:BufferListMaxWidth = 50
+
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml"
+let g:closetag_emptyTags_caseSensitive = 1
 " Plugin Configs ==========================================================
 
 " Autocommands ============================================================
 " To disable autocommands during vim start, use 'set eventignore=all'
 if !exists("autocommands_loaded")
-    au BufNewFile,BufRead *.py,*.pyw set encoding=utf-8
+    autocmd BufNewFile,BufRead *.py,*.pyw set encoding=utf-8 foldmethod=indent autoindent nofoldenable
+    autocmd BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp,*.cxx,*.hxx,*.cc set textwidth=120
+    autocmd BufNewFile,BufRead *.md set syntax=markdown
+    autocmd BufNewFile,BufRead *.html,*.htm,*.js,*.css set tabstop=2 softtabstop=2 shiftwidth=2
 
     " update MODIFIED time stamp on write. Automatically restores the cursor position internally.
     autocmd BufWritePre,FileWritePre * call UpdateTimeStamp()
@@ -274,7 +279,6 @@ if !exists("autocommands_loaded")
     " Highlight extra whitespace - *.[ch] Or *.[cpp|pl|pm|sh|py|exp|mk|xml] does not work
     "Other regex: /^\s* \s*\|\s\+$/
     autocmd BufEnter * match RedundantSpaces /\s\+$\| \+\ze\t\|\t/ 
-    autocmd BufEnter * set ts=4 sw=4 sts=4
 
     let autocommands_loaded = 1
 endif
@@ -299,7 +303,7 @@ if &term =~ "xterm"
 endif
 
 " default colors first. Put color scheme before any other color settings. Colorscheme depends on terminal settings.
-colors peaksea "lucius peachpuff light/inkpot trivial256 hemisu rkks-linux zenburn test/habiLight all/ir_black dark/oceandeep
+colors peaksea "lucius peachpuff louver light/inkpot trivial256 hemisu rkks-linux zenburn test/habiLight all/ir_black dark/oceandeep
 
 " Highlight custom data type defines
 syn keyword ncType uint ubyte ulong uint64_t uint32_t uint16_t uint8_t boolean_t int64_t int32_t int16_t int8_t boolean u_int64_t u_int32_t u_int16_t u_int8_t u_int_t

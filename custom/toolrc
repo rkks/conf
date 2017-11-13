@@ -5,25 +5,35 @@ COMMON_PATHS="$COMMON_PATHS:/usr/X11R6/bin:/usr/X11R6/lib:/usr/openwin/bin"
 COMMON_MANPATHS="/usr/openwin/man:/usr/man:/usr/X11R6/man:/usr/share/man:/usr/local/man"
 COMMON_LD_LIBRARY_PATHS="/usr/local/lib"
 
-DARWIN_PATHS="/usr/local/opt/coreutils/libexec/gnubin"
-DARWIN_MANPATHS="/usr/local/opt/coreutils/libexec/gnuman"
+# coreutils are installed on mac. They have prefix 'g'. To use with regular names
+# [Apr/13 13:54:36|~/dircolors-solarized-master]$ brew install coreutils
+# export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+# export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+DARWIN_PATHS="/usr/local/opt/coreutils/libexec/gnubin:/opt/local/bin:/opt/local/sbin"
+DARWIN_PATHS="$TOOLS/elasticsearch/bin:$TOOLS/kibana/bin:$TOOLS/logstash/bin:$DARWIN_PATHS"
+DARWIN_LD_LIBRARY_PATHS="/usr/local/Cellar/czmq/3.0.2_3/lib/:/usr/local/Cellar/zeromq/4.1.4/lib/:"
+DARWIN_MANPATHS="/usr/local/opt/coreutils/libexec/gnuman:/opt/local/share/man"
+DARWIN_C_INCLUDE_PATHS="/usr/local/Cellar/czmq/3.0.2_3/include/:/usr/local/Cellar/zeromq/4.1.4/include/"
 
 USER_PATHS="$SCRIPTS/bin:$TOOLS/bin:$TOOLS/sbin"
 USER_MANPATHS="$TOOLS/man:$HOME/tools/rsnapshot/man"
 USER_LD_LIBRARY_PATHS="$TOOLS/lib"
 #USER_PERL5LIB_PATHS="$HOME/tools/perl-5.16.1/lib"  # For perl to locate module in @INC
 
-[[ $UNAMES == "Darwin" ]] && { USER_PATHS="$USER_PATHS:$DARWIN_PATHS"; USER_MANPATHS="$USER_MANPATHS:$DARWIN_MANPATHS"; }
+[[ $UNAMES == "Darwin" ]] && { USER_PATHS="$USER_PATHS:$DARWIN_PATHS"; USER_MANPATHS="$USER_MANPATHS:$DARWIN_MANPATHS"; USER_LD_LIBRARY_PATH="$USER_LD_LIBRARY_PATHS:$DARWIN_LD_LIBRARY_PATHS"; }
 NEW_PATH="$USER_PATHS:$COMMON_PATHS";
 NEW_MANPATH="$USER_MANPATHS:$COMMON_MANPATHS";
 NEW_LD_LIBRARY_PATH="$USER_LD_LIBRARY_PATHS:$COMMON_LD_LIBRARY_PATHS";
-#NEW_PERL5LIB="$USER_PERL5LIB_PATHS:$COMMON_PERL5LIB_PATHS";
-pvalid NEW_PATH; pvalid NEW_MANPATH; pvalid NEW_LD_LIBRARY_PATH; # pvalid NEW_PERL5LIB;
+NEW_C_INCLUDE_PATH="$DARWIN_C_INCLUDE_PATHS"
+
+#NEW_PERL5LIB="$USER_PERL5LIB_PATHS:$COMMON_PERL5LIB_PATHS"; # pvalid NEW_PERL5LIB;
+pvalid NEW_PATH; pvalid NEW_MANPATH; pvalid NEW_LD_LIBRARY_PATH; pvalid NEW_C_INCLUDE_PATH
 
 # don't loose existing paths before updating new ones. A terrible mistake newbies make
 unset PATH; export PATH="$NEW_PATH";
 unset MANPATH; export MANPATH="$NEW_MANPATH";
 unset LD_LIBRARY_PATH; export LD_LIBRARY_PATH="$NEW_LD_LIBRARY_PATH";
+unset C_INCLUDE_PATH; export C_INCLUDE_PATH="$NEW_C_INCLUDE_PATH";
 #unset PERL5LIB; export PERL5LIB="$NEW_PERL5LIB";
 
 # cleanup what we do not need further
