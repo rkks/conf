@@ -106,3 +106,10 @@
 
 [branch]
 	autosetuprebase = always
+[credential]
+	helper = cache --timeout=31622400 --socket=/var/tmp/acme/.git_credentials/ravikks/socket
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
