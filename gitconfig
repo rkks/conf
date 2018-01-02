@@ -1,3 +1,17 @@
+#  DETAILS: git global configuration to be used.
+#  CREATED: 07/01/06 15:24:33 IST
+# MODIFIED: 01/02/18 06:52:18 PST
+#
+#   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
+#  LICENCE: Copyright (c) 2013, Ravikiran K.S.
+#
+# Debug Options
+# export GIT_TRACE=2 GIT_TRACE_PACKET=2 GIT_TRACE_PACKFILE=2 GIT_CURL_VERBOSE=2
+# export GIT_TRACE_PACK_ACCESS=2 GIT_TRACE_PERFORMANCE=2 GIT_TRACE_SETUP=2
+# export GIT_SSH_COMMAND="ssh -vvv" GIT_TRACE_SHALLOW=2
+# unset GIT_CURL_VERBOSE GIT_TRACE_PACK_ACCESS GIT_TRACE_SETUP GIT_TRACE_SHALLOW
+# unset GIT_TRACE GIT_TRACE_PACKET GIT_TRACE_PACKFILE GIT_TRACE_PERFORMANCE
+
 [user]
     name = Ravikiran K.S.
     email = ravikirandotks@gmail.com
@@ -29,14 +43,6 @@
     interactive = auto
     ui = true
     pager = true
-
-[core]
-    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-    # Don't mess with line-endings. Will corrupt binaries, tarballs, etc.
-    autocrlf = false
-    safecrlf = warn
-    editor = vim
-    excludesfile = /Users/ravikks/.gitignore_global
 
 [alias]
     cia = commit -a             # commit/checkin everything
@@ -94,26 +100,3 @@
 
 [commit]
     template = ~/conf/template/gitcommit
-
-[push]
-    default = current
-
-[difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path = 
-
-[mergetool "sourcetree"]
-    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-    trustExitCode = true
-
-[branch]
-    autosetuprebase = always
-
-[credential]
-    helper = cache --timeout=31622400 --socket=/var/tmp/acme/.git_credentials/ravikks/socket
-
-[filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
