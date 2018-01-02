@@ -1,1 +1,11 @@
-# Nothing to exlcude in rsync. sync everything.
+# Exclude file has the stuff we dont want
+**/.pan/messages/cache/
+**/.phoenix/default/*/Cache/
+**/.thumbnails/
+**/Desktop/Trash/
+**/build/images/
+**/build/ins/
+*.bak
+*.swp
+*.o
+*.bin

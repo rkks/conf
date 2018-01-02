@@ -228,3 +228,4 @@ zImage*
 zconf.hash.c
 .CC
 .ACME
+.DS_Store

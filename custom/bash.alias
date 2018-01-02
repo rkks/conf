@@ -72,6 +72,7 @@ alias xs='cd'
 (own hexdump)   && alias hexdumpc='hexdump -C'              # canonical hex dump
 (own od)        && alias hd='od -Ax -tx1z -v'               # what most people want from od (hexdump)
 (own script)    && alias scripta='script -a script-$(date +%Y%m%d-%T).log'
+# Good way to check current sessions: Each ~/.vnc/<prefix>*.pid file indicates a VNC session opened by user in prefix host
 (own vncserver) && alias vncserver='vncserver -geometry 1600x900'   # if copy-paste doesnt work, start 'vncconfig &'
 (own konsole)   && alias k='konsole --nomenubar --vt_sz 100x20 &'
 
@@ -225,6 +226,7 @@ if own VBoxManage; then
 fi
 
 if own wget; then
+    # Download an entire website
     # -b/--background: run as a background job
     # -c/--continue: continue with partially downloaded files
     # -k/--convert-links: replace links within html to point to local links
@@ -235,9 +237,11 @@ if own wget; then
     # -np/--no-parent: do not crawl into parent directory as part of redirection (avoid loop)
     # -o logfile/--output-file=logfile: Log wget messages to logfile
     # -t number/--tries=number: number of retries for given link
-    # -w seconds/--wait=seconds: wait these many seconds before retrieval (fool bot)
+    # -w seconds/--wait=seconds: wait these many seconds before retrieval (fool bot stopper)
     # --random-wait: if -w is provided, changes wait period to random
-    alias wgetr='wget -mrEbckp -o wget.log -t 3 -w 1 --random-wait -np'
+    # --limit-rate=<N>K : limit the download rate (again to fool bot stopper)
+    # -nc : no clobber, no overwrite of previously downloaded file. Can't work with convert-links
+    alias wgetr='wget -mrEbckp -o wget.log -t 3 -w 1 -e robots=off -U mozilla --random-wait --limit-rate=20K -np'
 fi
 
 if [ "$UNAMES" == "FreeBSD" ]; then

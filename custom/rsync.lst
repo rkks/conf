@@ -1,1 +1,12 @@
+# Include file has the stuff to be included
+# Note the "- *" for excluding everything except dirs mentioned in include file.
+# Also note the "/var/" entry. To backup /var/www/* , you need to include /var/
 tools/
+/home/
+/home/**
+/var/
+/var/www/
+/var/www/**
+/etc/
+/etc/**
+- *
