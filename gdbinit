@@ -42,9 +42,11 @@ set width 0
 #source ~/scripts/gdb/alias.gdb
 #source ~/scripts/gdb/basic.gdb
 #source ~/scripts/gdb/extended.gdb
+#source ~/csco/conf/csco.gdb
 
 #handle SIGKILL nopass noprint nostop
 #handle SIGTERM nopass noprint nostop
 
 # Color gdb prompt. Doesn't work with --tui
 #set prompt \033[\033[31;m\033] gdb $ \033[0m
+

@@ -1,3 +1,17 @@
+#  DETAILS: git global configuration to be used.
+#  CREATED: 07/01/06 15:24:33 IST
+# MODIFIED: 01/02/18 06:52:18 PST
+#
+#   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
+#  LICENCE: Copyright (c) 2013, Ravikiran K.S.
+#
+# Debug Options
+# export GIT_TRACE=2 GIT_TRACE_PACKET=2 GIT_TRACE_PACKFILE=2 GIT_CURL_VERBOSE=2
+# export GIT_TRACE_PACK_ACCESS=2 GIT_TRACE_PERFORMANCE=2 GIT_TRACE_SETUP=2
+# export GIT_SSH_COMMAND="ssh -vvv" GIT_TRACE_SHALLOW=2
+# unset GIT_CURL_VERBOSE GIT_TRACE_PACK_ACCESS GIT_TRACE_SETUP GIT_TRACE_SHALLOW
+# unset GIT_TRACE GIT_TRACE_PACKET GIT_TRACE_PACKFILE GIT_TRACE_PERFORMANCE
+
 [user]
     name = Ravikiran K.S.
     email = ravikirandotks@gmail.com
@@ -30,16 +44,9 @@
     ui = true
     pager = true
 
-[core]
-    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-    # Don't mess with line-endings. Will corrupt binaries, tarballs, etc.
-    autocrlf = false
-    safecrlf = warn
-    editor = vim
-    excludesfile = /Users/ravikks/.gitignore_global
-
 [alias]
     cia = commit -a             # commit/checkin everything
+    coa = !git checkout -- .    # undo all changes in current directory
     cmd = !git config -l | grep alias | cut -c 7-   # show all git aliases. 'config --get-regexp alias' gives no-color output
     conb= checkout -b           # checkout to a new branch
     dir = diff -p -W -r HEAD    # show all changes from last commit in files tracked: staged & unstaged. --no-prefix --no-prompt
@@ -50,6 +57,7 @@
     diffstat    = diff --stat -r HEAD       # show summary of all changes from last commit
     changelog   = log --pretty=format:\" * %s\"     # Display commits summary
     hist        = log --date=short --pretty=format:\"%h %ad | %s %d [%cn]\" --graph # history (date=local doesn't help)
+    rmpriv      = clean -df                 # delete untracked private files in repo
     taglist     = tag -l                    # show commit messages on tag list
     unadd       = reset HEAD                # un-add files from tracking index (still uncommitted new files)
 
@@ -92,17 +100,3 @@
 
 [commit]
     template = ~/conf/template/gitcommit
-
-[push]
-	default = current
-
-[difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path = 
-
-[mergetool "sourcetree"]
-    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-    trustExitCode = true
-
-[branch]
-	autosetuprebase = always

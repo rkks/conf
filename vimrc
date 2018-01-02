@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 06/23/17 12:28:35 IST
+" MODIFIED: 11/12/17 22:05:37 PST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -166,6 +166,7 @@ set rulerformat=%15(%c%V\ %p%%%)    " how to display ruler
 set viminfo='5,\"10,:20,%,n~/.viminfo      " remember last read line. Where-
 "'5 = Remember marks for last 5 files. \"10 = Remember 50 lines each from registers
 ":20 = Number of cmd-line history saved. "~/_viminfo = Name of file to use.
+set wildmenu
 set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif " don't suggest obj files
 set fileformat=unix                 " unix file format
 
@@ -302,7 +303,7 @@ if &term =~ "xterm"
 endif
 
 " default colors first. Put color scheme before any other color settings. Colorscheme depends on terminal settings.
-colors peaksea "peachpuff peaksea louver trivial256 buttercream rkks-linux zenburn test/habiLight all/ir_black dark/oceandeep
+colors peaksea "lucius peachpuff louver light/inkpot trivial256 hemisu rkks-linux zenburn test/habiLight all/ir_black dark/oceandeep
 
 " Highlight custom data type defines
 syn keyword ncType uint ubyte ulong uint64_t uint32_t uint16_t uint8_t boolean_t int64_t int32_t int16_t int8_t boolean u_int64_t u_int32_t u_int16_t u_int8_t u_int_t

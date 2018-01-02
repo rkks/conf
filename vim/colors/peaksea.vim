@@ -31,13 +31,22 @@
 "	#rrggbb
 "
 
+if has("gui_running")
+    finish
+endif
+
 hi clear
 
+if version > 580
 if exists("syntax_on")
   syntax reset
 endif
+endif
 
 let g:colors_name = expand("<sfile>:t:r")
+
+set background&
+let &t_Co=256
 
 " I don't want to abuse folding, but here folding is used to avoid confusion. 
 if &background=='light' 
