@@ -27,7 +27,7 @@ alias rm='rm -i'
 
 # common options
 alias bc='bc -q'
-alias grep='grep -E --color=always'                 # auto suppresses colors on non-tty like less paginations
+alias grep='grep -E --color=auto'                 # auto is right mode, for non-tty handling of output
 alias less='less -R'                                # for less to display colors
 alias more='less'
 alias mkdir='mkdir -pv'
@@ -38,7 +38,7 @@ alias cal3='cal -3'             # show 3 months
 alias dfh=$(echo "df -h")       # disk freespace is human
 alias dush='du -sh'             # disk usage is human
 alias filesize='du -k'          # works on all platforms. alternate: 'stat -c "%s"' on Linux, 'stat -f "%z"' on FreeBSD
-alias greprns='grep -rns'
+alias greprinse='grep -rinse'
 alias l.='ls .*'
 alias la='ls -a'
 alias lh='ls -lh'
@@ -53,6 +53,8 @@ alias psmem='ps aux | sort -brk 4 | head'
 alias pstop='ps -eo pcpu,pid,user,args | sort -r -k1 | less'
 alias psux='ps -ux'
 alias tf='tail -f'
+alias historyw='history -w'     # write unsaved history to ~/.bash_history
+alias historyr='history -n'     # read unread history from ~/.bash_history and append to current history
 
 # typing mistakes
 alias xs='cd'
@@ -118,17 +120,18 @@ fi
 
 # dev environment
 if own cscope; then
-    alias css='cscope_tag.sh -g 0'        #symbol
-    alias csg='cscope_tag.sh -g 1'        #global
-    alias csd='cscope_tag.sh -g 2'        #called
-    alias csc='cscope_tag.sh -g 3'        #calling
-    alias cst='cscope_tag.sh -g 4'        #text search
-    alias csa='cscope_tag.sh -g 5'        #change text
-    alias cse='cscope_tag.sh -g 6'        #egrep
-    alias csf='cscope_tag.sh -g 7'        #file
-    alias csi='cscope_tag.sh -g 8'        #include
+    alias css='cscope_cgtags.sh -g 0'        #symbol
+    alias csg='cscope_cgtags.sh -g 1'        #global
+    alias csd='cscope_cgtags.sh -g 2'        #called
+    alias csc='cscope_cgtags.sh -g 3'        #calling
+    alias cst='cscope_cgtags.sh -g 4'        #text search
+    alias csa='cscope_cgtags.sh -g 5'        #change text
+    alias cse='cscope_cgtags.sh -g 6'        #egrep
+    alias csf='cscope_cgtags.sh -g 7'        #file
+    alias csi='cscope_cgtags.sh -g 8'        #include
     alias csl='cscope -de -p 3'  # No '-f cscope.out -R' options. Confuses cscope
-    alias csb='cscope -cUbeR > /dev/null 2>&1'    # For small code. no inverted index -q.
+    #alias csb='cscope -cUbeR > /dev/null 2>&1'    # For small code. no inverted index -q.
+    alias csb='cscope_cgtags.sh -d &'
     alias kscope='cscope -ck -p3'                # kernel symbols
 fi
 

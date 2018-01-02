@@ -1,7 +1,7 @@
 " DETAILS : My vim color file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 04/04/2013 22:48:10 IST
-" MODIFIED: 10/06/14 14:15:31 IST
+" MODIFIED: 03/16/17 23:33:43 PDT
 " A good way to test colorscheme without leaving editor:
 " :w<CR>
 " :so %<CR>
@@ -20,7 +20,8 @@ if version > 580
     endif
 endif
 " Name of the colorscheme
-let g:colors_name = "rkks"
+let g:colors_name = expand("<sfile>:t:r")
+"let g:colors_name = "rkks"
 "Load the 'base' colorscheme
 "runtime colors/blue.vim
 

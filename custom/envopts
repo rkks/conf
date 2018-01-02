@@ -7,8 +7,6 @@ ulimit -c 100000000 # '-c unlimited' fails for non-root user. use 'ulimit -S -c 
 [[ -z $TMUX ]] && term
 [[ -z $TERM || "$TERM" == dumb ]] && export TERM=xterm     # default terminal option; xterm-256color breaks cisco cli
 
-test -n MAILCHECK && unset MAILCHECK    # fuck that 'you have new mail' shit
-
 : ${HOSTFILE=~/.ssh/known_hosts}        # complete hostnames from this file
 #: ${INPUTRC=~/.inputrc}                 # readline config
 
@@ -29,15 +27,6 @@ export PAGER=less;      # Export is required for it to work
 # Locale Stuff - ANSI - For Grep
 LC_ALL=C
 LANG=C
-
-# History Control.
-[[ "${BASH_VERSINFO[0]}" -le 2 ]] && HISTCONTROL=ignoreboth || HISTCONTROL=ignorespace:ignoredups:erasedups
-HISTIGNORE="&:ls:ll:la:l:pwd:exit:c:clear:cd:a:b:his:history:exit"
-HISTSIZE=100000                 # lines of command history to store in memory before flushing to history file
-HISTFILESIZE=100000             # lines of command to store in history "file"
-HISTFILE="$HOME/.bash_history"  # whenever HOME is redefined to a new lcoation
-GLOBIGNORE=".:.."
-PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"    # write & re-read bash_history each time loading $PS1 prompt.
 
 # X11-over-ssh enables clients to open GUI apps natively. connect as: 'ssh user@host -X'
 #xhost +                    # allow clients from any host. For 'cannot open display' problem.
@@ -72,9 +61,9 @@ if own cvs; then
     CVSIGNORE=$HOME/.cvsignore;
 fi
 
-# works cross-platform
+# works cross-platform.
 if own grep; then
-    GREP_COLOR="0;35"
+    #GREP_COLORS="0;35"
     # Some machines require: '--exclude=\*~ --exclude=\*.svn\* --exclude=\*.git\* --exclude=cscope\*'
     GREP_OPTIONS='--binary-files=without-match --color=auto --exclude=*~ --exclude=CVS --exclude=*.svn* --exclude=*.git* --exclude=cscope* --exclude=tags'
 fi
