@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# This file persists high resolution on Ubuntu during login. Same commands need
+# to be run to add new resolution to Ubuntu at runtime. To get config inputs, we
+# need to run 2 commands.
+# $ xrandr | grep "connected primary"   // gives 'display device name'
+# Then get newmode, addmode inputs by running 'cvt' with input of new resolution
+# $ cvt 1400 900
+# # 1400x900 59.96 Hz (CVT) hsync: 56.01 kHz; pclk: 103.50 MHz
+# # Modeline "1400x900_60.00"  103.50  1400 1480 1624 1848  900 903 913 934 -hsync +vsync
+xrandr --newmode "1600x900_60.00"  118.25  1600 1696 1856 2112  900 903 908 934 -hsync +vsync
+xrandr --addmode eDP-1 "1600x900_60.00"
+xrandr --output eDP-1 --mode "1600x900_60.00"

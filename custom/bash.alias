@@ -18,7 +18,7 @@ alias h='hostname -s'
 alias j='jobs -l'
 alias l='ls'
 alias t='telnet'
-alias z='export PS1_COLOR=light; ps1_prompt; bash_dircolors'
+alias z='export PS1_COLOR=light; ps1_prompt; export PS1_COLOR=dark; bash_dircolors'
 
 # safety measures. avoid common mistakes
 alias cp='cp -i'
@@ -40,9 +40,9 @@ alias dush='du -sh'             # disk usage is human
 alias filesize='du -k'          # works on all platforms. alternate: 'stat -c "%s"' on Linux, 'stat -f "%z"' on FreeBSD
 alias greprinse='grep -rinse'
 alias l.='ls .*'
-alias la='ls -a'
+alias la='ls -A'
 alias lh='ls -lh'
-alias ll='ls -l'
+alias ll='ls -laF'
 alias lld='ls -lUd */'
 alias lr='ls -lR'
 alias lss='ls -AlhqS'                    # long ls by size
@@ -70,6 +70,7 @@ alias xs='cd'
 (own autoexpect) && alias autoexpecta='autoexpect -f script-`date +%Y%m%d-%T`.exp'
 (own ctags)     && alias ctb='ctags --extra=+q --fields=afmikKlnsSz --c++-kinds=+p -a -R > /dev/null 2>&1'   # Exuberant ctags
 (own git)       && alias g='git'
+(own gitk)      && alias gitka='gitk --all &'               # gui to see branching & merges visually
 (own gmake)     && alias make='gmake -s'
 (own hexdump)   && alias hexdumpc='hexdump -C'              # canonical hex dump
 (own od)        && alias hd='od -Ax -tx1z -v'               # what most people want from od (hexdump)
@@ -77,6 +78,10 @@ alias xs='cd'
 # Good way to check current sessions: Each ~/.vnc/<prefix>*.pid file indicates a VNC session opened by user in prefix host
 (own vncserver) && alias vncserver='vncserver -geometry 1600x900'   # if copy-paste doesnt work, start 'vncconfig &'
 (own konsole)   && alias k='konsole --nomenubar --vt_sz 100x20 &'
+
+# handy alias (pbcopy in mac) in xterm to copy text to clipboard via pipe cmd. ex: $ ls -l | copy
+#(own xclip)     && alias copy='xclip -sel clip'        # sudo apt install xclip
+(own xsel)      && alias copy='xsel -ib'                # sudo apt install xsel
 
 if own apachectl; then
     alias web='cd /Library/WebServer/Documents/'

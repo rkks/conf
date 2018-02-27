@@ -1,13 +1,13 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 11/12/17 21:58:09 PST
+# MODIFIED: 02/23/18 12:20:20 IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
 
 # Always leave the code you're editing a little better than you found it
 
-[[ $BASH != *bash* ]] && { echo "Not a bash shell "; return $EINVAL; }                      # any inconsistency
+[[ $BASH != *bash* ]] && { return $EINVAL; }        # don't echo anything here, spoils ubuntu startup
 [[ $- == *i* ]] && { IUSER=yes; export PS1="[\D{%d/%b/%y} \t|\u@\h:\w!$?]\r\n$ "; } || { unset IUSER; } # interactive shell.
 [[ $0 == -* ]]  && { LOGIN=yes; } || { unset LOGIN; }                                       # detect login shell
 

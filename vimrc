@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 11/12/17 22:05:37 PST
+" MODIFIED: 02/23/18 12:28:40 IST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -303,7 +303,7 @@ if &term =~ "xterm"
 endif
 
 " default colors first. Put color scheme before any other color settings. Colorscheme depends on terminal settings.
-colors peaksea "lucius peachpuff louver light/inkpot trivial256 hemisu rkks-linux zenburn test/habiLight all/ir_black dark/oceandeep
+colors solarized "peaksea lucius peachpuff louver light/inkpot trivial256 hemisu rkks-linux zenburn test/habiLight all/ir_black dark/oceandeep
 
 " Highlight custom data type defines
 syn keyword ncType uint ubyte ulong uint64_t uint32_t uint16_t uint8_t boolean_t int64_t int32_t int16_t int8_t boolean u_int64_t u_int32_t u_int16_t u_int8_t u_int_t
