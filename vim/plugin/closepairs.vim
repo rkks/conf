@@ -8,9 +8,9 @@
 " License:  Public Domain
 "==============================================================================
 
-if &filetype != "c" || &filetype != "cpp" || &filetype != "vim"
-    finish
-endif
+"if &filetype != "c" || &filetype != "cpp" || &filetype != "vim"
+"    finish
+"endif
 
 inoremap ( ()<left>
 inoremap { {}<left>

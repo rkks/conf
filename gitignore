@@ -115,3 +115,7 @@ _darcs
 
 # terminal multiplexer
 *.pid
+
+# Custom
+*.list
+findexclude

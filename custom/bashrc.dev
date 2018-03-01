@@ -1,6 +1,6 @@
 #  DETAILS: bash development helper configuration to be sourced.
 #  CREATED: 02/03/16 05:29:10 IST
-# MODIFIED: 08/02/17 23:34:08 PDT
+# MODIFIED: 03/01/18 11:11:00 IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -11,7 +11,7 @@ export SCRIPTS=$HOME/scripts
 export TOOLS=$HOME/tools/$UNAMES
 export SCRPT_LOGS=$HOME/.logs           # script logs
 export CUST_CONFS=$HOME/conf/custom     # user configs (not system recognized)
-export COMP_CONFS=$HOME/csco/conf       # company specific configs
+export COMP_CONFS=$COMPANY/conf         # company specific configs
 export UTL_SCRPTS=$SCRIPTS/utils        # util scripts to be sourced
 
 #======================================= Basic Utils =========================================
