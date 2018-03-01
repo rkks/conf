@@ -1,6 +1,6 @@
 #  DETAILS: git global configuration to be used.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 03/01/18 20:01:20 IST
+# MODIFIED: 03/01/18 20:07:38 IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -113,3 +113,6 @@
 
 [core]
 	excludesfile = /home/ravikiranks/.gitignore
+
+[push]
+	default = simple
