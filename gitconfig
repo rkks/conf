@@ -1,6 +1,6 @@
 #  DETAILS: git global configuration to be used.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 03/01/18 20:07:38 IST
+# MODIFIED: 03/06/18 22:10:44 IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -20,6 +20,7 @@
 [diff]
     color = auto
     rename = copy
+    algorithm = patience
 #    tool = mydiff
 
 #[difftool "mydiff"]
@@ -27,6 +28,9 @@
 
 [gc]
     auto = 1
+
+[grep]
+    extendedRegexp = true
 
 [merge]
     summary = true
@@ -42,7 +46,7 @@
     status = auto
     branch = auto
     interactive = auto
-    ui = true
+    ui = auto
     pager = true
 
 [alias]
@@ -51,7 +55,7 @@
     coa = !git checkout -- .    # undo all changes in current directory
     cmd = !git config -l | grep alias | cut -c 7-   # show all git aliases. 'config --get-regexp alias' gives no-color output
     conb= checkout -b           # checkout to a new branch
-    dir = diff -p -W -r HEAD    # show all changes from last commit in files tracked: staged & unstaged. --no-prefix --no-prompt
+    dir = diff -p -U3 --stat=80 --no-prefix -r HEAD # show all changes from last commit in files tracked: staged & unstaged. --no-prompt
 
     create  = !bash -c 'git init && cp -f ~/conf/gitattributes .gitattributes && cp -f ~/conf/gitignore .gitignore && git add . && git commit -m \"First commit\"'  # initialize git repo
     amend       = commit --amend            # fix last commit
@@ -113,6 +117,7 @@
 
 [core]
 	excludesfile = /home/ravikiranks/.gitignore
+    editor = vim
 
 [push]
 	default = simple

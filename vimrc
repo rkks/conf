@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 02/23/18 12:28:40 IST
+" MODIFIED: 03/07/18 11:12:25 IST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -78,6 +78,25 @@ function! MakeScriptExecuteable()
         silent !chmod +x <afile>
     endif
 endfunction
+
+" Autoload cscope database somewhere up in the directory tree.
+function! LoadCscope()
+    let db = findfile("cscope.out", ".;")
+    if (!empty(db))
+        let path = strpart(db, 0, match(db, "/cscope.out$"))
+        set nocscopeverbose " suppress 'duplicate connection' error
+        exe "cs add " . db . " " . path
+        set cscopeverbose
+    endif
+endfunction
+
+" Load external vimrc if present
+function! LoadExtVimrc()
+    if filereadable(glob("~/.vimrc.ext"))
+        source ~/.vimrc.ext
+    endif
+endfunction
+
 " Functions ===============================================================
 
 " Common command mistakes =================================================
@@ -154,7 +173,8 @@ set foldlevel=1                     " Any fold with more than 2 levels will be f
 set foldmethod=syntax               " fold based on indentation. ex, manual
 
 set shortmess=aoI                   " Set vim to use abbrevations in place of 'long messages'. t - truncates
-set cinoptions=(0                   " C format options. Default: cinoptions='0{,0},0),:,0#,!^F,o,O,e'
+set cinoptions=(0                   " C indent func args. Default: cinoptions='0{,0},0),:,0#,!^F,o,O,e'
+set cinoptions+=:0                  " C indent switch-case statements
 set background=light                " set background to dark/light. colorscheme may override this
 set visualbell t_vb=                " silence the bell, use a flash instead
 set virtualedit=block               " cursor goes anywhere only in Visual mode
@@ -166,7 +186,7 @@ set rulerformat=%15(%c%V\ %p%%%)    " how to display ruler
 set viminfo='5,\"10,:20,%,n~/.viminfo      " remember last read line. Where-
 "'5 = Remember marks for last 5 files. \"10 = Remember 50 lines each from registers
 ":20 = Number of cmd-line history saved. "~/_viminfo = Name of file to use.
-set wildmenu
+set wildmenu                        " better command-line completion
 set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif " don't suggest obj files
 set fileformat=unix                 " unix file format
 
@@ -268,10 +288,14 @@ if !exists("autocommands_loaded")
     autocmd BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp,*.cxx,*.hxx,*.cc set textwidth=120
     autocmd BufNewFile,BufRead *.md set syntax=markdown
     autocmd BufNewFile,BufRead *.html,*.htm,*.js,*.css set tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufRead,BufNewFile *.proto setfiletype proto
+    autocmd BufRead,BufNewFile *.yang setfiletype yang
 
     " update MODIFIED time stamp on write. Automatically restores the cursor position internally.
     autocmd BufWritePre,FileWritePre * call UpdateTimeStamp()
     autocmd BufWritePost,FileWritePost * call MakeScriptExecuteable()
+    autocmd BufEnter /* call LoadCscope()
+    autocmd BufEnter * call LoadExtVimrc()
 
     " remember last read line
     au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
