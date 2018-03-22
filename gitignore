@@ -57,13 +57,9 @@
 
 # version control
 .bzr
-.bzrignore
 .bzrtags
-.cvsignore
 .git
-.gitignore
 .hg
-.hgignore
 .hgrags
 .svn
 .svnignore
@@ -77,10 +73,6 @@ SCCS
 cscope.*
 TAGS
 tags
-
-# my build
-*.doxygen
-findinc
 
 # linux stuff
 *.aux
@@ -116,6 +108,8 @@ _darcs
 # terminal multiplexer
 *.pid
 
-# Custom
+# Custom my build
+*.doxygen
+.findinc
 *.list
-findexclude
+.findexc
