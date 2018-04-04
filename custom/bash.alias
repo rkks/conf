@@ -189,7 +189,7 @@ if own vim; then
     alias v="vim -u ~/.vimrc -R"                # read-only
     alias vd="vim -u ~/.vimrc -d"               # diff mode
     alias vi='vim -u ~/.vimrc'
-    alias vt="vim -u ~/.vimrc -t"               # input <ctags-file-name>
+    alias vg="gvim"                             # gvim
     alias vp='vim -u ~/.vimrc --noplugin'       # no plugins
     alias vu='vim -u NONE --noplugin'           # no ~/.vimrc, no plugins
 fi
