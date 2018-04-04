@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 03/07/18 11:12:25 IST
+" MODIFIED: 03/08/18 00:30:19 PST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -290,6 +290,7 @@ if !exists("autocommands_loaded")
     autocmd BufNewFile,BufRead *.html,*.htm,*.js,*.css set tabstop=2 softtabstop=2 shiftwidth=2
     autocmd BufRead,BufNewFile *.proto setfiletype proto
     autocmd BufRead,BufNewFile *.yang setfiletype yang
+    autocmd BufRead,BufNewFile wscript setfiletype python
 
     " update MODIFIED time stamp on write. Automatically restores the cursor position internally.
     autocmd BufWritePre,FileWritePre * call UpdateTimeStamp()
