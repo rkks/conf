@@ -2,7 +2,7 @@ Credentials:
 ============
   AUTHOR: @AUTHOR@, @AUTHOR_EMAIL@
  CREATED: @CREATED_DATE@
-MODIFIED: 01/22/16 08:40:19 IST
+MODIFIED: 04/09/18 10:54:34 PDT
  LICENSE: @COPYRIGHT@
 
 Symptoms:
@@ -13,10 +13,8 @@ Provide steps to reproduce (if any)
 
 Artifacts:
 ==========
-Version/Release:
-Hardware/Model :
-Logs Location  :
-Config Location:
+Version/Release, Hardware/Model:
+Config Location, Logs Location:
 
 Code Path:
 ==========

@@ -125,6 +125,12 @@ if own cleartool; then
 fi
 
 # dev environment
+if own bugz; then
+    alias bugzs='bugz search'
+    alias bugzg='bugz get'
+    alias bugzt='bugz set'
+fi
+
 if own cscope; then
     alias css='cscope_cgtags.sh -g 0'        #symbol
     alias csg='cscope_cgtags.sh -g 1'        #global
