@@ -200,6 +200,10 @@ if own vim; then
     alias vu='vim -u NONE --noplugin'           # no ~/.vimrc, no plugins
 fi
 
+if own git.sh; then
+    alias github='git.sh -c ~/conf/git.config'
+fi
+
 if own mkdir.sh; then
     alias mkprdir='mkdir.sh -p'
     alias mkrlidir='mkdir.sh -r'
