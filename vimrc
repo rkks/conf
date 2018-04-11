@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 03/08/18 00:30:19 PST
+" MODIFIED: 10/Apr/2018 09:53:03 PDT
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -34,7 +34,7 @@ function! UpdateTimeStamp()
         if modified_line_no != 0 && modified_line_no < 8
             " Timestamp format: strftime("%d %b %Y %X")
             "exe 's/'.s:timeStampLeader.'.*/'.s:timeStampLeader.strftime("%d %m %y %X %Z")
-            let tstamp = strftime('%m').'\/'.strftime('%d').'\/'.strftime('%y').strftime(' %H:%M:%S').strftime(' %Z')
+            let tstamp = strftime('%d').'\/'.strftime('%b').'\/'.strftime('%Y').strftime(' %H:%M:%S').strftime(' %Z')
             exe 's/'.s:timeStampLeader.'.*/'.s:timeStampLeader.tstamp
         endif
         " Restore cursor position. Alternate - call setpos('.' , save_cursor)
@@ -328,7 +328,7 @@ if &term =~ "xterm"
 endif
 
 " default colors first. Put color scheme before any other color settings. Colorscheme depends on terminal settings.
-colors solarized "peaksea lucius peachpuff louver light/inkpot trivial256 hemisu rkks-linux zenburn test/habiLight all/ir_black dark/oceandeep
+colors solarized "peaksea lucius peachpuff louver inkpot trivial256 hemisu rkks-linux zenburn habiLight ir_black oceandeep
 
 " Highlight custom data type defines
 syn keyword ncType uint ubyte ulong uint64_t uint32_t uint16_t uint8_t boolean_t int64_t int32_t int16_t int8_t boolean u_int64_t u_int32_t u_int16_t u_int8_t u_int_t
