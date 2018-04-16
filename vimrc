@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 15/Apr/2018 23:22:14 PDT
+" MODIFIED: 16/Apr/2018 11:06:47 PDT
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -178,7 +178,7 @@ set cinoptions+=:0                  " C indent switch-case statements
 set background=light                " set background to dark/light. colorscheme may override this
 set visualbell t_vb=                " silence the bell, use a flash instead
 set virtualedit=block               " cursor goes anywhere only in Visual mode
-set isk+=_,$,@,%,#,-,?,%,&          " none of these should be word dividers, so make them not be
+set iskeyword+=_,@,#,-,?,%          " none of these should be word dividers, so make them not be
 set diffopt=filler,iwhite,context:3 " ignore white, also show 3 context lines
 set sessionoptions+=unix,slash      " Store session info in Unix format.
 set comments=sl:/*,mb:*,elx:*/      " comment format
