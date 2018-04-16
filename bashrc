@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 16/Apr/2018 09:21:09 PDT
+# MODIFIED: 16/Apr/2018 09:23:39 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -28,7 +28,7 @@ umask 0022  # override default umask in /etc/profile. 0022 is too limiting, 0077
 export PATH=".:$HOME/scripts/bin:$HOME/tools/$UNAMES/bin:$HOME/bin:/usr/gnu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 [[ -e ~/conf/custom/shopts ]] && { source ~/conf/custom/shopts; }   # bash shell options
-[[ -e ~/.bashrc.ext ]] && { source ~/.bashrc.ext; }         # External bashrc.
-test -n "$IUSER" && { alias rk="source ~/.bashrc.dev"; }    # Never-ever source bashrc.dev in .bashrc. Breaks external scripts
+[[ -e ~/.bashrc.ext ]] && { source ~/.bashrc.ext; }                 # External bashrc.
+test -n "$IUSER" && { alias rk="source ~/conf/custom/bashrc.dev"; } # Never-ever source bashrc.dev in .bashrc. Breaks external scripts
 
 # Do not print anything on .bashrc end. Because .profile sources this and causes prompt on Ubuntu GUI login
