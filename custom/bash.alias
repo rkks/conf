@@ -67,6 +67,7 @@ alias xs='cd'
 (own xterm)     && alias xt='xterm -fa courier -fs 12 -geometry 100x20 -ls &'
 
 # devel stuff
+# (own ntp) && alias                # ntp servers: time.windows.com time.google.com time.nist.gov pool.ntp.org
 (own autoexpect) && alias autoexpecta='autoexpect -f script-`date +%Y%m%d-%T`.exp'
 (own ctags)     && alias ctb='ctags --extra=+q --fields=afmikKlnsSz --c++-kinds=+p -a -R > /dev/null 2>&1'   # Exuberant ctags
 (own git)       && alias g='git'

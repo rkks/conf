@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 10/Apr/2018 09:53:03 PDT
+" MODIFIED: 15/Apr/2018 23:22:14 PDT
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -286,7 +286,7 @@ let g:closetag_emptyTags_caseSensitive = 1
 if !exists("autocommands_loaded")
     autocmd BufNewFile,BufRead *.py,*.pyw set encoding=utf-8 foldmethod=indent autoindent nofoldenable
     autocmd BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp,*.cxx,*.hxx,*.cc set textwidth=120
-    autocmd BufNewFile,BufRead *.md set syntax=markdown
+    autocmd BufNewFile,BufRead *.md set syntax=markdown textwidth=100 wrapmargin=100 linebreak
     autocmd BufNewFile,BufRead *.html,*.htm,*.js,*.css set tabstop=2 softtabstop=2 shiftwidth=2
     autocmd BufRead,BufNewFile *.proto setfiletype proto
     autocmd BufRead,BufNewFile *.yang setfiletype yang

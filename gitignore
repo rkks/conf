@@ -11,10 +11,11 @@
 *.dmg
 *.img
 
-# obj files
+# build artifacts
 *.9
 *.O
 *.a
+*.deb
 *.bin
 *.bin2
 *.com
@@ -32,6 +33,9 @@
 *.ld
 *.lds
 *.elf
+*.pyc
+.lock-waf*
+.waf*
 
 # devel backlog
 *.keep
@@ -39,7 +43,9 @@
 *.rej
 *.save
 *.swp
+*.sw*
 *.log
+*.log*
 *~
 
 # binary files
@@ -71,8 +77,12 @@ SCCS
 
 # tagging
 cscope.*
+pycscope.*
 TAGS
 tags
+GRTAGS
+GTAGS
+GSYMS
 
 # linux stuff
 *.aux

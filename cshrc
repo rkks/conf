@@ -23,12 +23,6 @@ set HOSTNAME = "`hostname`"
 #Code Size Compilation
 #set path = ($path /usr/temp/m68k-coff /usr/temp/m68k-coff/bin)
 
-# Set up company specific environment
-set COMP_CONFS = '/ws/ravikks-sjc/csco/conf'
-if ( -e $COMP_CONFS/cshrc ) then
-    source $COMP_CONFS/cshrc
-endif
-
 # skip remaining setup if not an interactive shell
 if ($?USER == 0 || $?prompt == 0) exit
 

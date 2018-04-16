@@ -1,6 +1,6 @@
 #  DETAILS: bash development helper configuration to be sourced.
 #  CREATED: 02/03/16 05:29:10 IST
-# MODIFIED: 03/16/18 16:49:56 IST
+# MODIFIED: 16/Apr/2018 09:14:14 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -24,7 +24,6 @@ log NOTE "[SOURCE] cmd:$0. Basic Utils Complete. Bash v$BASH_VERSION ($(id -un))
 [[ -z $BASH_VERSION || -z $PS1 || -z $IUSER ]] && return  # No further sourcing if not interactive shell
 
 # ~/.alias is empty to avoid multiple sourcing. /etc/bash_completion not sourced (more problems)
-#EXT_SCRIPTS="$EXT_SCRIPTS $CUST_CONFS/shopts"       # Shell Opts
 EXT_SCRIPTS="$CUST_CONFS/toolrc";                   # setup right paths
 EXT_SCRIPTS="$EXT_SCRIPTS $CUST_CONFS/envopts"      # Environmental Opts
 EXT_SCRIPTS="$EXT_SCRIPTS $CUST_CONFS/bash.alias"   # Expand alias: '<ctrl><alt>e' OR '<esc><ctrl>e' (readline shortcut)
