@@ -196,9 +196,10 @@ if own vim; then
     alias v="vim -u ~/.vimrc -R"                # read-only
     alias vd="vim -u ~/.vimrc -d"               # diff mode
     alias vi='vim -u ~/.vimrc'
-    alias vg="gvim"                             # gvim
+    alias vg="gvim -u ~/.gvimrc"                # gvim
     alias vp='vim -u ~/.vimrc --noplugin'       # no plugins
     alias vu='vim -u NONE --noplugin'           # no ~/.vimrc, no plugins
+    alias vim='vim -u ~/.vimrc'
 fi
 
 if own git.sh; then

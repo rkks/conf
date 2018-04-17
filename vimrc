@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 16/Apr/2018 11:06:47 PDT
+" MODIFIED: 16/Apr/2018 15:02:20 PDT
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -95,6 +95,22 @@ function! LoadExtVimrc()
     if filereadable(glob("~/.vimrc.ext"))
         source ~/.vimrc.ext
     endif
+endfunction
+
+" Toggles between horizontal and vertical splits
+function! ToggleWindowSplit()
+  if !exists('t:splitType')
+    let t:splitType = 'horizontal'
+  endif
+
+  if t:splitType == 'vertical' " is vertical switch to horizontal
+    windo wincmd K
+    let t:splitType = 'horizontal'
+
+  else " is horizontal switch to vertical
+    windo wincmd H
+    let t:splitType = 'vertical'
+  endif
 endfunction
 
 " Functions ===============================================================
@@ -232,6 +248,8 @@ map <C-S> :call SaveMySession()<CR>:wqa!<CR>
 map <C-X> :qa<CR>
 " Select all.
 map <c-a> ggVG
+" Switch between horizontal and vertical splits
+map <c-\> :call ToggleWindowSplit()<CR>
 
 " One less keystroke each time. But don't know if I can adjust to it.
 nnoremap ; :
