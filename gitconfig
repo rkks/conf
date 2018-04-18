@@ -1,6 +1,6 @@
 #  DETAILS: git global configuration to be used.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 18/Apr/2018 12:00:43 PDT
+# MODIFIED: 18/Apr/2018 12:16:48 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -11,9 +11,6 @@
 # export GIT_SSH_COMMAND="ssh -vvv" GIT_TRACE_SHALLOW=2
 # unset GIT_CURL_VERBOSE GIT_TRACE_PACK_ACCESS GIT_TRACE_SETUP GIT_TRACE_SHALLOW
 # unset GIT_TRACE GIT_TRACE_PACKET GIT_TRACE_PACKFILE GIT_TRACE_PERFORMANCE
-
-#[user]
-#    signingkey = D1D1FFDF856B7FE479A7EF15C818B06E10FC1F47
 
 [diff]
     color = auto
@@ -48,8 +45,7 @@
     pager = true
 
 [alias]
-#    cia = commit -a -S          # commit/checkin everything
-    cia = commit -a             # commit/checkin everything. No signing
+    cia = commit -a             # commit/checkin everything. Add -S option for signing
     coa = !git checkout -- .    # undo all changes in current directory
     cmd = !git config -l | grep alias | cut -c 7-   # show all git aliases. 'config --get-regexp alias' gives no-color output
     conb= checkout -b           # checkout to a new branch
@@ -57,7 +53,7 @@
     chk = apply -v -p0 --ignore-space-change --check
     pat = apply -v -p0 --ignore-space-change
 
-    create  = !bash -c 'git init && cp -f ~/conf/gitattributes .gitattributes && cp -f ~/conf/gitignore .gitignore && git add . && git commit -m \"First commit\"'  # initialize git repo
+    create      = !bash -c 'git init && cp -f ~/conf/gitattributes .gitattributes && git add . && git commit -m \"First commit\"'  # init git repo
     amend       = commit --amend            # fix last commit
     branchall   = branch -avv               # all branches (local + remote/-r), verbose, recursive. show commit messages
     diffstat    = diff --stat -r HEAD       # show summary of all changes from last commit
@@ -106,10 +102,6 @@
 
 [commit]
     template = ~/conf/template/gitcommit
-#    gpgsign = true
-
-#[gpg]
-#    program = gpg
 
 [branch]
     autosetuprebase = always
@@ -122,4 +114,4 @@
     default = simple
 
 [pull]
-	rebase = true
+    rebase = true

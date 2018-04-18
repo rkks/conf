@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 16/Apr/2018 15:02:20 PDT
+" MODIFIED: 17/Apr/2018 13:38:57 PDT
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -143,7 +143,7 @@ set autoread                        " watch for file changes
 set hidden                          " Allows new file to be opened without writing into current file. Later save.
 set expandtab                       " replace tabs with spaces.
 set noerrorbells                    " Quiet mode
-set wrap                            " Auto-Wrap overflowing text visually without inserting line breaks
+"set wrap                            " Auto-Wrap overflowing text visually without inserting line breaks
 set linebreak                       " wrap line at words-breakers; defined by 'breakat'
 set nolist                          " disables linebreak; only visual changes, not to buffer
 set shiftround                      " Round indent to multiples of shiftwidth
@@ -153,7 +153,7 @@ set ignorecase                      " makes searches case insensitive...
 set showmatch                       " show matching brackets/braces/parantheses.
 set hlsearch                        " highlight matches
 set incsearch                       " show matches as regular expression typed
-set wrapscan                        " do scan cyclically
+set wrapscan                        " do search/scan cyclically
 
 set nosmartindent                     " smart indent the files - disable for C in favor of cindent
 set nosmartcase                       " ...if it didn't begin with a capital letter
@@ -173,6 +173,7 @@ else
   match OverLength /\%81v.\+/
 endif
 
+set textwidth=80                    " Wrap after text-width
 set winminheight=0                  " Allow windows to get fully squashed
 set cmdheight=1                     " number of lines left on bottom for command
 
@@ -188,6 +189,8 @@ set foldenable                      " enable folding in vim
 set foldlevel=1                     " Any fold with more than 2 levels will be folded
 set foldmethod=syntax               " fold based on indentation. ex, manual
 
+set cpoptions+=n                    " show "showbreak" characters in line-number area
+set showbreak=->\                   " characters to show on visual-only line-break
 set shortmess=aoI                   " Set vim to use abbrevations in place of 'long messages'. t - truncates
 set cinoptions=(0                   " C indent func args. Default: cinoptions='0{,0},0),:,0#,!^F,o,O,e'
 set cinoptions+=:0                  " C indent switch-case statements
@@ -196,6 +199,7 @@ set visualbell t_vb=                " silence the bell, use a flash instead
 set virtualedit=block               " cursor goes anywhere only in Visual mode
 set iskeyword+=_,@,#,-,?,%          " none of these should be word dividers, so make them not be
 set diffopt=filler,iwhite,context:3 " ignore white, also show 3 context lines
+set formatoptions=tcroql            " for wrap to work
 set sessionoptions+=unix,slash      " Store session info in Unix format.
 set comments=sl:/*,mb:*,elx:*/      " comment format
 set rulerformat=%15(%c%V\ %p%%%)    " how to display ruler
@@ -303,8 +307,8 @@ let g:closetag_emptyTags_caseSensitive = 1
 " To disable autocommands during vim start, use 'set eventignore=all'
 if !exists("autocommands_loaded")
     autocmd BufNewFile,BufRead *.py,*.pyw set encoding=utf-8 foldmethod=indent autoindent nofoldenable
-    autocmd BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp,*.cxx,*.hxx,*.cc set textwidth=120
-    autocmd BufNewFile,BufRead *.md set syntax=markdown textwidth=100 wrapmargin=100 linebreak
+    autocmd BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp,*.cxx,*.hxx,*.cc set textwidth=80 wrapmargin=0
+    autocmd BufNewFile,BufRead *.md,*.txt set textwidth=0 wrapmargin=0 linebreak syntax=markdown
     autocmd BufNewFile,BufRead *.html,*.htm,*.js,*.css set tabstop=2 softtabstop=2 shiftwidth=2
     autocmd BufRead,BufNewFile *.proto setfiletype proto
     autocmd BufRead,BufNewFile *.yang setfiletype yang
