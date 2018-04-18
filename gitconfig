@@ -1,6 +1,6 @@
 #  DETAILS: git global configuration to be used.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 13/Apr/2018 13:22:54 PDT
+# MODIFIED: 18/Apr/2018 12:00:43 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -69,6 +69,7 @@
 
     # 'git add -u' - add deleted files, but not new files. 'git add .' - add current & new files, but not deleted files.
     aa = !sh -c 'git add --all . && git add -u'   # 'git aa' - add all deleted, modified, and new files.
+    ap = add --patch                        # stage commits chunk by chunk interactively
     co = checkout                           # <branch> - checkout branch & make it current branch. <file> - Undo changes.
     cp = cherry-pick -x                     # copy a commit from another branch with source info
     gk = !gitk --all&
@@ -77,7 +78,7 @@
     lg = log -W -p HEAD master              # timeline
     li = ls-files -o                        # show all ignored files
     ls = log --name-status -r --oneline     # list of files changed. ex, cvs update. --date=short --pretty=format:\"%H | %ad\"
-    lu = ls-files -o --exclude-standard     # list all untracked (new) files
+    lu = log -u                             # show changes to a file.
     lx = log --all --graph --decorate --simplify-by-decoration  # graph
     rc = rebase --continue
     rs = rebase --skip
@@ -88,9 +89,7 @@
     st = status                             # repo status
     wc = log --stat --no-merges HEAD        # list all commit filenames, stats; excluding merges. Enhanced whatchanged
 
-    chunkyadd = add --patch                 # stage commits chunk by chunk
     dump = cat-file -p
-    filelog = log -u                        # show changes to a file
     type = cat-file -t
     undo = reset --hard HEAD                # DANGEROUS: Remove last commit, set up work tree exactly as it was before
     uncommit = reset --soft HEAD^           # Remove last commit, but do not touch the working tree (files untouched)
