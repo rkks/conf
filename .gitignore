@@ -94,3 +94,5 @@ _darcs
 *.pid
 .netrwhist
 .DS_Store
+ViewerStore/
+vnc/identities
