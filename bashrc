@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 16/Apr/2018 09:23:39 PDT
+# MODIFIED: 21/Apr/2018 11:40:06 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -16,15 +16,13 @@
 umask 0022  # override default umask in /etc/profile. 0022 is too limiting, 0077 is too liberal.
 
 # Global info. Available to all sub-shells.
-# $(echo "/homes/"$(id -nu)) creates problem on non-cisco machines
 [[ -z $TERM || "$TERM" == "dumb" ]] && export TERM=xterm
 [[ -z $USER ]]      && export USER=$(id -nu)        # just in case
-[[ -z $HOME ]]      && export HOME=~                # $HOME undefined when bash run with 'env -i'.
+[[ -f ~/.home ]]    && export HOME=$(cat ~/.home) || { [[ -z $HOME ]] && export HOME=~; }  # Undefined in 'env -i bash'. "/home/$(id -nu)" is unreliable
 : ${SHDEBUG=no}                                     # Debugging is disabled by default
 [[ -z $HOSTNAME ]]  && export HOSTNAME=$(uname -n)  # hostname setting
 [[ -z $SHELL ]]     && export SHELL=$BASH           # complete path is necessary. otherwise, breaks 'script'./bin/bash
 [[ -z $UNAMES ]]    && export UNAMES=$(uname -s)    # machine type: Linux, FreeBSD, Darwin, SunOS
-[[ -f ~/.home ]]    && export HOME=$(cat ~/.home);  # over-ride home directory
 export PATH=".:$HOME/scripts/bin:$HOME/tools/$UNAMES/bin:$HOME/bin:/usr/gnu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 [[ -e ~/conf/custom/shopts ]] && { source ~/conf/custom/shopts; }   # bash shell options
