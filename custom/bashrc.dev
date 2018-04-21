@@ -1,6 +1,6 @@
 #  DETAILS: bash development helper configuration to be sourced.
 #  CREATED: 02/03/16 05:29:10 IST
-# MODIFIED: 16/Apr/2018 09:14:14 PDT
+# MODIFIED: 20/Apr/2018 15:10:40 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -12,6 +12,7 @@ export TOOLS=$HOME/tools/$UNAMES
 export SCRPT_LOGS=$HOME/.logs           # script logs
 export CUST_CONFS=$HOME/conf/custom     # user configs (not system recognized)
 export UTL_SCRPTS=$SCRIPTS/utils        # util scripts to be sourced
+export DATE_FMT="%Y-%m-%d_%H:%M:%S"     # Format of dates used in logs/prints
 
 #======================================= Basic Utils =========================================
 s="$UTL_SCRPTS/bash/bash_utils.sh"; test -f $s && { source $s; unset s; } || { echo "[ERROR] $s not found"; exit $ENOENT; }
