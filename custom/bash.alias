@@ -283,4 +283,9 @@ else
     alias ls='ls --color=always -F'
 fi
 
+if own crypt.sh; then
+    alias passe='pe() { crypt.sh -p $COMP_CONFS/rand -e $@; }; pe' # enc
+    alias passd='pd() { crypt.sh -p $COMP_CONFS/rand -d $@; }; pd' # dec
+fi
+
 [[ -f $COMP_CONFS/bash.alias ]] && { source $COMP_CONFS/bash.alias; }

@@ -1,16 +1,17 @@
 #  DETAILS: bash development helper configuration to be sourced.
 #  CREATED: 02/03/16 05:29:10 IST
-# MODIFIED: 20/Apr/2018 15:10:40 PDT
+# MODIFIED: 21/Apr/2018 11:36:16 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
 
-export CONFS=$HOME/confs
+export CONFS=$HOME/conf
 export DOWNLOADS=$HOME/downs
 export SCRIPTS=$HOME/scripts
 export TOOLS=$HOME/tools/$UNAMES
 export SCRPT_LOGS=$HOME/.logs           # script logs
 export CUST_CONFS=$HOME/conf/custom     # user configs (not system recognized)
+export TMPLTS=$HOME/conf/template       # user templates
 export UTL_SCRPTS=$SCRIPTS/utils        # util scripts to be sourced
 export DATE_FMT="%Y-%m-%d_%H:%M:%S"     # Format of dates used in logs/prints
 

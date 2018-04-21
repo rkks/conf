@@ -1,1 +1,4 @@
-
+# safety measures. avoid common mistakes. For all shells
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
