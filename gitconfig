@@ -1,6 +1,6 @@
 #  DETAILS: git global configuration to be used.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 19/Apr/2018 12:07:29 PDT
+# MODIFIED: 22/Apr/2018 22:50:47 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -11,6 +11,22 @@
 # export GIT_SSH_COMMAND="ssh -vvv" GIT_TRACE_SHALLOW=2
 # unset GIT_CURL_VERBOSE GIT_TRACE_PACK_ACCESS GIT_TRACE_SETUP GIT_TRACE_SHALLOW
 # unset GIT_TRACE GIT_TRACE_PACKET GIT_TRACE_PACKFILE GIT_TRACE_PERFORMANCE
+#
+# TODO: Incorporate below commands after checking their outputs and usefullness
+# git show --pretty="" --name-only bd61ad98    
+# git diff-tree --no-commit-id --name-only -r bd61ad98
+# git ls-tree --name-only -r <commit-ish>
+# git diff-tree --no-commit-id --name-only -r <commit-ish>
+# git show --stat --oneline HEAD
+# git show --stat --oneline b24f5fb
+# git show --stat --oneline HEAD^^..HEAD
+# git show --name-only --oneline HEAD
+# git show --name-only --oneline b24f5fb
+# git show --name-only --oneline HEAD^^..HEAD
+# git log --name-only
+# git diff --name-only <sha>^ <sha>
+# git diff --name-status <sha>^ <sha>
+# git whatchanged <sha>
 
 [diff]
     color = auto

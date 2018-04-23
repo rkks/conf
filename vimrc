@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 18/Apr/2018 14:52:31 PDT
+" MODIFIED: 23/Apr/2018 15:34:32 PDT
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -252,8 +252,6 @@ map <C-S> :call SaveMySession()<CR>:wqa!<CR>
 map <C-X> :qa<CR>
 " Select all.
 map <c-a> ggVG
-" Switch between horizontal and vertical splits
-map <c-\> :call ToggleWindowSplit()<CR>
 
 " One less keystroke each time. But don't know if I can adjust to it.
 nnoremap ; :
@@ -266,7 +264,7 @@ map <Home> ^
 
 " Undo in insert mode.
 imap <c-z> <c-o>u
-nnoremap <silent> <F2> :set smartindent!<Bar>:set smartcase!<cr>
+nnoremap <silent> <F2> :call ToggleWindowSplit()<cr>
 nnoremap <silent> <F3> :set ic!<cr>
 nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:%s/\n\{3,}/\r\r/e<Bar>:let @/=_s<Bar>:nohl<Bar> :retab<CR>
 nnoremap <silent> <F5> :if exists("syntax_on") <Bar>syntax off <Bar> else <Bar> syntax on <Bar> endif <CR>
