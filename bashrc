@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 21/Apr/2018 11:40:06 PDT
+# MODIFIED: 23/Apr/2018 17:09:00 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -19,7 +19,6 @@ umask 0022  # override default umask in /etc/profile. 0022 is too limiting, 0077
 [[ -z $TERM || "$TERM" == "dumb" ]] && export TERM=xterm
 [[ -z $USER ]]      && export USER=$(id -nu)        # just in case
 [[ -f ~/.home ]]    && export HOME=$(cat ~/.home) || { [[ -z $HOME ]] && export HOME=~; }  # Undefined in 'env -i bash'. "/home/$(id -nu)" is unreliable
-: ${SHDEBUG=no}                                     # Debugging is disabled by default
 [[ -z $HOSTNAME ]]  && export HOSTNAME=$(uname -n)  # hostname setting
 [[ -z $SHELL ]]     && export SHELL=$BASH           # complete path is necessary. otherwise, breaks 'script'./bin/bash
 [[ -z $UNAMES ]]    && export UNAMES=$(uname -s)    # machine type: Linux, FreeBSD, Darwin, SunOS
