@@ -1,6 +1,6 @@
 #  DETAILS: bash development helper configuration to be sourced.
 #  CREATED: 02/03/16 05:29:10 IST
-# MODIFIED: 24/Apr/2018 10:41:37 PDT
+# MODIFIED: 25/Apr/2018 10:00:05 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -17,7 +17,7 @@ export TMPLTS=$HOME/conf/template       # user templates
 export UTL_SCRPTS=$SCRIPTS/utils        # util scripts to be sourced
 
 #======================================= Basic Utils =========================================
-s="$UTL_SCRPTS/bash/bash_utils.sh"; test -f $s && { source $s; unset s; } || { echo "[ERROR] $s not found"; }   # don't exit on err, shell breaks
+s="$UTL_SCRPTS/bash/bash_utils.sh"; test -f $s && { source $s; unset s; } || { echo "[ERROR] $s not found"; unset s; }   # exit on err breaks shell
 log_init INFO $SCRPT_LOGS/$(basename -- $0).log            # After sourcing bashrc, user scripts should define their own log-file
 log NOTE "[SOURCE] bash_utils.sh complete. cmd:$0 bash:v$BASH_VERSION id:($(id -un))"
 
@@ -25,7 +25,8 @@ log NOTE "[SOURCE] bash_utils.sh complete. cmd:$0 bash:v$BASH_VERSION id:($(id -
 [[ -z $BASH_VERSION || -z $PS1 || -z $IUSER ]] && return  # No further sourcing if not interactive shell
 
 # ~/.alias is empty to avoid multiple sourcing. /etc/bash_completion not sourced (more problems)
-EXT_SCRIPTS="$CUST_CONFS/toolrc";                   # setup right paths
+EXT_SCRIPTS="$EXT_SCRIPTS $CUST_CONFS/shopts;"      # bash shell options. Only for interactive user.
+EXT_SCRIPTS="$EXT_SCRIPTS $CUST_CONFS/toolrc";      # setup right paths
 EXT_SCRIPTS="$EXT_SCRIPTS $CUST_CONFS/envopts"      # Environmental Opts
 EXT_SCRIPTS="$EXT_SCRIPTS $CUST_CONFS/bash.alias"   # Expand alias: '<ctrl><alt>e' OR '<esc><ctrl>e' (readline shortcut)
 source_script $EXT_SCRIPTS && unset EXT_SCRIPTS

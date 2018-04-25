@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 23/Apr/2018 17:09:00 PDT
+# MODIFIED: 25/Apr/2018 10:01:33 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -18,14 +18,13 @@ umask 0022  # override default umask in /etc/profile. 0022 is too limiting, 0077
 # Global info. Available to all sub-shells.
 [[ -z $TERM || "$TERM" == "dumb" ]] && export TERM=xterm
 [[ -z $USER ]]      && export USER=$(id -nu)        # just in case
-[[ -f ~/.home ]]    && export HOME=$(cat ~/.home) || { [[ -z $HOME ]] && export HOME=~; }  # Undefined in 'env -i bash'. "/home/$(id -nu)" is unreliable
+[[ -f ~/.home ]]    && export HOME=$(cat ~/.home) || { [[ -z $HOME ]] && export HOME=~; }  # Undefined in 'env -i bash'. /home/$(id -nu) is unreliable
 [[ -z $HOSTNAME ]]  && export HOSTNAME=$(uname -n)  # hostname setting
 [[ -z $SHELL ]]     && export SHELL=$BASH           # complete path is necessary. otherwise, breaks 'script'./bin/bash
 [[ -z $UNAMES ]]    && export UNAMES=$(uname -s)    # machine type: Linux, FreeBSD, Darwin, SunOS
 export PATH=".:$HOME/scripts/bin:$HOME/tools/$UNAMES/bin:$HOME/bin:/usr/gnu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
-[[ -e ~/conf/custom/shopts ]] && { source ~/conf/custom/shopts; }   # bash shell options
-[[ -e ~/.bashrc.ext ]] && { source ~/.bashrc.ext; }                 # External bashrc.
-test -n "$IUSER" && { alias rk="source ~/conf/custom/bashrc.dev"; } # Never-ever source bashrc.dev in .bashrc. Breaks external scripts
+[[ -e ~/.bashrc.ext ]] && { source ~/.bashrc.ext; }         # External bashrc.
+test -n "$IUSER" && { alias rk="source ~/.bashrc.dev"; }    # Never-ever source bashrc.dev in .bashrc. Breaks external scripts
 
 # Do not print anything on .bashrc end. Because .profile sources this and causes prompt on Ubuntu GUI login

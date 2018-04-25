@@ -288,4 +288,4 @@ if own crypt.sh; then
     alias passd='pd() { crypt.sh -p $COMP_CONFS/rand -d $@; }; pd' # dec
 fi
 
-[[ -f $COMP_CONFS/bash.alias ]] && { source $COMP_CONFS/bash.alias; }
+[[ -f $COMP_CONFS/bash.alias ]] && { source_script $COMP_CONFS/bash.alias; }
