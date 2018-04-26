@@ -1,6 +1,6 @@
 #  DETAILS: git global configuration to be used.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 25/Apr/2018 18:01:05 PDT
+# MODIFIED: 30/Apr/2018 18:49:51 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -97,7 +97,7 @@
     br = branch -avv                        # all branches (local + remote/-r), verbose, recursive, along with commit msgs
     co = checkout                           # undo unstaged changes to a file <file> or to entire repo if input is '.'
     cb = checkout -b                        # <branch> - checkout branch & make it current branch
-    cp = cherry-pick -x                     # copy a commit from another branch with source info
+    cp = cherry-pick -x                     # copy a commit from another branch with source info. hash is unique across branches
     gk = !gitk --all&
     gx = !gitx --all
     ig = status --ignored                   # ignored directory/files
