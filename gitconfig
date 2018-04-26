@@ -1,6 +1,6 @@
 #  DETAILS: git global configuration to be used.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 25/Apr/2018 17:06:46 PDT
+# MODIFIED: 25/Apr/2018 17:52:06 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -75,17 +75,19 @@
     pat = apply -v -p0 --ignore-whitespace          # apply the patch. Assumes diff generated with --no-prefix option
     rev = !bash -c 'rd=rev_$RANDOM.diff && git dir >> $rd && git pat -R $rd && echo \"Reversed diff in $rd\" && unset rd'  # reverse the patch.
 
-    create      = !bash -c 'git init && cp -f ~/conf/gitattributes .gitattributes && git add . && git commit -m \"First commit\"'  # init git repo
-    amend       = commit --amend            # fix last commit
-    diffstat    = diff --stat -r HEAD       # show summary of all changes from last commit
-    changelog   = log --pretty=format:\" * %s\"     # Display commits summary
-    hist        = log --date=short --pretty=format:\"%h %ad | %s %d [%cn]\" --graph # history (date=local doesn't help)
-    rmpriv      = clean -df                 # delete untracked private files in repo
-    taglist     = tag -l                    # show commit messages on tag list
-    unadd       = reset HEAD                # un-add files from tracking index (still uncommitted new files)
-    mergeb      = "!f(){ git merge $@ && return || git mergetool; }; f"
-    rebaseb     = "!f(){ git merge $@ && return || git mergetool; }; f"
-    pullb       = "!f(){ git pull $@ && return || git mergetool; }; f"
+    create  = !bash -c 'git init && cp -f ~/conf/gitattributes .gitattributes && git add . && git commit -m \"First commit\"'  # init git repo
+    amend   = commit --amend            # fix last commit
+    diffstat= diff --stat -r HEAD       # show summary of all changes from last commit
+    chnglog = log --pretty=format:\" * %s\"     # Display commits summary
+    hist    = log --date=short --pretty=format:\"%h %ad | %s %d [%cn]\" --graph # history (date=local doesn't help)
+    rmpriv  = clean -df                 # delete untracked private files in repo
+    taglist = tag -l                    # show commit messages on tag list
+    unadd   = reset HEAD                # un-add files from tracking index (still uncommitted new files)
+    pullb   = "!f(){ git pull $@ && return || git mergetool; }; f"      # automagically invokes vimdiff if conflicts seen
+    mergeb  = "!f(){ git merge $@ && return || git mergetool; }; f"     # automagically invokes vimdiff if conflicts seen
+    rebaseb = "!f(){ git rebase $@ && return || git mergetool; }; f"    # automagically invokes vimdiff if conflicts seen
+    brclean = "!f(){ git branch --merged ${1-master} | grep -v \"${1-master}$\" | xargs -r git branch -d; }; f" # delete merged local branches
+    remoturl= "!f(){ git remote set-url ${2-origin} $1; return $?; }; f"    # change remote url for github repo from https to ssh
 
     # 'git add -u' - add deleted files, but not new files. 'git add .' - add current & new files, but not deleted files.
     aa = !sh -c 'git add --all . && git add -u'   # 'git aa' - add all deleted, modified, and new files.
@@ -107,7 +109,7 @@
     rs = rebase --skip
     ra = rebase --abort
     ru = remote -v                          # show all remote urls
-    sh = show
+    sh = show -M
     sm = show -m                            # show merge diff
     st = status                             # repo status
     wc = log --stat --no-merges HEAD        # list all commit filenames, stats; excluding merges. Enhanced whatchanged
