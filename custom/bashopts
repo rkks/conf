@@ -21,7 +21,7 @@ test -n MAILCHECK && unset MAILCHECK    # fuck that 'you have new mail' shit
 
 # History Control.
 [[ ${BASH_VERSINFO[0]} -le 2 ]] && { HISTCONTROL=ignoreboth; } || { HISTCONTROL=ignorespace:ignoredups:erasedups; }
-HISTIGNORE="&:ls:ll:la:l:pwd:exit:c:clear:cd:a:b:his:history:exit:ifconfig:hostname:shutdown:tmux:screen:ta:z:csl:csb:rk"
+HISTIGNORE="&:ls:ll:la:l:pwd:exit:c:clear:cd:a:b:his:history:exit:ifconfig:hostname:shutdown:tmux:screen:ta:z:csl:csb:rk:fg:bg:?:"
 HISTSIZE=1000                   # lines of command history to store in memory before flushing to history file
 HISTFILESIZE=10000              # lines of command to store in history file ~/.bash_history
 HISTFILE="$HOME/.bash_history"  # whenever HOME is redefined to a new lcoation
@@ -29,7 +29,7 @@ GLOBIGNORE=".:.."
 # "history -a; history -n;" slows shell as each time it re-reads history. read only when necessary
 PROMPT_COMMAND="history -a"    # append cmd to bash_history each time loading $PS1 prompt.
 
-# Causes problem with Cisco Vegas build environment
+# Causes problem with some build environments
 # Unused: set -o vi (enable vi mode), noclobber (prevent overwriting files with >), ignoreeof (stops ctrl+d from logging out)
 #set -o notify                   # notify of bg job completion immediately
 #set history=100000              # History Control

@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 25/Apr/2018 10:01:33 PDT
+# MODIFIED: 26/Apr/2018 12:17:23 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -23,7 +23,7 @@ umask 0022  # override default umask in /etc/profile. 0022 is too limiting, 0077
 [[ -z $SHELL ]]     && export SHELL=$BASH           # complete path is necessary. otherwise, breaks 'script'./bin/bash
 [[ -z $UNAMES ]]    && export UNAMES=$(uname -s)    # machine type: Linux, FreeBSD, Darwin, SunOS
 export PATH=".:$HOME/scripts/bin:$HOME/tools/$UNAMES/bin:$HOME/bin:/usr/gnu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-
+test -n "$IUSER" && [[ -f $HOME/custom/bashopts ]] && { source $HOME/custom/bashopts; }    # history+term controls even when rk dev-env not enabled
 [[ -e ~/.bashrc.ext ]] && { source ~/.bashrc.ext; }         # External bashrc.
 test -n "$IUSER" && { alias rk="source ~/.bashrc.dev"; }    # Never-ever source bashrc.dev in .bashrc. Breaks external scripts
 
