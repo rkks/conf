@@ -31,10 +31,8 @@ if !exists('g:closetag_emptyTags_caseSensitive')
 endif
 
 exec "au BufNewFile,Bufread " . g:closetag_filenames . " inoremap <silent> <buffer> > ><Esc>:call <SID>CloseTagFun()<Cr>"
-com! -nargs=* -complete=file CloseTagEnableBuffer
-            \ call s:SetBVar('disabled', 0, <f-args>)
-com! -nargs=* -complete=file CloseTagDisableBuffer
-            \ call s:SetBVar('disabled', 1, <f-args>)
+com! -nargs=* -complete=file CloseTagEnableBuffer call s:SetBVar('disabled', 0, <f-args>)
+com! -nargs=* -complete=file CloseTagDisableBuffer call s:SetBVar('disabled', 1, <f-args>)
 
 " Script rgular expresion used. Documents those nasty criters
 let s:NoSlashBeforeGt = '\(\/\)\@\<!>'

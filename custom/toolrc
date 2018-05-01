@@ -1,5 +1,5 @@
 # original Darwin PATH: /usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
-COMMON_PATHS="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+COMMON_PATHS="/usr/games:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 COMMON_PATHS="$COMMON_PATHS:/opt/X11/bin:/usr/gnu/bin:/usr/xpg4/bin:/usr/ucb"
 COMMON_PATHS="$COMMON_PATHS:/usr/X11R6/bin:/usr/X11R6/lib:/usr/openwin/bin"
 COMMON_MANPATHS="/usr/openwin/man:/usr/man:/usr/X11R6/man:/usr/share/man:/usr/local/man"

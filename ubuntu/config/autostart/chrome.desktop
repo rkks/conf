@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/opt/google/chrome/chrome
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_IN]=Chrome
+Name=Chrome
+Comment[en_IN]=Open Chrome Browser
+Comment=Open Chrome Browser

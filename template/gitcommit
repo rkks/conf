@@ -1,1 +1,3 @@
-# Commit log: src changes, reason for change, tests done, caveat
+# Rules of commit log: Explain What, Where, Why; NOT How. Git captures Who, When
+# Subject line, starts with Capital letter, limit to 72 chars, no period on line
+# Followed by blank-line, then Body lines to describe commit according to rules.

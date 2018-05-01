@@ -1,6 +1,6 @@
 #  DETAILS: bash development helper configuration to be sourced.
 #  CREATED: 02/03/16 05:29:10 IST
-# MODIFIED: 26/Apr/2018 12:17:44 PDT
+# MODIFIED: 30/Apr/2018 22:23:24 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -31,4 +31,4 @@ EXT_SCRIPTS="$EXT_SCRIPTS $CUST_CONFS/bash.alias"   # Expand alias: '<ctrl><alt>
 source_script $EXT_SCRIPTS && unset EXT_SCRIPTS
 log DEBUG "[SOURCE] Extended Scripts Complete"
 
-uname -npsr; uptime;
+uname -npsr; uptime; fortune | cowsay -n;
