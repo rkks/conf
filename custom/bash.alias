@@ -55,6 +55,7 @@ alias psux='ps -ux'
 alias tf='tail -f'
 alias historyw='history -w'     # write unsaved history to ~/.bash_history
 alias historyr='history -n'     # read unread history from ~/.bash_history and append to current history
+alias toph='top -H'             # cat /proc/<pid>/task/<threadid>/status
 
 # typing mistakes
 alias xs='cd'
@@ -216,7 +217,7 @@ fi
 if own tmux.sh; then
     alias tl='tmux.sh -l'
     alias ta='tmux.sh -a'
-    alias tmux='tmux -2'    # always assume 256 color support. Key to bright colors
+    alias tmux='env -i TERM="$TERM" PATH="$PATH" tmux -2'    # always assume 256 color support. Key to bright colors
 fi
 
 if own convert.sh; then
