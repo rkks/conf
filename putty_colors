@@ -1,0 +1,23 @@
+Colour0=Default Foreground = 255,255,255
+Colour1=Default Foreground Bold = 255,255,255
+Colour2=Default Background = 51,51,51
+Colour3=Default Background Bold = 85,85,85
+Colour4=Cursor Text = 0,0,0
+Colour5=Cursor Color = 0,255,0
+Colour6=ANSI Black = 77,77,77
+Colour7=ANSI Black Bold = 85,85,85
+Colour8=ANSI Red = 187,0,0
+Colour9=ANSI Red Bold = 255,85,85
+Colour10=ANSI Green = 152,251,152
+Colour11=ANSI Green Bold = 85,255,85
+Colour12=ANSI Yellow = 240,230,140
+Colour13=ANSI Yellow Bold = 255,255,85
+Colour14=ANSI Blue = 205,133,63
+Colour15=ANSI Blue Bold = 135,206,235
+Colour16=ANSI Magenta = 255,222,173
+Colour17=ANSI Magenta Bold = 255,85,255
+Colour18=ANSI Cyan = 255,160,160
+Colour19=ANSI Cyan Bold = 255,215,0
+Colour20=ANSI White = 245,222,179
+Colour21=ANSI White Bold = 255,255,255
+

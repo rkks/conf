@@ -21,7 +21,7 @@ test -n MAILCHECK && unset MAILCHECK    # fuck that 'you have new mail' shit
 
 # History Control.
 [[ ${BASH_VERSINFO[0]} -le 2 ]] && { HISTCONTROL=ignoreboth; } || { HISTCONTROL=ignorespace:ignoredups:erasedups; }
-HISTIGNORE="&:ls:ll:la:l:pwd:exit:c:clear:cd:a:b:his:history:exit:ifconfig:hostname:shutdown:tmux:screen:ta:z:csl:csb:rk:fg:bg:?:"
+HISTIGNORE="&:ls:ll:la:l:pwd:exit:c:clear:cd:a:b:history:shutdown:tmux:screen:ta:z:csl:csb:rk:fg:bg:?:"
 HISTSIZE=1000                   # lines of command history to store in memory before flushing to history file
 HISTFILESIZE=10000              # lines of command to store in history file ~/.bash_history
 HISTFILE="$HOME/.bash_history"  # whenever HOME is redefined to a new lcoation
