@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 14/May/2018 23:35:47 IST
+" MODIFIED: 15/May/2018 09:50:02 PDT
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -165,10 +165,10 @@ set nosmarttab
 set wrapmargin=0                    " disable auto-wrap magin
 " Vim ver 7.3+ has both colorcolumn (alternate, if exists('+syntax')) and numberwidth (alt, if exists('+linebreak'))
 if v:version >= 703
-  set colorcolumn=80                " To highlight column after 'textwidth', do 'set colorcolumn=+1'
-  set numberwidth=3                 " width of number column
+  set colorcolumn=+1                " highlight column after 'textwidth'
+  set numberwidth=4                 " width of number column
 else
-  highlight OverLength ctermbg=lightgrey
+  highlight OverLength ctermbg=lightgrey guibg=lightgrey
   " vim7.2 onwards use colorcolumn
   match OverLength /\%81v.\+/
 endif
@@ -348,7 +348,7 @@ if &term =~ "xterm"
 endif
 
 " default colors first. Put color scheme before any other color settings. Colorscheme depends on terminal settings.
-colors solarized "default peaksea lucius peachpuff louver trivial256 hemisu rkks-linux zenburn habiLight ir_black oceandeep
+colorscheme default "solarized peaksea lucius peachpuff louver inkpot trivial256 hemisu rkks-linux zenburn habiLight ir_black oceandeep
 
 " Highlight custom data type defines
 syn keyword ncType uint ubyte ulong uint64_t uint32_t uint16_t uint8_t boolean_t int64_t int32_t int16_t int8_t boolean u_int64_t u_int32_t u_int16_t u_int8_t u_int_t
@@ -361,6 +361,6 @@ syn match cCustomParen "?=(" contains=cParen contains=cCppParen
 syn match cCustomFunc  "\w\+\s*(\@=" contains=cCustomParen
 highlight def link cCustomFunc Function
 
-highlight RedundantSpaces ctermbg=lightgrey
-highlight ColorColumn ctermbg=lightgrey
+highlight RedundantSpaces ctermbg=lightgrey guibg=lightgrey
+highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 " Color Options ===========================================================
