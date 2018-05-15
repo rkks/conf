@@ -1,6 +1,6 @@
 #  DETAILS: bash development helper configuration to be sourced.
 #  CREATED: 02/03/16 05:29:10 IST
-# MODIFIED: 15/May/2018 22:23:00 IST
+# MODIFIED: 15/May/2018 22:33:38 IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -17,7 +17,7 @@ export UTL_SCRPTS=$SCRIPTS/utils        # util scripts to be sourced
 
 #======================================= Basic Utils =========================================
 s="$UTL_SCRPTS/bash/bash_utils.sh"; test -f $s && { source $s; unset s; } || { echo "[ERROR] $s not found"; unset s; }   # exit on err breaks shell
-log_init INFO $SCRPT_LOGS/$(basename -- $0).log            # After sourcing bashrc, user scripts should define their own log-file
+log_init INFO       # Initialize logs. automatically created as script-name.log
 log NOTE "[SOURCE] bash_utils.sh complete. cmd:$0 bash:v$BASH_VERSION id:($(id -un))"
 
 #======================================= Extended Utils =========================================
