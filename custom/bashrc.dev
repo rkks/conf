@@ -1,12 +1,11 @@
 #  DETAILS: bash development helper configuration to be sourced.
 #  CREATED: 02/03/16 05:29:10 IST
-# MODIFIED: 30/Apr/2018 22:23:24 PDT
+# MODIFIED: 15/May/2018 22:23:00 IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
 
-#LOG_TTY=TRUE                           # console logging
-#BASH_DEBUG=1;                          # Debugging is disabled by default. To enable, set SHDEBUG env
+#export LOG_TTY=1   # log to tty irrespective of enabled log-lvl (for debugging)
 export CONFS=$HOME/conf
 export DOWNLOADS=$HOME/downs
 export SCRIPTS=$HOME/scripts
