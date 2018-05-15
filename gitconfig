@@ -1,6 +1,6 @@
 #  DETAILS: git global configuration to be used.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 30/Apr/2018 18:49:51 PDT
+# MODIFIED: 18/May/2018 02:44:24 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -71,7 +71,7 @@
     coa = !git checkout -- .                        # undo all changes in current directory
     cmd = !git config -l | grep alias | cut -c 7-   # show all git aliases. 'config --get-regexp alias' gives no-color output
     conb= checkout -b                               # checkout to a new branch
-    dir = diff -p -W --stat=80 --no-prefix -r HEAD  # show changes from last commit in files tracked: staged+unstaged. gnu-diff style
+    dir = diff -p --stat --no-prefix -r HEAD        # show changes from last commit in files tracked: staged+unstaged. gnu-diff style
     chk = apply -v -p0 --ignore-whitespace --check  # check if patch file is fine. Assumes diff with --no-prefix option, gnu-diff style.
     pat = apply -v -p0 --ignore-whitespace          # apply the patch. Assumes diff generated with --no-prefix option
     rev = !bash -c 'rd=rev_$RANDOM.diff && git dir >> $rd && git pat -R $rd && echo \"Reversed diff in $rd\" && unset rd'  # reverse the patch.
