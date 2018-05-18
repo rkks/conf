@@ -1,6 +1,6 @@
 !  DETAILS: Xterm configurations sourced by xrdb.
 !  CREATED: 07/01/10 10:14:13 IST
-! MODIFIED: 11/26/14 00:01:51 PST
+! MODIFIED: 17/May/2018 14:18:33 IST
 !
 !   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 !  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -13,8 +13,8 @@ Xft.hinting:    true
 Xft.hintstyle:  hintslight
 
 xterm*VT100.geometry:     100x20
-xterm*faceName:           Courier:style=Regular:size=14
-!xterm*font:               -*-courier-medium-r-*-*-14-*-*-*-*-*-*-*
+xterm*faceName:           Courier:style=Regular:size=10
+!xterm*font:               -*-courier-medium-r-*-*-10-*-*-*-*-*-*-*
 xterm*dynamicColors:      true
 xterm*utf8:               2
 xterm*eightBitInput:      true
@@ -29,6 +29,7 @@ xterm*toolBar:            false
 XTerm*selectToClipboard:  true
 
 XTerm*VT100.*translations:      #override \
-        Meta <KeyPress> C:  select-end(CLIPBOARD, CUT_BUFFER0) \n
-        Meta <KeyPress> V:  insert-selection(CLIPBOARD, CUT_BUFFER0) \n
-
+!        Meta <KeyPress> C:  select-end(CLIPBOARD, CUT_BUFFER0) \n
+!        Meta <KeyPress> V:  insert-selection(CLIPBOARD, CUT_BUFFER0) \n
+        Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
+        Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)

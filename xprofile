@@ -8,6 +8,22 @@
 # $ cvt 1400 900
 # # 1400x900 59.96 Hz (CVT) hsync: 56.01 kHz; pclk: 103.50 MHz
 # # Modeline "1400x900_60.00"  103.50  1400 1480 1624 1848  900 903 913 934 -hsync +vsync
-xrandr --newmode "1600x900_60.00"  118.25  1600 1696 1856 2112  900 903 908 934 -hsync +vsync
-xrandr --addmode eDP-1 "1600x900_60.00"
-xrandr --output eDP-1 --mode "1600x900_60.00"
+#xrandr --newmode   
+#xrandr --addmode eDP-1 "1600x900_60.00"
+#xrandr --output eDP-1 --mode "1600x900_60.00"
+
+disps=$(xrandr | grep -w connected | awk '{print $1}')
+R1080P_NAME="1920x1080_60.00"
+R1080P_ARGS="173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync"
+R1600P_NAME="1600x900_60.00"
+R1600P_ARGS="118.25  1600 1696 1856 2112  900 903 908 934 -hsync +vsync"
+for d in $disps; do
+    case $d in
+    'HDMI-2') RMODE=$R1080P_NAME; RARGS=$R1080P_ARGS; ;;
+    'eDP-1') RMODE=$R1600P_NAME; RARGS=$R1600P_ARGS; ;;
+    esac
+    #echo "change resolution of $d to $RMODE $RARGS";
+    xrandr --newmode $RMODE $RARGS
+    xrandr --addmode $d $RMODE
+    xrandr --output $d --mode $RMODE
+done
