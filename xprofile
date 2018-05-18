@@ -8,9 +8,6 @@
 # $ cvt 1400 900
 # # 1400x900 59.96 Hz (CVT) hsync: 56.01 kHz; pclk: 103.50 MHz
 # # Modeline "1400x900_60.00"  103.50  1400 1480 1624 1848  900 903 913 934 -hsync +vsync
-#xrandr --newmode   
-#xrandr --addmode eDP-1 "1600x900_60.00"
-#xrandr --output eDP-1 --mode "1600x900_60.00"
 
 disps=$(xrandr | grep -w connected | awk '{print $1}')
 R1080P_NAME="1920x1080_60.00"
