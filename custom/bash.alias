@@ -18,7 +18,7 @@ alias h='hostname -s'
 alias j='jobs -l'
 alias l='ls'
 alias t='telnet'
-alias z='export PS1_COLOR=light; ps1_prompt; export PS1_COLOR=dark; bash_colors'
+alias z='fortune | cowsay -n; export PS1_COLOR=light; ps1_prompt; export PS1_COLOR=dark; bash_colors'
 
 # common options
 alias more='less'
