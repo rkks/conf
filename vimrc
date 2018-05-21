@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 17/May/2018 15:31:00 IST
+" MODIFIED: 21/May/2018 00:04:28 PDT
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -165,7 +165,7 @@ set nosmarttab
 set wrapmargin=0                    " disable auto-wrap magin
 " Vim ver 7.3+ has both colorcolumn (alternate, if exists('+syntax')) and numberwidth (alt, if exists('+linebreak'))
 if v:version >= 703
-  set colorcolumn=+1                " highlight column after 'textwidth'
+  set colorcolumn=+0                " highlight column after 'textwidth'
   set numberwidth=4                 " width of number column
 else
   highlight OverLength ctermbg=lightgray guibg=lightgray
@@ -277,6 +277,36 @@ nnoremap <silent> <F11> :Vexplore!<CR>
 nnoremap <silent> <F12> :call BufferList()<CR>
 " Mappings ================================================================
 
+" Colorschme ==============================================================
+" maintaining local terminal info data base as ~/.terminfo. commands are:
+" infocmp -L -1 xterm | sed -r 's/(max_colors)#.+/\1#256/' > /tmp/xterm
+" tic /tmp/xterm
+if &term =~ "xterm"
+    let &t_Co=256       " 256 color --
+    " restore screen after quitting. doesn't work
+    "set t_ti=7[r[?47h t_te=[?47l8
+    if has("terminfo")
+        " To get  press Ctrl-V <Esc>
+        set t_Sf=[3%p1%dm        "set t_AB=[48;5;%dm
+        set t_Sb=[4%p1%dm        "set t_AF=[38;5;%dm
+    else
+        set t_Sf=[3%dm    "set t_AB=[48;5;%dm
+        set t_Sb=[4%dm    "set t_AF=[38;5;%dm
+    endif
+endif
+
+" Highlight custom data type defines
+syn keyword ncType uint ubyte ulong uint64_t uint32_t uint16_t uint8_t boolean_t int64_t int32_t int16_t int8_t boolean u_int64_t u_int32_t u_int16_t u_int8_t u_int_t
+syn keyword ncOperator likely unlikely
+highlight def link ncType Type
+highlight def link ncOperator Operator
+
+" Highlight Function names.
+syn match cCustomParen "?=(" contains=cParen contains=cCppParen
+syn match cCustomFunc  "\w\+\s*(\@=" contains=cCustomParen
+highlight def link cCustomFunc Function
+" Colorschme ==============================================================
+
 " Plugin Configs ==========================================================
 let c_space_errors = 1
 let c_no_tab_space_error = 1
@@ -311,6 +341,7 @@ if !exists("autocommands_loaded")
     autocmd BufRead,BufNewFile *.proto setfiletype proto
     autocmd BufRead,BufNewFile *.yang setfiletype yang
     autocmd BufRead,BufNewFile wscript setfiletype python
+    autocmd FileType gitcommit set textwidth=72
 
     " update MODIFIED time stamp on write. Automatically restores the cursor position internally.
     autocmd BufWritePre,FileWritePre * call UpdateTimeStamp()
@@ -329,38 +360,7 @@ if !exists("autocommands_loaded")
 endif
 " Autocommands ============================================================
 
-" Color Options ===========================================================
-" maintaining local terminal info data base as ~/.terminfo. commands are:
-" infocmp -L -1 xterm | sed -r 's/(max_colors)#.+/\1#256/' > /tmp/xterm
-" tic /tmp/xterm
-if &term =~ "xterm"
-    let &t_Co=256       " 256 color --
-    " restore screen after quitting. doesn't work
-    "set t_ti=7[r[?47h t_te=[?47l8
-    if has("terminfo")
-        " To get  press Ctrl-V <Esc>
-        set t_Sf=[3%p1%dm        "set t_AB=[48;5;%dm
-        set t_Sb=[4%p1%dm        "set t_AF=[38;5;%dm
-    else
-        set t_Sf=[3%dm    "set t_AB=[48;5;%dm
-        set t_Sb=[4%dm    "set t_AF=[38;5;%dm
-    endif
-endif
-
-" default colors first. Put color scheme before any other color settings. Colorscheme depends on terminal settings.
-colorscheme solarized "default peaksea lucius peachpuff louver inkpot trivial256 hemisu rkks-linux zenburn habiLight ir_black oceandeep
-
-" Highlight custom data type defines
-syn keyword ncType uint ubyte ulong uint64_t uint32_t uint16_t uint8_t boolean_t int64_t int32_t int16_t int8_t boolean u_int64_t u_int32_t u_int16_t u_int8_t u_int_t
-syn keyword ncOperator likely unlikely
-highlight def link ncType Type
-highlight def link ncOperator Operator
-
-" Highlight Function names.
-syn match cCustomParen "?=(" contains=cParen contains=cCppParen
-syn match cCustomFunc  "\w\+\s*(\@=" contains=cCustomParen
-highlight def link cCustomFunc Function
-
+" Hardcoded Color Overrides ===============================================
 highlight RedundantSpaces ctermbg=lightgray guibg=lightgray
 highlight ColorColumn ctermbg=lightgray guibg=lightgray
-" Color Options ===========================================================
+" Hardcoded Color Overrides ===============================================

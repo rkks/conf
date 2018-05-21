@@ -29,6 +29,17 @@ GLOBIGNORE=".:.."
 # "history -a; history -n;" slows shell as each time it re-reads history. read only when necessary
 PROMPT_COMMAND="history -a"    # append cmd to bash_history each time loading $PS1 prompt.
 
+# safety measures. avoid common mistakes
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+alias mkdir='mkdir -pv'
+alias ssh="ssh -Ck"       # -v to debug, -q for quiet. autossh is useless
+alias less='less -R'                                # for less to display colors
+alias grep='grep -E'            # auto is right mode, for non-tty handling of output. set in GREP_OPTIONS
+alias bc='bc -q'
+alias top='top -H'              # cat /proc/<pid>/task/<threadid>/status
+
 # Causes problem with some build environments
 # Unused: set -o vi (enable vi mode), noclobber (prevent overwriting files with >), ignoreeof (stops ctrl+d from logging out)
 #set -o notify                   # notify of bg job completion immediately
