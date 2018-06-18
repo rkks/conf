@@ -26,19 +26,20 @@ HISTSIZE=1000                   # lines of command history to store in memory be
 HISTFILESIZE=10000              # lines of command to store in history file ~/.bash_history
 HISTFILE="$HOME/.bash_history"  # whenever HOME is redefined to a new lcoation
 GLOBIGNORE=".:.."
-# "history -a; history -n;" slows shell as each time it re-reads history. read only when necessary
-PROMPT_COMMAND="history -a"    # append cmd to bash_history each time loading $PS1 prompt.
+# history -n; - re-reads history each time loading $PS1 prompt (slows shell, re-read only when necessary)
+PROMPT_COMMAND="history -a"     # append cmd to bash_history each time loading $PS1 prompt.
 
 # safety measures. avoid common mistakes
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 alias mkdir='mkdir -pv'
-alias ssh="ssh -Ck"       # -v to debug, -q for quiet. autossh is useless
-alias less='less -R'                                # for less to display colors
+alias ssh="ssh -XkC"            # -v to debug, -q for quiet. autossh is useless
+alias less='less -R'            # for less to display colors
 alias grep='grep -E'            # auto is right mode, for non-tty handling of output. set in GREP_OPTIONS
 alias bc='bc -q'
 alias top='top -H'              # cat /proc/<pid>/task/<threadid>/status
+alias dmesg='dmesg -T'          # timestamp in human readable format. all bets off if system was suspended
 
 # Causes problem with some build environments
 # Unused: set -o vi (enable vi mode), noclobber (prevent overwriting files with >), ignoreeof (stops ctrl+d from logging out)

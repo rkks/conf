@@ -70,7 +70,7 @@ fi
 
 # Java Stuff
 if own javac; then
-    export JAVA_HOME=~/tools/linux/jdk
+    export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
     #export JAVA_FONTS=/usr/share/fonts/truetype
 fi
 

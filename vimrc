@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 21/May/2018 00:04:28 PDT
+" MODIFIED: 31/May/2018 11:59:06 IST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -194,7 +194,7 @@ set showbreak=->\                   " characters to show on visual-only line-bre
 set shortmess=aoI                   " Set vim to use abbrevations in place of 'long messages'. t - truncates
 set cinoptions=(0                   " C indent func args. Default: cinoptions='0{,0},0),:,0#,!^F,o,O,e'
 set cinoptions+=:0                  " C indent switch-case statements
-set background=light                " set background to dark/light. colorscheme may override this
+set background=dark                 " set background to dark/light. colorscheme may override this
 set visualbell t_vb=                " silence the bell, use a flash instead
 set virtualedit=block               " cursor goes anywhere only in Visual mode
 set iskeyword+=_,@,#,?,%            " these should be treated as part of word.
@@ -336,7 +336,8 @@ let g:closetag_emptyTags_caseSensitive = 1
 if !exists("autocommands_loaded")
     autocmd BufNewFile,BufRead *.py,*.pyw set encoding=utf-8 foldmethod=indent autoindent nofoldenable
     autocmd BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp,*.cxx,*.hxx,*.cc set textwidth=81 wrapmargin=0
-    autocmd BufNewFile,BufRead *.md,*.txt set textwidth=0 wrapmargin=0 linebreak syntax=markdown
+    autocmd BufNewFile,BufRead *.txt set textwidth=0 wrapmargin=0 linebreak
+    autocmd BufNewFile,BufRead *.md set textwidth=0 wrapmargin=0 linebreak syntax=markdown
     autocmd BufNewFile,BufRead *.html,*.htm,*.js,*.css set tabstop=2 softtabstop=2 shiftwidth=2
     autocmd BufRead,BufNewFile *.proto setfiletype proto
     autocmd BufRead,BufNewFile *.yang setfiletype yang

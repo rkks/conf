@@ -1,6 +1,6 @@
 #  DETAILS: git global configuration to be used.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 25/May/2018 02:08:14 PDT
+# MODIFIED: 07/Jun/2018 13:12:59 IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -71,10 +71,11 @@
     coa = !git checkout -- .                        # undo all changes in current directory
     cmd = !git config -l | grep alias | cut -c 7-   # show all git aliases. 'config --get-regexp alias' gives no-color output
     cob = checkout -b                               # checkout to a new branch
-    dir = diff -p --stat --no-prefix -r HEAD        # show changes from last commit, both staged+unstaged. gnu-diff style
-    chk = apply -v -p0 --check                      # check if patch file is fine. Assumes diff with --no-prefix option, gnu-diff style.
-    pat = apply -v -p0                              # apply the patch. Assumes diff generated with --no-prefix option
+    dir = diff -p --no-prefix -r HEAD               # show changes from last commit, both staged+unstaged. gnu-diff style --stat
+    chk = apply -v -p0 --check --ignore-whitespace  # check if patch file is fine. Assumes diff with --no-prefix option, gnu-diff style.
+    pat = apply -v -p0 --ignore-whitespace          # apply the patch. Assumes diff generated with --no-prefix option
     rev = !bash -c 'rd=rev_$RANDOM.diff && git dir >> $rd && git pat -R $rd && echo \"Reversed diff in $rd\" && unset rd'  # reverse the patch.
+    dif = !bash -c '!f(){ git dir > git pull $@ && return || git mergetool; }; f'                     # copy a commit from another branch with source info. hash is unique across branches
 
     create  = !bash -c 'git init && cp -f ~/conf/gitattributes .gitattributes && git add . && git commit -m \"First commit\"'  # init git repo
     amend   = commit --amend            # fix last commit
