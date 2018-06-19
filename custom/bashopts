@@ -29,6 +29,16 @@ GLOBIGNORE=".:.."
 # history -n; - re-reads history each time loading $PS1 prompt (slows shell, re-read only when necessary)
 PROMPT_COMMAND="history -a"     # append cmd to bash_history each time loading $PS1 prompt.
 
+# GNOME/GTK and X11 have different clipboards. So, copy/paste between GTK and
+# X11 apps does not work. autocutsel keeps both clipboards in sync.
+# To copy/paste between X11-only apps: ctrl-insert/shft-insert
+# To copy/paste between GTK/GNOME-only apps: ctrl-shft-c/ctrl-shft-v
+AUTOCUTSELRUN=$(pgrep autocutsel);
+if [ "$DESKTOP_SESSION" == "ubuntu" ] && [ -z "$AUTOCUTSELRUN" ]; then
+    autocutsel &
+    autocutsel -s PRIMARY &
+fi
+
 # safety measures. avoid common mistakes
 alias cp='cp -i'
 alias mv='mv -i'
