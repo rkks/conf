@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 31/May/2018 11:59:06 IST
+" MODIFIED: 18/Jun/2018 21:58:12 PDT
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -281,8 +281,8 @@ nnoremap <silent> <F12> :call BufferList()<CR>
 " maintaining local terminal info data base as ~/.terminfo. commands are:
 " infocmp -L -1 xterm | sed -r 's/(max_colors)#.+/\1#256/' > /tmp/xterm
 " tic /tmp/xterm
+let &t_Co=256       " 256 color -- set t_Co=256
 if &term =~ "xterm"
-    let &t_Co=256       " 256 color --
     " restore screen after quitting. doesn't work
     "set t_ti=7[r[?47h t_te=[?47l8
     if has("terminfo")
@@ -305,6 +305,10 @@ highlight def link ncOperator Operator
 syn match cCustomParen "?=(" contains=cParen contains=cCppParen
 syn match cCustomFunc  "\w\+\s*(\@=" contains=cCustomParen
 highlight def link cCustomFunc Function
+
+" Put color scheme before other color overrides. Colorscheme depends on term settings.
+"let g:solarized_termcolors=256
+colorscheme solarized "default peaksea lucius peachpuff louver inkpot trivial256 hemisu rkks-linux zenburn habiLight ir_black oceandeep
 " Colorschme ==============================================================
 
 " Plugin Configs ==========================================================
@@ -334,6 +338,12 @@ let g:closetag_emptyTags_caseSensitive = 1
 " Autocommands ============================================================
 " To disable autocommands during vim start, use 'set eventignore=all'
 if !exists("autocommands_loaded")
+    autocmd BufEnter /* call LoadCscope()
+    autocmd BufEnter * call LoadExtVimrc()
+
+    autocmd BufEnter *.log colorscheme default
+    "autocmd BufEnter *.c,*.h,*.cpp,*.hpp,*.cxx,*.hxx,*.cc colorscheme default
+
     autocmd BufNewFile,BufRead *.py,*.pyw set encoding=utf-8 foldmethod=indent autoindent nofoldenable
     autocmd BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp,*.cxx,*.hxx,*.cc set textwidth=81 wrapmargin=0
     autocmd BufNewFile,BufRead *.txt set textwidth=0 wrapmargin=0 linebreak
@@ -347,8 +357,6 @@ if !exists("autocommands_loaded")
     " update MODIFIED time stamp on write. Automatically restores the cursor position internally.
     autocmd BufWritePre,FileWritePre * call UpdateTimeStamp()
     autocmd BufWritePost,FileWritePost * call MakeScriptExecuteable()
-    autocmd BufEnter /* call LoadCscope()
-    autocmd BufEnter * call LoadExtVimrc()
 
     " remember last read line
     au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
