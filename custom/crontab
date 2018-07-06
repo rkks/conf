@@ -1,6 +1,6 @@
 # HOME/PATH/SHELL/MAILTO pre-defined by Cron. Only redefine the must.
 # Rest of the environment settings come from ~/.bashrc
-MAILTO=ravikks@cisco.com
+MAILTO=ravikiranks@versa-networks.com
 SHELL=/bin/bash
 BASH_ENV=~/.bashrc
 #.---------------- minute (0 - 59)
