@@ -15,9 +15,14 @@
 #   [gdb commands here]
 #end
 
+set logging file ~/.gdb.log
+set logging on
+
 # history across invocations
 set history save on
 set history filename ~/.gdb_history
+set history size unlimited
+#set history remove-duplicates 10
 
 # Verbosity settings
 set confirm off
@@ -37,12 +42,16 @@ set follow-fork-mode child
 # These make gdb never pause in its output
 set height 0
 set width 0
+#set pagination off
+
+layout asm
+layout reg
+
+set disassembly-flavor intel
 
 # Source scripts
 #source ~/scripts/gdb/alias.gdb
 #source ~/scripts/gdb/basic.gdb
-#source ~/scripts/gdb/extended.gdb
-#source ~/csco/conf/csco.gdb
 
 #handle SIGKILL nopass noprint nostop
 #handle SIGTERM nopass noprint nostop
