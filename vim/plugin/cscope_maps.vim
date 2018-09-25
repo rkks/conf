@@ -44,12 +44,9 @@ if has("cscope")
     set cspc=0
 
     " add any cscope database in current directory
-    "if filereadable("cscope.out")
+    if filereadable(getcwd() . '/cscope.out')
     "    cs add cscope.out
-    "endif
-    " add the database pointed to by environment variable (if set)
-    if $CSCOPE_DB != ""
-        cs add $CSCOPE_DB
+        execute 'cscope add ' . getcwd() . '/cscope.out'
     endif
 
     " show msg when any other cscope db added

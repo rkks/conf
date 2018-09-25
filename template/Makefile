@@ -1,6 +1,6 @@
 #   AUTHOR: @AUTHOR@, @AUTHOR_EMAIL@
 #  CREATED: @CREATED_DATE@
-# MODIFIED: @CREATED_DATE@
+# MODIFIED: 27/Aug/2018 12:39:24 IST
 #  LICENCE: @COPYRIGHT@
 
 OUTPUT=$(shell basename $(shell pwd)).out
@@ -19,13 +19,16 @@ $(OUTPUT): $(OBJS)
 
 bin: $(BINS)
 
-%.out : %.c
+%.bin : %.c
+	@echo "Build bin ..."
 	gcc $(CFLAGS) -o $@ $(LDFLAGS) $^
 
 %.o : %.c
+	@echo "Build obj ..."
 	gcc -c $(CFLAGS) -o $@ $<
 
 clean:
+	@echo "Clean build artifacts"
 	rm -vf *.o $(OUTPUT) $(BINS) *.so *.a *.i
 
 help:
@@ -37,4 +40,4 @@ help:
 print-%:
 	@echo '$*=$($*)'
 
-.PHONY: all clean
+.PHONY: all clean bin help

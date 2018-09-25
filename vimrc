@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 18/Jun/2018 21:58:12 PDT
+" MODIFIED: 09/Aug/2018 13:16:33 IST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -128,6 +128,7 @@ command Dos2unix %s//\r/g " Replace (Ctrl-V) Ctrl-M with newline. Useful in scr
 
 " Settings ================================================================
 set nocompatible                    " set no compatible mode
+"set cscopetag                       " use cscope tag instead of default tag
 set number                          " display linenumbers in text
 set ruler                           " show column, row count
 set showcmd                         " show key sequence in status line
