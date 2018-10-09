@@ -1,0 +1,7 @@
+Instead of complicating vim with Vundle plugin-manager and stuff, I've chosen to
+keep it simple and copy dependent directory structures (below) to vim itself.
+These directories are sourced by the autoload the respective YCM binaries
+
+../python/
+../third_party/ycmd/
+

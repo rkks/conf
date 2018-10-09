@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 09/Aug/2018 13:16:33 IST
+" MODIFIED: 09/Oct/2018 12:48:57 IST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -94,6 +94,9 @@ endfunction
 function! LoadExtVimrc()
     if filereadable(glob("~/.vimrc.ext"))
         source ~/.vimrc.ext
+    endif
+    if filereadable(getcwd() . '/.vimrc.local')
+        execute 'source ' . getcwd() . '/.vimrc.local'
     endif
 endfunction
 

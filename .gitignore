@@ -96,3 +96,5 @@ _darcs
 .DS_Store
 ViewerStore/
 vnc/identities
+vim/python/
+vim/third_party/

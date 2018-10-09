@@ -44,12 +44,13 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 alias mkdir='mkdir -pv'
-alias ssh="ssh -XkC"            # -v to debug, -q for quiet. autossh is useless
+alias ssh="ssh -kC"            # -v to debug, -q for quiet. autossh is useless. -X is on-demand
 alias less='less -R'            # for less to display colors
 alias grep='grep -E'            # auto is right mode, for non-tty handling of output. set in GREP_OPTIONS
 alias bc='bc -q'
 alias top='top -H'              # cat /proc/<pid>/task/<threadid>/status
 alias dmesg='dmesg -T'          # timestamp in human readable format. all bets off if system was suspended
+alias gdb='gdb --readnow'
 
 # Causes problem with some build environments
 # Unused: set -o vi (enable vi mode), noclobber (prevent overwriting files with >), ignoreeof (stops ctrl+d from logging out)

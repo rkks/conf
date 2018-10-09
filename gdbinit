@@ -52,6 +52,9 @@ set width 0
 #tui reg all|vector|system|float|general|prev|next  # display given registers
 #update|refersh                         # CTRL-L
 
+#layout asm
+#layout reg
+
 set disassembly-flavor intel
 
 # Source scripts

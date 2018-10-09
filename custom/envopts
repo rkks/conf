@@ -11,6 +11,7 @@ ulimit -c 100000000 # '-c unlimited' fails for non-root user. use 'ulimit -S -c 
 #: ${INPUTRC=~/.inputrc}                 # readline config
 
 CLICOLOR=1 # This will enable colors in ls by default
+export NMON=cmgknt                  # export is must for child process to see it
 
 PRINTER=termite
 ENSCRIPT=-2r
@@ -78,6 +79,10 @@ fi
 if own ant; then
     export ANT_HOME=~/tools/linux/ant
     export ANT_OPTS="-Xmx256M -Dbuild.sysclasspath=ignore"
+fi
+
+if own python; then
+    export PYTHONPATH="$HOME/scripts/utils/python"
 fi
 
 # Company overrides, specifics - if any

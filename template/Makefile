@@ -1,12 +1,12 @@
 #   AUTHOR: @AUTHOR@, @AUTHOR_EMAIL@
 #  CREATED: @CREATED_DATE@
-# MODIFIED: 27/Aug/2018 12:39:24 IST
+# MODIFIED: 09/Oct/2018 13:25:47 IST
 #  LICENCE: @COPYRIGHT@
 
 OUTPUT=$(shell basename $(shell pwd)).out
 SRCS=$(wildcard *.c)		# $(shell ls *.c)
-OBJS=$(SRCS:.c=.o)
-BINS=$(patsubst %.c,%.out,$(SRCS))
+OBJS=$(SRCS:.c=.o)			# $(patsubst %.c, %.o, $(SRCS))
+BINS=$(patsubst %.c,%,$(SRCS))
 
 #LIBS  = -lkernel32 -luser32 -lgdi32 -lopengl32
 CFLAGS ?= -g -ggdb -Wall
@@ -15,21 +15,22 @@ LDFLAGS ?=
 all: $(OUTPUT)
 
 $(OUTPUT): $(OBJS)
-	gcc $(CFLAGS) -o $@ $(LDFLAGS) $^
+	@echo "[LD] $^ => $@"
+	@gcc $(CFLAGS) $(LIBS) -o $@ $^
 
 bin: $(BINS)
 
-%.bin : %.c
-	@echo "Build bin ..."
-	gcc $(CFLAGS) -o $@ $(LDFLAGS) $^
+%: %.o
+	@echo "[LD] $< => $@"
+	@gcc $(CFLAGS) $(LIBS) -o $@ $<
 
 %.o : %.c
-	@echo "Build obj ..."
-	gcc -c $(CFLAGS) -o $@ $<
+	@echo "[CC] $< => $@"
+	@gcc -c $(CFLAGS) -o $@ $<
 
 clean:
-	@echo "Clean build artifacts"
-	rm -vf *.o $(OUTPUT) $(BINS) *.so *.a *.i
+	@echo "[CLN] *.o $(OUTPUT) *.so *.a *.i $(BINS)"
+	@rm -f *.o $(OUTPUT) *.so *.a *.i $(BINS)
 
 help:
 	echo "Useful GNU make debug options:"

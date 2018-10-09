@@ -52,6 +52,7 @@ alias xs='cd'
 # Admin Power Tools
 (own dstat)     && alias dstata='dstat -cdngmsply --bw'
 (own minicom)   && alias minicom='minicom -c on'
+(own nmon)      && alias nmon='nmon -g $CUST_CONFS/nmon_disks.dat'
 (own pgrep)     && alias pgrep='pgrep -u $(id -nu)'
 (own pkill)     && alias pkill='pkill -u $(id -nu)'
 (own xterm)     && alias xt='xterm -fa courier -fs 12 -geometry 100x20 -ls &'
@@ -66,6 +67,7 @@ alias xs='cd'
 (own hexdump)   && alias hexdumpc='hexdump -C'              # canonical hex dump
 (own od)        && alias hd='od -Ax -tx1z -v'               # what most people want from od (hexdump)
 (own script)    && alias scripta='script -a script-$(date +%Y%m%d-%T).log'
+(own ssh-keygen)&& alias ssh-keygen-rm='f(){ ssh-keygen -R $1; rm -f ~/.ssh/sockets/*$1*; }; f'
 # Good way to check current sessions: Each ~/.vnc/<prefix>*.pid file indicates a VNC session opened by user in prefix host
 (own vncserver) && alias vncserver='vncserver -geometry 1600x900'   # if copy-paste doesnt work, start 'vncconfig &'
 (own konsole)   && alias k='konsole --nomenubar --vt_sz 100x20 &'
