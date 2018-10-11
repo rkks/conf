@@ -18,7 +18,7 @@
 set logging file ~/.gdb.log
 set logging on
 
-# history across invocations
+# history across invocations. up/down arrows do not work, so disable.
 #set history save on
 #set history filename ~/.gdb_history
 #set history size unlimited
