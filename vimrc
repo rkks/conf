@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 11/Oct/2018 02:29:06 PDT
+" MODIFIED: 13/Nov/2018 00:31:51 PST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -142,6 +142,7 @@ set ttyfast                         " we have a fast terminal
 set ttybuiltin                      " (default) use internal termcap
 set restorescreen                   " restore screen contents when exiting vim
 set startofline                     " place cursor on non-white char of line
+set undofile                        " place .<filename>.un~ file in file dir
 
 set noautoindent                    " set automatic indenting - deprecated in favor of smartindent
 set nocindent                       " no cindent initially - later enabled for C files
@@ -215,6 +216,7 @@ set viminfo='5,\"10,:20,%,n~/.viminfo      " remember last read line. Where-
 set wildmenu                        " better command-line completion
 set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif " don't suggest obj files
 set fileformat=unix                 " unix file format
+"set undodir=~/.vim/undodir          " place all undo .<file>.un~ files in this dir. Does not work for multi-projects
 
 set statusline=                         " clear statusline when vimrc is reloaded
 set statusline=[%02n]\                  " bufnum

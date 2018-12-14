@@ -1,11 +1,13 @@
 #  DETAILS: bash development helper configuration to be sourced.
 #  CREATED: 02/03/16 05:29:10 IST
-# MODIFIED: 19/May/2018 19:34:29 IST
+# MODIFIED: 14/Dec/2018 06:49:19 PST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
 
 #export LOG_TTY=1   # log to tty irrespective of enabled log-lvl (for debugging)
+[[ -z $UNAMES && -e ~/.bashrc ]] && { source ~/.bashrc; }   # get paths from bashrc
+
 export CONFS=$HOME/conf
 export DOWNLOADS=$HOME/downs
 export SCRIPTS=$HOME/scripts
