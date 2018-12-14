@@ -82,7 +82,7 @@ if own ant; then
 fi
 
 if own python; then
-    export PYTHONPATH="$HOME/scripts/utils/python"
+    export PYTHONPATH="$HOME/scripts/utils/python:$HOME/ws/netmiko"
 fi
 
 # Company overrides, specifics - if any
