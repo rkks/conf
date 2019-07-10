@@ -131,6 +131,7 @@ _darcs
 .findexc
 _site_types
 *.blame
+*.un~
 
 # http://www.gnu.org/software/automake
 Makefile.in

@@ -190,6 +190,7 @@ if own vim; then
     alias vi='vim -u ~/.vimrc'
     alias gv="gvim -u ~/.gvimrc"                # gvim
     alias vp='vim -u ~/.vimrc --noplugin'       # no plugins
+    alias vt='vim -t'                           # open given tag symbol in vim
     alias vu='vim -u NONE --noplugin'           # no ~/.vimrc, no plugins
     alias vim='vim -u ~/.vimrc'
 fi
