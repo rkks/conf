@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 13/Nov/2018 00:31:51 PST
+" MODIFIED: 27/Jun/2019 15:20:45 IST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -134,7 +134,9 @@ command Dos2unix %s//\r/g " Replace (Ctrl-V) Ctrl-M with newline. Useful in scr
 " Settings ================================================================
 set nocompatible                    " set no compatible mode
 "set cscopetag                       " use cscope tag instead of default tag
-set number                          " display linenumbers in text
+if (&diff == 0)
+    set number                      " display linenumbers in text
+endif
 set ruler                           " show column, row count
 set showcmd                         " show key sequence in status line
 set showmode                        " show mode we are working on
@@ -349,7 +351,8 @@ if !exists("autocommands_loaded")
     autocmd BufEnter /* call LoadCscope()
     autocmd BufEnter * call LoadExtVimrc()
 
-    autocmd BufEnter *.log colorscheme default
+    "autocmd BufEnter,BufNewFile,BufRead,BufLeave * colorscheme solarized
+    "autocmd BufEnter *.log colorscheme default
     "autocmd BufEnter *.c,*.h,*.cpp,*.hpp,*.cxx,*.hxx,*.cc colorscheme default
 
     autocmd BufNewFile,BufRead *.py,*.pyw set encoding=utf-8 foldmethod=indent autoindent nofoldenable
