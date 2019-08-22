@@ -86,10 +86,12 @@ Subsystem sftp /usr/lib/openssh/sftp-server
 # PAM authentication, then enable this but set PasswordAuthentication
 # and ChallengeResponseAuthentication to 'no'.
 UsePAM yes
-UseDNS no
-Ciphers aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128,arcfour
-MACs hmac-sha1,hmac-ripemd160
-DenyUsers versa
-ClientAliveInterval 120
-ClientAliveCountMax 720
+AddressFamily inet
+XAuthLocation /usr/bin/xauth
+#UseDNS no
+#Ciphers aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128,arcfour
+#MACs hmac-sha1,hmac-ripemd160
+#DenyUsers versa
+#ClientAliveInterval 120
+#ClientAliveCountMax 720
 # Banner /opt/versa/etc/sbanner

@@ -1,6 +1,6 @@
 #  DETAILS: git global configuration to be used.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 10/Jul/2019 10:49:21 IST
+# MODIFIED: 21/Aug/2019 16:01:18 IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -84,7 +84,7 @@
     revu= !bash -c 'rd=revu_$RANDOM.diff && git dif >> $rd && git pat -R $rd && echo \"Reversed unstaged diff in $rd\" && unset rd'  # reverse unstaged changes
 
     create  = !bash -c 'git init && cp -f ~/conf/gitattributes .gitattributes && git add . && git commit -m \"First commit\"'  # init git repo
-    amend   = commit --amend            # fix last commit
+    amend   = commit --amend            # fix last commit. --no-edit if no need to edit commit log
     diffstat= diff --stat -r HEAD       # show summary of all changes from last commit
     chnglog = log --pretty=format:\" * %s\"     # Display commits summary
     hist    = log --date=short --pretty=format:\"%h %ad | %s %d [%an]\" --graph # history (date=local doesn't help)
@@ -98,6 +98,7 @@
     brclean = "!f(){ git branch --merged ${1-master} | grep -v \"${1-master}$\" | xargs -r git branch -d; }; f" # delete merged local branches
     remoturl= "!f(){ git remote set-url ${2-origin} $1; return $?; }; f"    # change remote url for github repo from https to ssh
     pullmerge = !bash -c '!f(){ git dir > git pull $@ && return || git mergetool; }; f'   # copy a commit from another branch with source info. hash is unique across branches
+    save = !sh -c 'export PREV=$(git symbolic-ref HEAD|cut -d/ -f3-) && git checkout -b "$1" && git commit -am "$1" && git checkout "$PREV"' -
 
     # 'git add -u' - add deleted files, but not new files. 'git add .' - add current & new files, but not deleted files.
     aa = !sh -c 'git add --all . && git add -u'   # 'git aa' - add all deleted, modified, and new files.
@@ -111,6 +112,7 @@
     gx = !gitx --all
     ig = status --ignored                   # ignored directory/files
     lg = log -W -p HEAD master              # timeline
+    #la = log --author=James             # git log --after=01/01/2019 git log --before=01/01/2019 
     li = ls-files -o                        # show all ignored files
     ls = log --name-status -r --oneline     # list of files changed. ex, cvs update. --date=short --pretty=format:\"%H | %ad\"
     lu = log -u                             # show changes to a file.
@@ -119,8 +121,12 @@
     rs = rebase --skip
     ra = rebase --abort
     rv = remote -v                          # show all remote urls
+    sa = "!f(){ test $# -ne 1 && echo "input stash number" || git stash apply "stash@{$1}"; return $?; }; f"   # apply given git stash. Never use git stash pop
+    sd = "!f(){ test $# -ne 1 && echo "input stash number" || git stash drop "stash@{$1}"; return $?; }; f"    # drop given git stash. Never use git stash clear
+    sl = stash list                         # list all git stashes
     sh = show -M --no-prefix
     sm = show -m                            # show merge diff
+    ss = "!f(){ test $# -eq 0 && echo "input stash comments" || git stash save $*; return $?; }; f"         # save current changes into git stash and clean them
     st = status                             # repo status
     wc = log --stat --no-merges HEAD        # list all commit filenames, stats; excluding merges. Enhanced whatchanged
 

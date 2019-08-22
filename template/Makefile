@@ -1,6 +1,6 @@
 #   AUTHOR: @AUTHOR@, @AUTHOR_EMAIL@
 #  CREATED: @CREATED_DATE@
-# MODIFIED: 09/Oct/2018 13:25:47 IST
+# MODIFIED: @CREATED_DATE@
 #  LICENCE: @COPYRIGHT@
 
 OUTPUT=$(shell basename $(shell pwd)).out
@@ -16,13 +16,13 @@ all: $(OUTPUT)
 
 $(OUTPUT): $(OBJS)
 	@echo "[LD] $^ => $@"
-	@gcc $(CFLAGS) $(LIBS) -o $@ $^
+	@gcc $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
 
 bin: $(BINS)
 
 %: %.o
 	@echo "[LD] $< => $@"
-	@gcc $(CFLAGS) $(LIBS) -o $@ $<
+	@gcc $(CFLAGS) $(LDFLAGS) -o $@ $< $(LIBS)
 
 %.o : %.c
 	@echo "[CC] $< => $@"
