@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 02/Dec/2019 23:19:28 PST
+" MODIFIED: 13/May/2020 02:55:16 PDT
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -254,14 +254,19 @@ map j gj
 map k gk
 " Switch between windows easily. Ctrl-j forward switch (Alternate, <C-W><C-W>)
 map <C-j> <C-W>w
-map <C-C> <C-W>c
 "map ,s :split <C-R>=expand("%:p:h") . "/" <CR>
-" Ctrl-S saves last session
-map <C-S> :call SaveMySession()<CR>:wqa!<CR>
-" Quit, But not when there are changes
-map <C-X> :qa<CR>
 " Select all.
 map <c-a> ggVG
+
+" Disable ctr-c, ctrl-s, and ctrl-x
+"map <C-C> <C-W>c
+map <C-C> <nop>
+" Ctrl-S saves last session. This does not work
+"map <C-S> :call SaveMySession()<CR>:wqa!<CR>
+map <C-S> <nop>
+" Quit, But not when there are changes
+"map <C-X> :qa<CR>
+map <C-X> <nop>
 
 " One less keystroke each time. But don't know if I can adjust to it.
 nnoremap ; :

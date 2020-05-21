@@ -1,6 +1,6 @@
 #  DETAILS: git global configuration to be used.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 21/Aug/2019 16:01:18 IST
+# MODIFIED: 16/Mar/2020 07:21:14 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -72,6 +72,7 @@
 [alias]
     caa = commit -a --amend -c HEAD                 # amend last commit and put current staged changes into it
     cia = commit -a                                 # commit/checkin everything. Add -S option for signing
+    cln = !git gc && git prune                      # garbage collection and prune loose files
     coa = !git checkout -- .                        # undo all changes in current directory
     cmd = !git config -l | grep alias | cut -c 7-   # show all git aliases. 'config --get-regexp alias' gives no-color output
     cob = checkout -b                               # checkout to a new branch
@@ -156,7 +157,7 @@
     editor = vim
 
 [push]
-    default = simple
+    default = current                       # simple
 
 [pull]
     rebase = true
