@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 25/Dec/2020 01:20:33 PST
+# MODIFIED: 08/Feb/2021 09:46:47 IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -29,5 +29,6 @@ test -z "$IUSER" && return
 
 [[ -f $HOME/conf/custom/bashopts ]] && { source $HOME/conf/custom/bashopts; }    # history+term enable always
 [[ -f $HOME/.bashrc.dev ]] && alias rk="source ~/.bashrc.dev"   # Never-ever source bashrc.dev in .bashrc. Breaks external scripts
-
+[[ ! -z $SSH_CONNECTION ]] && echo "SSH login details: $SSH_CONNECTION"          # $SSH_CLIENT
+[[ ! -z $(which brscan-skey) ]] && sudo brscan-skey
 # Do not print anything on .bashrc end. Because .profile sources this and causes prompt on Ubuntu GUI login

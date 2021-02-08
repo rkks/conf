@@ -1,0 +1,32 @@
+127.0.0.1	localhost
+127.0.1.1	ravikiranks
+172.16.254.1	airtel4grouter.cpe
+
+127.0.0.1 adclick.g.doublecklick.net
+127.0.0.1 b.scorecardresearch.com
+127.0.0.1 bounceexchange.com
+127.0.0.1 bs.serving-sys.com
+127.0.0.1 content.bitsontherun.com
+127.0.0.1 core.insightexpressai.com
+127.0.0.1 doubleclick.net
+127.0.0.1 ds.serving-sys.com
+127.0.0.1 googleadservices.com
+127.0.0.1 googleads.g.doubleclick.net
+127.0.0.1 js.moatads.com
+127.0.0.1 pagead2.googlesyndication.com
+127.0.0.1 partner.googleadservices.com
+127.0.0.1 pubads.g.doubleclick.net
+127.0.0.1 s0.2mdn.net
+127.0.0.1 securepubads.g.doubleclick.net
+127.0.0.1 tpc.googlesyndication.com
+127.0.0.1 video-ad-stats.googlesyndication.com
+127.0.0.1 www.googleadservices.com
+127.0.0.1 www.googletagservices.com
+127.0.0.1 tpc.googlesyndication.com
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
