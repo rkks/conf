@@ -30,8 +30,8 @@ else
     exec gnome-session &
 fi
 
-# No xterm. Can not over-ride the copy/paste shortcuts on Mac
-gnome-terminal --hide-menubar --full-screen --window &
-#xterm -geometry 100x20 -fa courier -fs 12 -ls -title "$VNCDESKTOP Desktop" -bg white &
+# No xterm. Can not over-ride the copy/paste shortcuts on Mac. --full-screen
+#gnome-terminal --hide-menubar --maximize --window &
+xterm -geometry 100x20 -fa courier -fs 12 -ls -title "$VNCDESKTOP Desktop" -bg white &
 #konsole --nomenubar --vt_sz 160x40 -T "$VNCDESKTOP Desktop" --tn xterm &
 #vncserver-virtual -kill $DISPLAY

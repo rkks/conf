@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 13/May/2020 02:55:16 PDT
+" MODIFIED: 12/Nov/2020 22:49:37 PST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -158,7 +158,7 @@ set nolist                          " disables linebreak; only visual changes, n
 set shiftround                      " Round indent to multiples of shiftwidth
 "set nostartofline                   " Set to keep cursor at same horizontal location during scrolling
 
-set ignorecase                      " makes searches case insensitive...
+"set ignorecase                      " makes searches case insensitive...
 set showmatch                       " show matching brackets/braces/parantheses.
 set hlsearch                        " highlight matches
 set incsearch                       " show matches as regular expression typed

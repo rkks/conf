@@ -1,6 +1,6 @@
 #  DETAILS: git global configuration to be used.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 16/Mar/2020 07:21:14 PDT
+# MODIFIED: 20/Jan/2021 21:38:34 PST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -82,8 +82,10 @@
     chk = apply -v -p0 --check --ignore-whitespace  # check if patch file is fine. Assumes diff with --no-prefix option, gnu-diff style.
     pat = apply -v -p0 --ignore-whitespace          # apply the patch. Assumes diff generated with --no-prefix option
     rev = !bash -c 'rd=rev_$RANDOM.diff && git dir >> $rd && git pat -R $rd && echo \"Reversed diff in $rd\" && unset rd'  # reverse all changes
-    revu= !bash -c 'rd=revu_$RANDOM.diff && git dif >> $rd && git pat -R $rd && echo \"Reversed unstaged diff in $rd\" && unset rd'  # reverse unstaged changes
 
+    check   = apply -v --check --ignore-whitespace  # check if patch file is fine. Assumes diff with --no-prefix option, gnu-diff style.
+    patch   = apply -v --ignore-whitespace          # apply the patch. Assumes diff generated with --no-prefix option
+    reverse = !bash -c 'rd=revu_$RANDOM.diff && git dih >> $rd && git pat -R $rd && echo \"Reversed unstaged diff in $rd\" && unset rd'  # reverse unstaged changes
     create  = !bash -c 'git init && cp -f ~/conf/gitattributes .gitattributes && git add . && git commit -m \"First commit\"'  # init git repo
     amend   = commit --amend            # fix last commit. --no-edit if no need to edit commit log
     diffstat= diff --stat -r HEAD       # show summary of all changes from last commit
@@ -97,8 +99,8 @@
     mergeb  = "!f(){ git merge $@ && return || git mergetool; }; f"     # automagically invokes vimdiff if conflicts seen
     rebaseb = "!f(){ git rebase $@ && return || git mergetool; }; f"    # automagically invokes vimdiff if conflicts seen
     brclean = "!f(){ git branch --merged ${1-master} | grep -v \"${1-master}$\" | xargs -r git branch -d; }; f" # delete merged local branches
-    remoturl= "!f(){ git remote set-url ${2-origin} $1; return $?; }; f"    # change remote url for github repo from https to ssh
-    pullmerge = !bash -c '!f(){ git dir > git pull $@ && return || git mergetool; }; f'   # copy a commit from another branch with source info. hash is unique across branches
+    remturl = "!f(){ git remote set-url ${2-origin} $1; return $?; }; f"    # change remote url for github repo from https to ssh
+    pulmerg = !bash -c '!f(){ git dir > git pull $@ && return || git mergetool; }; f'   # copy a commit from another branch with source info. hash is unique across branches
     save = !sh -c 'export PREV=$(git symbolic-ref HEAD|cut -d/ -f3-) && git checkout -b "$1" && git commit -am "$1" && git checkout "$PREV"' -
 
     # 'git add -u' - add deleted files, but not new files. 'git add .' - add current & new files, but not deleted files.
@@ -112,12 +114,13 @@
     gk = !gitk --all&
     gx = !gitx --all
     ig = status --ignored                   # ignored directory/files
-    lg = log -W -p HEAD master              # timeline
-    #la = log --author=James             # git log --after=01/01/2019 git log --before=01/01/2019 
+    lg = log -W -p HEAD                     # timeline
+    la = log -p --author="Ravikiran"        # --after="2019-01-24" --before="2019-04-16"
     li = ls-files -o                        # show all ignored files
     ls = log --name-status -r --oneline     # list of files changed. ex, cvs update. --date=short --pretty=format:\"%H | %ad\"
     lu = log -u                             # show changes to a file.
     lx = log --all --graph --decorate --simplify-by-decoration  # graph
+    pa = !git pull --recurse-submodules && git submodule update
     rc = rebase --continue
     rs = rebase --skip
     ra = rebase --abort
