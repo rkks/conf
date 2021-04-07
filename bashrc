@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 07/Apr/2021 02:03:52 PDT
+# MODIFIED: 07/Apr/2021 02:08:30 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -9,14 +9,6 @@
 [[ $BASH != *bash* ]] && { return $EINVAL; }        # don't echo anything here, spoils ubuntu startup
 [[ $- == *i* ]] && { IUSER=yes; export PS1="[\D{%d/%b/%y} \t|\u@\h:\w!$?]\r\n$ "; } || { unset IUSER; } # interactive shell.
 [[ $0 == -* ]]  && { LOGIN=yes; } || { unset LOGIN; }                                       # detect login shell
-
-if [ ! -z $(which toilet) ]; then
-    toilet -f wideterm -F gay PLEASE DO NOT USE THIS MACHINE, CONTACT RAVIKIRANKS@VERSA-NETWORKS.COM
-else
-    printf "##########################################################################\n"
-    printf "# PLEASE DO NOT USE THIS MACHINE, CONTACT RAVIKIRANKS@VERSA-NETWORKS.COM #\n"
-    printf "##########################################################################\n"
-fi
 
 #======================================= PreLoad =========================================
 #set -uvx   # debugging. exec 2> ~/bash.$$.log && exit 0
@@ -33,6 +25,14 @@ export PATH=".:$HOME/scripts/bin:$HOME/tools/$UNAMES/bin:/usr/games:/usr/gnu/bin
 
 [[ -e ~/.bashrc.ext ]] && { source ~/.bashrc.ext; }         # External bashrc.
 test -z "$IUSER" && return
+
+if [ ! -z $(which toilet) ]; then
+    toilet -f wideterm -F gay PLEASE DO NOT USE THIS MACHINE, CONTACT RAVIKIRANKS@VERSA-NETWORKS.COM
+else
+    printf "##########################################################################\n"
+    printf "# PLEASE DO NOT USE THIS MACHINE, CONTACT RAVIKIRANKS@VERSA-NETWORKS.COM #\n"
+    printf "##########################################################################\n"
+fi
 
 [[ -f $HOME/conf/custom/bashopts ]] && { source $HOME/conf/custom/bashopts; }    # history+term enable always
 [[ -f $HOME/.bashrc.dev ]] && alias rk="source ~/.bashrc.dev"   # Never-ever source bashrc.dev in .bashrc. Breaks external scripts
