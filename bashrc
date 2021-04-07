@@ -1,15 +1,22 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 08/Feb/2021 09:46:47 IST
+# MODIFIED: 07/Apr/2021 02:03:52 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
 
 # Always leave the code you're editing a little better than you found it
-
 [[ $BASH != *bash* ]] && { return $EINVAL; }        # don't echo anything here, spoils ubuntu startup
 [[ $- == *i* ]] && { IUSER=yes; export PS1="[\D{%d/%b/%y} \t|\u@\h:\w!$?]\r\n$ "; } || { unset IUSER; } # interactive shell.
 [[ $0 == -* ]]  && { LOGIN=yes; } || { unset LOGIN; }                                       # detect login shell
+
+if [ ! -z $(which toilet) ]; then
+    toilet -f wideterm -F gay PLEASE DO NOT USE THIS MACHINE, CONTACT RAVIKIRANKS@VERSA-NETWORKS.COM
+else
+    printf "##########################################################################\n"
+    printf "# PLEASE DO NOT USE THIS MACHINE, CONTACT RAVIKIRANKS@VERSA-NETWORKS.COM #\n"
+    printf "##########################################################################\n"
+fi
 
 #======================================= PreLoad =========================================
 #set -uvx   # debugging. exec 2> ~/bash.$$.log && exit 0

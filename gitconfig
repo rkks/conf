@@ -1,6 +1,6 @@
 #  DETAILS: git global configuration to be used.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 20/Jan/2021 21:38:34 PST
+# MODIFIED: 16/Feb/2021 20:09:21 PST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -131,7 +131,8 @@
     sh = show -M --no-prefix
     sm = show -m                            # show merge diff
     ss = "!f(){ test $# -eq 0 && echo "input stash comments" || git stash save $*; return $?; }; f"         # save current changes into git stash and clean them
-    st = status                             # repo status
+    st = status -uno                        # repo status
+    su = status -uall                       # repo status
     wc = log --stat --no-merges HEAD        # list all commit filenames, stats; excluding merges. Enhanced whatchanged
 
     dump = cat-file -p
