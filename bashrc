@@ -27,7 +27,7 @@ export PATH=".:$HOME/scripts/bin:$HOME/tools/$UNAMES/bin:/usr/games:/usr/gnu/bin
 test -z "$IUSER" && return
 
 if [ ! -z $(which toilet) ]; then
-    toilet -f wideterm -F gay PLEASE DO NOT USE THIS MACHINE, CONTACT RAVIKIRANKS@VERSA-NETWORKS.COM
+    toilet -f wideterm -F border "# -- PLEASE DO NOT USE THIS MACHINE -- ##CONTACT:RAVIKIRANKS@VERSA-NETWORKS.COM#"
 else
     printf "##########################################################################\n"
     printf "# PLEASE DO NOT USE THIS MACHINE, CONTACT RAVIKIRANKS@VERSA-NETWORKS.COM #\n"
