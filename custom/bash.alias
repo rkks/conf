@@ -67,7 +67,7 @@ alias xs='cd'
 (own hexdump)   && alias hexdumpc='hexdump -C'              # canonical hex dump
 (own od)        && alias hd='od -Ax -tx1z -v'               # what most people want from od (hexdump)
 (own script)    && alias scripta='script -a script-$(date +%Y%m%d-%T).log'
-(own ssh)       && alias ssh='ssh -Y -X -A -p 22'           # -vvv for extra debug logs. X11 forwarding using -Y instead of -X
+(own ssh)       && alias ssh='ssh -Y -X -A -v'              # -p 22 -vvv for extra debug logs. X11 forwarding using -Y instead of -X
 (own ssh-keygen)&& alias ssh-keygen-rk='f(){ ssh-keygen -f $1 -C $1; }; f'
 (own ssh-keygen)&& alias ssh-keygen-rm='f(){ ssh-keygen -R $1; rm -f ~/.ssh/sockets/*$1*; }; f'
 # Good way to check current sessions: Each ~/.vnc/<prefix>*.pid file indicates a VNC session opened by user in prefix host
