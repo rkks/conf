@@ -45,6 +45,7 @@ alias psux='ps -ux'
 alias tf='tail -f'
 alias historyw='history -w'     # write unsaved history to ~/.bash_history
 alias historyr='history -n'     # read unread history from ~/.bash_history and append to current history
+alias dnsmasqr='sudo invoke-rc.d dnsmasq restart'   # reload new config
 
 # typing mistakes
 alias xs='cd'
