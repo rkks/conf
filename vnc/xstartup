@@ -12,26 +12,23 @@
 # Set background as solid grey color. Any other color options can be chosen
 xsetroot -solid grey
 # SendPrimary=1/0 : to enable/disable auto-copy of selected text. Iconify/No-window
-vncconfig SendPrimary=1 -iconic -nowin &
+#vncconfig SendPrimary=1 -iconic -nowin &
+vncconfig -iconic -nowin &
 
-# Start Window manager in order of preference:
-if which metacity > /dev/null 2>&1; then metacity &
-elif which startfluxbox > /dev/null 2>&1; then startfluxbox &
-elif which startxfce4 > /dev/null 2>&1; then startxfce4 &
-elif which twm > /dev/null 2>&1; then twm &
-elif which fwvm2 > /dev/null 2>&1; then fwvm2 &
-elif which awesome > /dev/null 2>&1; then awesome &
-elif which wmaker > /dev/null 2>&1; then wmaker &
-elif which startx > /dev/null 2>&1; then startx &
-elif which startkde > /dev/null 2>&1; then startkde &
-elif [ -x /etc/X11/Xsession ]; then /etc/X11/Xsession
-else
-    # No other window manager found
-    exec gnome-session &
-fi
+dbus-launch --exit-with-session gnome-session &
+#gnome-session &
+
+# Window manager in order of pref: startfluxbox startxfce4 fwvm2 awesome wmaker
+#if which twm > /dev/null 2>&1; then twm &
+#elif which startkde > /dev/null 2>&1; then startkde &
+#elif which gnome-session > /dev/null 2>&1; then gnome-session &
+#elif [ -x /etc/X11/Xsession ]; then /etc/X11/Xsession
+#else
+#    exec startx &    # No other window manager found
+#fi
 
 # No xterm. Can not over-ride the copy/paste shortcuts on Mac. --full-screen
-#gnome-terminal --hide-menubar --maximize --window &
-xterm -geometry 100x20 -fa courier -fs 12 -ls -title "$VNCDESKTOP Desktop" -bg white &
+#gnome-terminal --maximize --window &    # --hide-menubar
+#xterm -geometry 100x20 -fa courier -fs 12 -ls -title "$VNCDESKTOP Desktop" -bg white &
 #konsole --nomenubar --vt_sz 160x40 -T "$VNCDESKTOP Desktop" --tn xterm &
 #vncserver-virtual -kill $DISPLAY

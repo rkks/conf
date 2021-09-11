@@ -72,7 +72,7 @@ alias xs='cd'
 (own ssh-keygen)&& alias ssh-keygen-rk='f(){ ssh-keygen -f $1 -C $1; }; f'
 (own ssh-keygen)&& alias ssh-keygen-rm='f(){ ssh-keygen -R $1; rm -f ~/.ssh/sockets/*$1*; }; f'
 # Good way to check current sessions: Each ~/.vnc/<prefix>*.pid file indicates a VNC session opened by user in prefix host
-(own vncserver) && alias vncserver='vncserver -geometry 1920x1080'   # if copy-paste doesnt work, start 'vncconfig &'
+(own vncserver) && alias vncserver='vncserver -localhost no -geometry 1920x1080'   # if copy-paste doesnt work, start 'vncconfig &'
 (own konsole)   && alias k='konsole --nomenubar --vt_sz 100x20 &'
 
 # handy alias (pbcopy in mac) in xterm to copy text to clipboard via pipe cmd. ex: $ ls -l | copy
