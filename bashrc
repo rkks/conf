@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 11/Sep/2021 15:45:01 IST
+# MODIFIED: 12/Sep/2021 11:47:40 IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -24,7 +24,6 @@ umask 0022  # override default umask in /etc/profile. 0022 is too limiting, 0077
 export PATH=".:$HOME/scripts/bin:$HOME/tools/$UNAMES/bin:/usr/games:/usr/gnu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 [[ -e ~/.bashrc.ext ]] && { source ~/.bashrc.ext; }         # External bashrc.
-[[ ! -z $LOGIN && -e ~/scripts/bin/vnc.sh ]] && { ~/scripts/bin/vnc.sh -s 1; }  # VNC svc.
 test -z "$IUSER" && return
 
 if [ ! -z $(which toilet) ]; then

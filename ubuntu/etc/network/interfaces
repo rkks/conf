@@ -3,10 +3,13 @@
 #
 # interfaces(5) file used by ifup(8) and ifdown(8)
 # Include files from /etc/network/interfaces.d:
-#    dns-nameserver 10.48.0.99
+#    dns-nameserver 208.67.222.222      # OpenDNS
+#    dns-nameserver 208.67.220.220      # OpenDNS
 #    dns-nameserver 202.38.180.7
-#    dns-nameserver 10.208.0.3
-source-directory /etc/network/interfaces.d
+# No DNS details here, use dnsmasq to toggle between Office and Internet DNS
+#    dns-search abc.com
+#    dns-nameservers 202.38.180.7 8.8.8.8
+#source-directory /etc/network/interfaces.d
 
 # The loopback network interface
 auto lo
@@ -15,11 +18,17 @@ iface lo inet loopback
 # The primary network interface
 allow-hotplug enp0s31f6
 auto enp0s31f6
-iface enp0s31f6 inet dhcp
-    dns-search versa-networks.com
-    dns-nameservers 202.38.180.7 10.208.0.3 10.48.0.99
+iface enp0s31f6 inet static
+	address 192.168.Y.XX
+	netmask 255.255.255.0
+	gateway 192.168.Y.1
 
-auto wlp4s0
-iface wlp4s0 inet dhcp
-    pre-up  /etc/init.d/wpa.sh start
-    post-down /etc/init.d/wpa.sh stop
+#pre-up wpa_supplicant -B -Dwext,nl80211 -i wlp4s0 -c /etc/wpa_supplicant.conf -f /var/log/wpa_supplicant.log -t -d
+#allow-hotplug wlp4s0
+#auto wlp4s0
+#iface wlp4s0 inet dhcp
+#    wpa-ssid EFNet
+#    pre-up wpa_supplicant -B -Dnl80211 -i wlp4s0 -c /etc/wpa_supplicant.conf -f /var/log/wpa_supplicant.log -t -d
+#    post-down wpa_cli -i wlp4s0 terminate
+#    pre-up  /etc/init.d/wpa.sh start
+#    post-down /etc/init.d/wpa.sh stop
