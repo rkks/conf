@@ -55,7 +55,12 @@ set width 0
 #layout asm
 #layout reg
 
+# Default is att (AT&T)
 set disassembly-flavor intel
+
+# Set default base to hexadecimal
+set input-radix 0x10
+set output-radix 0x10
 
 # Source scripts
 #source ~/scripts/gdb/alias.gdb
