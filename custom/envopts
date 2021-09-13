@@ -26,8 +26,8 @@ FIGNORE="~:CVS:#:.pyc:.swp:.swa:apache-solr-*"  # ignore backups, CVS directorie
 export PAGER=less;      # Export is required for it to work
 
 # Locale Stuff - ANSI - For Grep
-LC_ALL=C
-LANG=C
+#LC_ALL=C
+#LANG=C
 
 # X11-over-ssh enables clients to open GUI apps natively. connect as: 'ssh user@host -X'
 #xhost +                    # allow clients from any host. For 'cannot open display' problem.
