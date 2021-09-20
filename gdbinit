@@ -1,22 +1,15 @@
 # GDB settings
 
-#Simple Command
-#define <command-name>
-#   [gdb commands here]
-#end
-#document <command-name>
-#   <help text>
-#end
-
-#Auto Commands
-#break <some-point>
-#commands
-#silent
-#   [gdb commands here]
-#end
+# tbreak <file/sym>:[loc]   - Temporary breakpoints
+# break <sym>:loc if (cond) - Conditional breakpoint
+# rbreak file::<regex>      - Regex match breakpoint
 
 set logging file ~/.gdb.log
 set logging on
+
+#show solib-search-path
+#set solib-search-path /non/standard/path/to/libs
+#info sharedlibrary
 
 # history across invocations. up/down arrows do not work, so disable.
 #set history save on
