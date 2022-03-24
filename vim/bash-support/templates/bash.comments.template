@@ -22,7 +22,7 @@
 #
 ##set -uvx   # Warn unset vars, Verbose (echo each command), Enable debug mode
 #
-#PATH=/usr/bin:/usr/sbin:.:/auto/opt/bin:/bin:/sbin
+#PATH="/usr/bin:/usr/sbin:.:/auto/opt/bin:/bin:/sbin"
 #
 #[[ "$(basename |FILENAME|)" == "$(basename -- $0)" && -f $HOME/.bashrc.dev ]] && { source $HOME/.bashrc.dev; }
 #
