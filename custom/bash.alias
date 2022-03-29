@@ -214,8 +214,7 @@ if own tmux.sh; then
     alias ta='tmux.sh -a rk'
     alias tn='tmux.sh -n rk'
     alias te='tmux.sh -e ~/.tmux_cmds'
-    alias tne='tmux.sh -n rk -e ~/.tmux_cmds'
-    #alias ts='tmux.sh -s rk'   # dangerous
+    alias ts='tmux.sh -s'               # dangerous to auto-input sess-name 'rk'
     alias tmux='env -i TERM="$TERM" PATH="$PATH" tmux -2'    # always assume 256 color support. Key to bright colors
 fi
 
