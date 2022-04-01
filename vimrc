@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 19/Mar/2021 11:52:48 IST
+" MODIFIED: 27/Oct/2021 21:39:25 IST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -323,7 +323,7 @@ highlight def link cCustomFunc Function
 
 " Put color scheme before other color overrides. Colorscheme depends on term settings.
 "let g:solarized_termcolors=256
-colorscheme solarized "default peaksea lucius peachpuff louver inkpot trivial256 hemisu rkks-linux zenburn habiLight ir_black oceandeep
+colorscheme tango "solarized default peaksea lucius peachpuff louver inkpot trivial256 hemisu rkks-linux zenburn habiLight ir_black oceandeep
 " Colorschme ==============================================================
 
 " Plugin Configs ==========================================================

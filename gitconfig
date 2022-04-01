@@ -1,6 +1,6 @@
 #  DETAILS: git global configuration to be used.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 23/Mar/2022 21:23:52 PDT
+# MODIFIED: 01/Apr/2022 14:02:53 IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -131,7 +131,7 @@
     sd = "!f(){ test $# -ne 1 && echo "input stash number" || git stash drop "stash@{$1}"; return $?; }; f"    # drop given git stash. Never use git stash clear
     sl = stash list                         # list all git stashes
     sh = show -M --no-prefix
-    si = !git submodule update --init       # initialize all submodules in repo
+    si = !git submodule update --init --recursive   # initialize all submodules in repo
     sm = show -m                            # show merge diff
     ss = "!f(){ test $# -eq 0 && echo "input stash comments" || git stash save $*; return $?; }; f"         # save current changes into git stash and clean them
     st = status -uall                       # repo status
