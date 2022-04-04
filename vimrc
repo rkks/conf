@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 27/Oct/2021 21:39:25 IST
+" MODIFIED: 02/Apr/2022 15:46:51 IST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -369,6 +369,7 @@ if !exists("autocommands_loaded")
     autocmd BufRead,BufNewFile *.yang setfiletype yang
     autocmd BufRead,BufNewFile wscript setfiletype python
     autocmd FileType gitcommit set textwidth=72
+    autocmd FileType yaml setlocal ts=2 sw=2
 
     " update MODIFIED time stamp on write. Automatically restores the cursor position internally.
     autocmd BufWritePre,FileWritePre * call UpdateTimeStamp()
