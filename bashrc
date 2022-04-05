@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 04/Apr/2022 17:16:11 IST
+# MODIFIED: 04/Apr/2022 09:01:59 PDT
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -24,7 +24,7 @@ umask 0022  # override default umask in /etc/profile. 0022 is too limiting, 0077
 export PATH=".:$HOME/scripts/bin:$HOME/tools/$UNAMES/bin:/usr/games:/usr/gnu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 [[ -e ~/.bashrc.ext ]] && { source ~/.bashrc.ext; }         # External bashrc.
-[[ -z $COMP_EMAIL ]] && { export NOTIFY_EMAIL=friends4web@gmail.com; } || { export NOTIFY_EMAIL=$COMP_EMAIL; }  # used by file_rotate()/batch_run()
+[[ -z $COMP_EMAIL ]] && { export MAILTO=friends4web@gmail.com; } || { export MAILTO=$COMP_EMAIL; }  # used by file_rotate()/batch_run()
 test -z "$IUSER" && return
 
 if [ ! -z $(which toilet) ]; then

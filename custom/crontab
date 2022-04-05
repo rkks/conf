@@ -1,6 +1,6 @@
 # HOME/PATH/SHELL/MAILTO pre-defined by Cron. Only redefine the must.
 # Rest of the environment settings come from ~/.bashrc
-MAILTO=ravikiranks@versa-networks.com
+MAILTO=friends4web@gmail.com
 SHELL=/bin/bash
 BASH_ENV=~/.bashrc
 #.---------------- minute (0 - 59)
@@ -12,6 +12,6 @@ BASH_ENV=~/.bashrc
 #*  *  *  *  *  <command to be executed>
 # m h  dom mon dow   command
 # Run cron handler script at 11:00PM (21:10hrs) every day
-#00 21 * * * ~/scripts/bin/cron.sh -n >> ~/.logs/cron.log 2>&1
+00 21 * * * ~/scripts/bin/cron.sh -n >> ~/.logs/cron.sh.log 2>&1
 # Every 2 minutes (minutes step by 2), check if vpn is present, otherwise start
-*/2 * * * * ~/scripts/bin/cron.sh -v >> ~/.logs/cron.sh.log 2>&1
+#*/2 * * * * ~/scripts/bin/cron.sh -v >> ~/.logs/cron.sh.log 2>&1

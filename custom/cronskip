@@ -1,4 +1,11 @@
-backup
+# one line for given operation OR, given operation for repo as 'op_update4repo'
+database_update4/home/ravikiranks/conf
+database_update4/home/ravikiranks/scripts
+database_update4/home/ravikiranks/rkks
+build_update4/home/ravikiranks/conf
+build_update4/home/ravikiranks/scripts
+build_update4/home/ravikiranks/rkks
+build_update4/home/ravikiranks/vers
 reserve
 sync
 download
