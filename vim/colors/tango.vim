@@ -1,7 +1,7 @@
 " Vim color file
 " Author: Taylon Silmer <taylonsilva@gmail.com>
 " Version: 0.1
-set background=light
+"set background=dark
 highlight clear
 if exists("syntax_on")
     syntax reset

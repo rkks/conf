@@ -22,6 +22,7 @@ iface enp0s31f6 inet static
 	address 192.168.Y.XX
 	netmask 255.255.255.0
 	gateway 192.168.Y.1
+    #up route add -net 192.168.0.0/16 gw 192.168.0.1 dev enp0s31f6
 
 #pre-up wpa_supplicant -B -Dwext,nl80211 -i wlp4s0 -c /etc/wpa_supplicant.conf -f /var/log/wpa_supplicant.log -t -d
 #allow-hotplug wlp4s0

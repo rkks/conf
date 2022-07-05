@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 02/Apr/2022 15:46:51 IST
+" MODIFIED: 02/05/2022 02:02:41 PM IST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -34,7 +34,7 @@ function! UpdateTimeStamp()
         if modified_line_no != 0 && modified_line_no < 8
             " Timestamp format: strftime("%d %b %Y %X")
             "exe 's/'.s:timeStampLeader.'.*/'.s:timeStampLeader.strftime("%d %m %y %X %Z")
-            let tstamp = strftime('%d').'\/'.strftime('%b').'\/'.strftime('%Y').strftime(' %H:%M:%S').strftime(' %Z')
+            let tstamp = strftime('%d').'\/'.strftime('%m').'\/'.strftime('%Y').strftime(' %r')
             exe 's/'.s:timeStampLeader.'.*/'.s:timeStampLeader.tstamp
         endif
         " Restore cursor position. Alternate - call setpos('.' , save_cursor)
@@ -323,7 +323,7 @@ highlight def link cCustomFunc Function
 
 " Put color scheme before other color overrides. Colorscheme depends on term settings.
 "let g:solarized_termcolors=256
-colorscheme tango "solarized default peaksea lucius peachpuff louver inkpot trivial256 hemisu rkks-linux zenburn habiLight ir_black oceandeep
+colorscheme solarized "tango default peaksea lucius peachpuff louver inkpot trivial256 hemisu rkks-linux zenburn habiLight ir_black oceandeep
 " Colorschme ==============================================================
 
 " Plugin Configs ==========================================================
