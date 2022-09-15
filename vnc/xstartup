@@ -15,20 +15,19 @@ xsetroot -solid grey
 #vncconfig SendPrimary=1 -iconic -nowin &
 vncconfig -iconic -nowin &
 
-dbus-launch --exit-with-session gnome-session &
-#gnome-session &
+#dbus-launch --exit-with-session gnome-session &
 
 # Window manager in order of pref: startfluxbox startxfce4 fwvm2 awesome wmaker
-#if which twm > /dev/null 2>&1; then twm &
-#elif which startkde > /dev/null 2>&1; then startkde &
-#elif which gnome-session > /dev/null 2>&1; then gnome-session &
-#elif [ -x /etc/X11/Xsession ]; then /etc/X11/Xsession
-#else
-#    exec startx &    # No other window manager found
-#fi
+if which twm > /dev/null 2>&1; then twm &
+elif which startkde > /dev/null 2>&1; then startkde &
+elif which gnome-session > /dev/null 2>&1; then gnome-session &
+elif [ -x /etc/X11/Xsession ]; then /etc/X11/Xsession
+else
+    exec startx &    # No other window manager found
+fi
 
 # No xterm. Can not over-ride the copy/paste shortcuts on Mac. --full-screen
-#gnome-terminal --maximize --window &    # --hide-menubar
+gnome-terminal --maximize --window &    # --hide-menubar
 #xterm -geometry 100x20 -fa courier -fs 12 -ls -title "$VNCDESKTOP Desktop" -bg white &
 #konsole --nomenubar --vt_sz 160x40 -T "$VNCDESKTOP Desktop" --tn xterm &
 #vncserver-virtual -kill $DISPLAY
