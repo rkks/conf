@@ -35,7 +35,7 @@ export PAGER=less;      # Export is required for it to work
 
 (own firefox)   && BROWSER=$FIREFOX         # for xdg-open
 (own svn)   && { export SVN_EDITOR=vim; }    # SVN stuff
-(own git)   && { export GIT_EDITOR=vim; export GPG_TTY=$(tty); }    # GIT stuff
+(own git)   && { export GIT_EDITOR=vim; export GPG_TTY=$(tty); GIT_SSH_COMMAND="ssh -v"; }    # GIT stuff. ssh -vvvv for extra verbose
 # CSCOPE_EDITOR is unnecessary with EDITOR defined. For vim, emacs CSCOPE_LINEFLAG_AFTER_FILE=yes; not needed.
 (own vim)   && { export EDITOR=vim; export VISUAL=vim; }    # for mc/cvs/svn/etc. 'export' is must, else confuses cscope
 

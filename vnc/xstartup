@@ -15,7 +15,10 @@ xsetroot -solid grey
 #vncconfig SendPrimary=1 -iconic -nowin &
 vncconfig -iconic -nowin &
 
+# Before systemd, we had to run dbus manually, along with Window Manager service
+# And way to do it was through dbus-launch. Now need to do that now.
 #dbus-launch --exit-with-session gnome-session &
+gnome-session &
 
 # Window manager in order of pref: startfluxbox startxfce4 fwvm2 awesome wmaker
 if which twm > /dev/null 2>&1; then twm &

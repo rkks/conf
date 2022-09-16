@@ -234,10 +234,10 @@ if own convert.sh; then
     alias b2h='convert.sh -f b -t h'
 fi
 
-if own network.sh; then
-    alias pinga='network.sh -p'
-    alias nslookupa='network.sh -d'
-fi
+#if own network.sh; then
+#    alias pinga='network.sh -p'
+#    alias nslookupa='network.sh -d'
+#fi
 
 if own VBoxManage; then
     alias vb='VBoxManage'
