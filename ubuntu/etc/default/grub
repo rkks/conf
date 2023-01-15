@@ -3,7 +3,8 @@
 # For full documentation of the options in this file, see:
 #   info -f grub -n 'Simple configuration'
 
-GRUB_DEFAULT=0
+# Grub menu entries start with index 0
+GRUB_DEFAULT="1>2" # 2nd index in main menu, 3rd index in sub-menu, default=0
 #GRUB_HIDDEN_TIMEOUT=0
 #GRUB_HIDDEN_TIMEOUT_QUIET=true
 GRUB_TIMEOUT=10

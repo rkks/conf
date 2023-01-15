@@ -31,18 +31,19 @@
 #    echo "Usage: |FILENAME| [-h|]"
 #    echo "Options:"
 #    echo "  -h          - print this help"
+#    echo "  -z          - dry run thi script"
 #}
 #
 ## Each shell script has to be independently testable.
 ## It can then be included in other files for functions.
 #main()
 #{
-#    PARSE_OPTS="h"
+#    PARSE_OPTS="hz"
 #    local opts_found=0
 #    while getopts ":$PARSE_OPTS" opt; do
 #        case $opt in
 #        [a-zA-Z0-9])
-#            log DEBUG "-$opt was triggered, Parameter: $OPTARG"
+#            #log DEBUG "-$opt was triggered, Parameter: $OPTARG"
 #            local "opt_$opt"=1 && local "optarg_$opt"="$OPTARG"
 #            ;;
 #        \?)
@@ -60,6 +61,7 @@
 #        usage && exit $EINVAL;
 #    fi
 #
+#    ((opt_z)) && { DRY_RUN=1; LOG_TTY=1; }
 #    ((opt_h)) && { usage; }
 #
 #    exit 0;

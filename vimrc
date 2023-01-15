@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 15/09/2022 11:41:28 AM IST
+" MODIFIED: 12/01/2023 03:53:23 PM IST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -73,13 +73,16 @@ endfunction
 endif
 
 " Automatically give exec permission if file begins with #! and contains '/bin/' in the path
+if !exists("*MakeScriptExecuteable")
 function! MakeScriptExecuteable()
     if getline(1) =~ "^#!.*/bin/"
         silent !chmod +x <afile>
     endif
 endfunction
+endif
 
 " Autoload cscope database somewhere up in the directory tree.
+if !exists("*LoadCscope")
 function! LoadCscope()
     let db = findfile("cscope.out", ".;")
     if (!empty(db))
@@ -89,8 +92,10 @@ function! LoadCscope()
         set cscopeverbose
     endif
 endfunction
+endif
 
 " Load external vimrc if present
+if !exists("*LoadExtVimrc")
 function! LoadExtVimrc()
     if filereadable(glob("~/.vimrc.ext"))
         source ~/.vimrc.ext
@@ -101,8 +106,10 @@ function! LoadExtVimrc()
         execute 'source ' . getcwd() . '/.vimrc.local'
     endif
 endfunction
+endif
 
 " Toggles between horizontal and vertical splits
+if !exists("*ToggleWindowSplit")
 function! ToggleWindowSplit()
   if !exists('t:splitType')
     let t:splitType = 'horizontal'
@@ -117,7 +124,35 @@ function! ToggleWindowSplit()
     let t:splitType = 'vertical'
   endif
 endfunction
+endif
 
+if !exists("*HTMLSettings")
+function! HTMLSettings()
+    set tabstop=2 softtabstop=2 shiftwidth=2
+endfunction
+endif
+
+if !exists("*MarkdownSettings")
+function! MarkdownSettings()
+    set textwidth=160 wrapmargin=0 linebreak syntax=markdown
+endfunction
+endif
+
+if !exists("*CSettings")
+function! CSettings()
+    set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=81 wrapmargin=0
+endfunction
+endif
+
+" Now session stored per directory
+if !exists("*PythonSettings")
+function! PythonSettings()
+    " Store file names, position, and other info
+    setfiletype python
+    set encoding=utf-8 foldmethod=indent autoindent nofoldenable
+    set tabstop=2 softtabstop=2 shiftwidth=2
+endfunction
+endif
 " Functions ===============================================================
 
 " Common command mistakes =================================================
@@ -144,7 +179,7 @@ set ttyfast                         " we have a fast terminal
 set ttybuiltin                      " (default) use internal termcap
 set restorescreen                   " restore screen contents when exiting vim
 set startofline                     " place cursor on non-white char of line
-set undofile                        " place .<filename>.un~ file in file dir
+"set undofile                        " place .<filename>.un~ file in file dir
 
 set noautoindent                    " set automatic indenting - deprecated in favor of smartindent
 set nocindent                       " no cindent initially - later enabled for C files
@@ -203,7 +238,7 @@ set showbreak=->\                   " characters to show on visual-only line-bre
 set shortmess=aoI                   " Set vim to use abbrevations in place of 'long messages'. t - truncates
 set cinoptions=(0                   " C indent func args. Default: cinoptions='0{,0},0),:,0#,!^F,o,O,e'
 set cinoptions+=:0                  " C indent switch-case statements
-set background=dark                 " set background to dark/light. colorscheme may override this
+set background=light                " set background to dark/light. colorscheme may override this
 set visualbell t_vb=                " silence the bell, use a flash instead
 set virtualedit=block               " cursor goes anywhere only in Visual mode
 set iskeyword+=_,@,#,?,%            " these should be treated as part of word.
@@ -296,17 +331,19 @@ nnoremap <silent> <F12> :call BufferList()<CR>
 " maintaining local terminal info data base as ~/.terminfo. commands are:
 " infocmp -L -1 xterm | sed -r 's/(max_colors)#.+/\1#256/' > /tmp/xterm
 " tic /tmp/xterm
-let &t_Co=256       " 256 color -- set t_Co=256
-if &term =~ "xterm"
-    " restore screen after quitting. doesn't work
-    "set t_ti=7[r[?47h t_te=[?47l8
-    if has("terminfo")
-        " To get  press Ctrl-V <Esc>
-        set t_Sf=[3%p1%dm        "set t_AB=[48;5;%dm
-        set t_Sb=[4%p1%dm        "set t_AF=[38;5;%dm
-    else
-        set t_Sf=[3%dm    "set t_AB=[48;5;%dm
-        set t_Sb=[4%dm    "set t_AF=[38;5;%dm
+if exists('$TMUX')
+    let &t_Co=256       " 256 color -- set t_Co=256
+    if &term =~ "xterm"
+        " restore screen after quitting. doesn't work
+        "set t_ti=7[r[?47h t_te=[?47l8
+        if has("terminfo")
+            " To get  press Ctrl-V <Esc>
+            set t_Sf=[3%p1%dm        "set t_AB=[48;5;%dm
+            set t_Sb=[4%p1%dm        "set t_AF=[38;5;%dm
+        else
+            set t_Sf=[3%dm    "set t_AB=[48;5;%dm
+            set t_Sb=[4%dm    "set t_AF=[38;5;%dm
+        endif
     endif
 endif
 
@@ -322,8 +359,8 @@ syn match cCustomFunc  "\w\+\s*(\@=" contains=cCustomParen
 highlight def link cCustomFunc Function
 
 " Put color scheme before other color overrides. Colorscheme depends on term settings.
-"let g:solarized_termcolors=256
-colorscheme solarized "tango default peaksea lucius peachpuff louver inkpot trivial256 hemisu rkks-linux zenburn habiLight ir_black oceandeep
+let g:solarized_termcolors=256
+colorscheme solarized "PaperColor tango default peaksea lucius peachpuff louver inkpot trivial256 hemisu rkks-linux zenburn habiLight ir_black oceandeep
 " Colorschme ==============================================================
 
 " Plugin Configs ==========================================================
@@ -360,14 +397,13 @@ if !exists("autocommands_loaded")
     "autocmd BufEnter *.log colorscheme default
     "autocmd BufEnter *.c,*.h,*.cpp,*.hpp,*.cxx,*.hxx,*.cc colorscheme default
 
-    autocmd BufNewFile,BufRead *.py,*.pyw set encoding=utf-8 foldmethod=indent autoindent nofoldenable
-    autocmd BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp,*.cxx,*.hxx,*.cc set textwidth=81 wrapmargin=0
-    autocmd BufNewFile,BufRead *.txt set textwidth=0 wrapmargin=0 linebreak
-    autocmd BufNewFile,BufRead *.md set textwidth=160 wrapmargin=0 linebreak syntax=markdown
-    autocmd BufNewFile,BufRead *.html,*.htm,*.js,*.css set tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd BufRead,BufNewFile *.proto setfiletype proto
-    autocmd BufRead,BufNewFile *.yang setfiletype yang
-    autocmd BufRead,BufNewFile wscript setfiletype python
+    autocmd BufNewFile,BufRead *.py,*.pyw call PythonSettings()
+    autocmd BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp,*.cxx,*.hxx,*.cc call CSettings()
+    autocmd BufNewFile,BufRead *.md,*.txt call MarkdownSettings()
+    autocmd BufNewFile,BufRead *.html,*.htm,*.js,*.css call HTMLSettings()
+    autocmd BufNewFile,BufRead *.proto setfiletype proto
+    autocmd BufNewFile,BufRead *.yang setfiletype yang
+    autocmd BufNewFile,BufRead wscript,meson.build call PythonSettings()
     autocmd FileType gitcommit set textwidth=72
     autocmd FileType yaml setlocal ts=2 sw=2
 
