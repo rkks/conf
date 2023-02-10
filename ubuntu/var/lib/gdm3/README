@@ -1,0 +1,8 @@
+https://askubuntu.com/questions/1041677/how-to-change-the-login-screen-resolution-in-ubuntu-18-04
+
+# For native monitor resolution support. A sample monitor.xml also present here
+sudo cp ~/.config/monitors.xml /var/lib/gdm3/.config/monitors.xml
+
+## GRUB menu resolution change
+GRUB_GFXMODE=1920x1080
+GRUB_GFXPAYLOAD_LINUX=keep
