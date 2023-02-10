@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 12/01/2023 03:53:23 PM IST
+" MODIFIED: 03/02/2023 11:36:12 AM IST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -238,7 +238,7 @@ set showbreak=->\                   " characters to show on visual-only line-bre
 set shortmess=aoI                   " Set vim to use abbrevations in place of 'long messages'. t - truncates
 set cinoptions=(0                   " C indent func args. Default: cinoptions='0{,0},0),:,0#,!^F,o,O,e'
 set cinoptions+=:0                  " C indent switch-case statements
-set background=light                " set background to dark/light. colorscheme may override this
+set background=dark                 " set background to dark/light. colorscheme may override this
 set visualbell t_vb=                " silence the bell, use a flash instead
 set virtualedit=block               " cursor goes anywhere only in Visual mode
 set iskeyword+=_,@,#,?,%            " these should be treated as part of word.
@@ -359,8 +359,8 @@ syn match cCustomFunc  "\w\+\s*(\@=" contains=cCustomParen
 highlight def link cCustomFunc Function
 
 " Put color scheme before other color overrides. Colorscheme depends on term settings.
-let g:solarized_termcolors=256
-colorscheme solarized "PaperColor tango default peaksea lucius peachpuff louver inkpot trivial256 hemisu rkks-linux zenburn habiLight ir_black oceandeep
+"let g:solarized_termcolors=256
+colorscheme flattened_dark "solarized PaperColor tango default peaksea lucius peachpuff louver inkpot trivial256 hemisu rkks-linux zenburn habiLight ir_black oceandeep
 " Colorschme ==============================================================
 
 " Plugin Configs ==========================================================
@@ -397,13 +397,12 @@ if !exists("autocommands_loaded")
     "autocmd BufEnter *.log colorscheme default
     "autocmd BufEnter *.c,*.h,*.cpp,*.hpp,*.cxx,*.hxx,*.cc colorscheme default
 
-    autocmd BufNewFile,BufRead *.py,*.pyw call PythonSettings()
-    autocmd BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp,*.cxx,*.hxx,*.cc call CSettings()
+    autocmd BufNewFile,BufRead wscript,meson.build,*.py,*.pyw call PythonSettings()
+    autocmd BufRead *.c,*.h,*.cpp,*.hpp,*.cxx,*.hxx,*.cc call CSettings()
     autocmd BufNewFile,BufRead *.md,*.txt call MarkdownSettings()
     autocmd BufNewFile,BufRead *.html,*.htm,*.js,*.css call HTMLSettings()
     autocmd BufNewFile,BufRead *.proto setfiletype proto
     autocmd BufNewFile,BufRead *.yang setfiletype yang
-    autocmd BufNewFile,BufRead wscript,meson.build call PythonSettings()
     autocmd FileType gitcommit set textwidth=72
     autocmd FileType yaml setlocal ts=2 sw=2
 

@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 04/Apr/2022 09:01:59 PDT
+# MODIFIED: 07/02/2023 04:37:10 PM IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -13,6 +13,7 @@
 #======================================= PreLoad =========================================
 #set -uvx   # debugging. exec 2> ~/bash.$$.log && exit 0
 umask 0022  # override default umask in /etc/profile. 0022 is too limiting, 0077 is too liberal.
+export XDG_SESSION_TYPE=x11
 
 # Global info. Available to all sub-shells.
 [[ -z $TERM || "$TERM" == "dumb" ]] && export TERM=xterm

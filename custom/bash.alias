@@ -24,6 +24,7 @@ alias z='fortune | cowsay -n; export PS1_COLOR=light; ps1_prompt; export PS1_COL
 alias more='less'
 
 # handy abbrevations
+alias yslow='systemd-analyze plot > ~/SystemdAnalyzePlot.svg'   # check why boot is slow
 alias cal3='cal -3'             # show 3 months
 alias dfh=$(echo "df -h")       # disk freespace is human
 alias dush='du -sh'             # disk usage is human
@@ -138,7 +139,7 @@ if own cscope; then
     alias cse='cscope_cgtags.sh -g 6'        #egrep
     alias csf='cscope_cgtags.sh -g 7'        #file
     alias csi='cscope_cgtags.sh -g 8'        #include
-    alias csl='cscope -de -p 3'  # No '-f cscope.out -R' options. Confuses cscope
+    alias csl='cscope -de -p 5'  # No '-f cscope.out -R' options. Confuses cscope
     #alias csb='cscope -cUbeR > /dev/null 2>&1'    # For small code. no inverted index -q.
     alias csb='cscope_cgtags.sh -d &'
     alias kscope='cscope -ck -p3'                # kernel symbols
@@ -291,6 +292,15 @@ fi
 if own gcalcli; then
     alias gcala='gcalcli add' # add to calendar
     alias gcalc='gcalcli calm' # view calendar
+fi
+
+# Syntax:
+# $ wakeonlan mac-1 mac-2
+# $ wakeonlan -i 192.168.1.255 mac
+# $ wakeonlan -i 192.168.1.255 -p PORT mac
+# $ wakeonlan -f ~/.wol
+if own wakeonlan; then
+    alias wol='wakeonlan -f ~/.wol'     # power up the device
 fi
 
 [[ -f $COMP_CONFS/bash.alias ]] && { source_script $COMP_CONFS/bash.alias; }
