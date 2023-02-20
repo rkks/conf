@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 03/02/2023 11:36:12 AM IST
+" MODIFIED: 13/02/2023 05:45:06 PM IST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -327,6 +327,7 @@ nnoremap <silent> <F11> :Vexplore!<CR>
 nnoremap <silent> <F12> :call BufferList()<CR>
 " Mappings ================================================================
 
+let g:skip_defaults_vim = 1
 " Colorschme ==============================================================
 " maintaining local terminal info data base as ~/.terminfo. commands are:
 " infocmp -L -1 xterm | sed -r 's/(max_colors)#.+/\1#256/' > /tmp/xterm

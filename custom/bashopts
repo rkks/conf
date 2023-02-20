@@ -61,3 +61,12 @@ alias tne='tmux.sh -n rk -e ~/.tmux_cmds'   # dev environment
 #set completion-ignore-case on
 #set match-hidden-files on
 #set show-all-if-ambiguous on
+
+# enable bash completion in interactive shells
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
