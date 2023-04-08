@@ -4,8 +4,10 @@
 # break <sym>:loc if (cond) - Conditional breakpoint
 # rbreak file::<regex>      - Regex match breakpoint
 
-set logging file ~/.gdb.log
-set logging on
+# To log cmds along with output, enable tracing. 'set logging on' is deprecated
+set logging file gdb.log
+set logging enabled on
+set trace-commands on
 
 #show solib-search-path
 #set solib-search-path /non/standard/path/to/libs
@@ -52,12 +54,12 @@ set width 0
 set disassembly-flavor intel
 
 # Set default base to hexadecimal
-set input-radix 0x10
-set output-radix 0x10
+#set input-radix 0x10
+#set output-radix 0x10
 
 # Source scripts
 #source ~/scripts/gdb/alias.gdb
-#source ~/scripts/gdb/basic.gdb
+source ~/scripts/gdb/basic.gdb
 
 #handle SIGKILL nopass noprint nostop
 #handle SIGTERM nopass noprint nostop

@@ -140,8 +140,7 @@ if own cscope; then
     alias csf='cscope_cgtags.sh -g 7'        #file
     alias csi='cscope_cgtags.sh -g 8'        #include
     alias csl='cscope -de -p 5'  # No '-f cscope.out -R' options. Confuses cscope
-    #alias csb='cscope -cUbeR > /dev/null 2>&1'    # For small code. no inverted index -q.
-    alias csb='cscope_cgtags.sh -d &'
+    alias csb='cscope_cgtags.sh -c &'
     alias kscope='cscope -ck -p3'                # kernel symbols
 fi
 
