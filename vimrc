@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 08/04/2023 03:58:59 PM IST
+" MODIFIED: 15/06/2023 02:43:18 PM IST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -332,7 +332,7 @@ let g:skip_defaults_vim = 1
 " maintaining local terminal info data base as ~/.terminfo. commands are:
 " infocmp -L -1 xterm | sed -r 's/(max_colors)#.+/\1#256/' > /tmp/xterm
 " tic /tmp/xterm
-"if exists('$TMUX')
+if exists('$TMUX')
     let &t_Co=256       " 256 color -- set t_Co=256
     if &term =~ "xterm"
         " restore screen after quitting. doesn't work
@@ -346,7 +346,7 @@ let g:skip_defaults_vim = 1
             set t_Sb=[4%dm    "set t_AF=[38;5;%dm
         endif
     endif
-"endif
+endif
 
 " Highlight custom data type defines
 syn keyword ncType uint ubyte ulong uint64_t uint32_t uint16_t uint8_t boolean_t int64_t int32_t int16_t int8_t boolean u_int64_t u_int32_t u_int16_t u_int8_t u_int_t
@@ -361,7 +361,7 @@ highlight def link cCustomFunc Function
 
 " Put color scheme before other color overrides. Colorscheme depends on term settings.
 "let g:solarized_termcolors=256
-colorscheme flattened_dark  "solarized PaperColor tango default peaksea lucius peachpuff louver inkpot trivial256 hemisu rkks-linux zenburn habiLight ir_black oceandeep
+colorscheme tango "solarized flattened_dark PaperColor tango default peaksea lucius peachpuff louver inkpot trivial256 hemisu rkks-linux zenburn habiLight ir_black oceandeep
 " Colorschme ==============================================================
 
 " Plugin Configs ==========================================================
@@ -395,9 +395,8 @@ if !exists("autocommands_loaded")
     autocmd BufEnter /* call LoadCscope()
     autocmd BufEnter * call LoadExtVimrc()
 
-    autocmd BufEnter,BufNewFile,BufRead,BufLeave * colorscheme solarized
-    autocmd BufEnter *.log colorscheme default
-    autocmd BufEnter *.c,*.h,*.cpp,*.hpp,*.cxx,*.hxx,*.cc colorscheme default
+    "autocmd BufEnter,BufNewFile,BufRead,BufLeave *.log colorscheme default
+    "autocmd BufEnter,BufNewFile,BufRead,BufLeave *.c,*.h,*.cpp,*.hpp,*.cxx,*.hxx,*.cc colorscheme solarized
 
     autocmd BufNewFile,BufRead wscript,meson.build,*.py,*.pyw call PythonSettings()
     autocmd BufRead *.c,*.h,*.cpp,*.hpp,*.cxx,*.hxx,*.cc call CSettings()
