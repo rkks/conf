@@ -41,3 +41,12 @@ fi
 [[ ! -z $SSH_CONNECTION ]] && echo "SSH login details: $SSH_CONNECTION"          # $SSH_CLIENT
 [[ ! -z $(which brscan-skey) ]] && sudo brscan-skey
 # Do not print anything on .bashrc end. Because .profile sources this and causes prompt on Ubuntu GUI login
+
+# enable bash completion in interactive shells
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
