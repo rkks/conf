@@ -9,7 +9,7 @@ GRUB_DEFAULT="1>2" # 2nd index in main menu, 3rd index in sub-menu, default=0
 #GRUB_HIDDEN_TIMEOUT_QUIET=true
 GRUB_TIMEOUT=10
 GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
-GRUB_CMDLINE_LINUX_DEFAULT="ipv6.disable=1 cgroup_enable=memory swapaccount=1"
+GRUB_CMDLINE_LINUX_DEFAULT="ipv6.disable=1 console=ttyS0 cgroup_enable=memory swapaccount=1"
 GRUB_CMDLINE_LINUX=""
 
 # Uncomment to enable BadRAM filtering, modify to suit your needs

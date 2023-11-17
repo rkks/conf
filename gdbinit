@@ -4,11 +4,6 @@
 # break <sym>:loc if (cond) - Conditional breakpoint
 # rbreak file::<regex>      - Regex match breakpoint
 
-# To log cmds along with output, enable tracing. 'set logging on' is deprecated
-set logging file gdb.log
-set logging enabled on
-set trace-commands on
-
 #show solib-search-path
 #set solib-search-path /non/standard/path/to/libs
 #info sharedlibrary
@@ -59,8 +54,19 @@ set disassembly-flavor intel
 
 # Source scripts
 #source ~/scripts/gdb/alias.gdb
-source ~/scripts/gdb/basic.gdb
+#source ~/scripts/gdb/basic.gdb
 
+# To log cmds along with output, enable tracing. 'set logging on' is deprecated
+set logging file gdb.log
+set logging enabled on
+set trace-commands on
+
+# Breakpoints - very imp to set bp pending option below to allow bp in future.
+set breakpoint pending on
+break main
+
+# Hack to send Ctrl-C signal to process instead of gdb
+handle SIGINT stop pass
 #handle SIGKILL nopass noprint nostop
 #handle SIGTERM nopass noprint nostop
 

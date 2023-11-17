@@ -185,6 +185,7 @@ fi
 if own screen; then
     alias sls='screen -ls'
     alias sx='screen -x'
+    function sxs() { screen -S $@ -X quit; }
 fi
 
 if own vim; then

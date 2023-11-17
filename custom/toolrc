@@ -16,8 +16,8 @@ DARWIN_MANPATHS="/usr/local/opt/coreutils/libexec/gnuman:/opt/local/share/man"
 DARWIN_C_INCLUDE_PATHS="/usr/local/Cellar/czmq/3.0.2_3/include/:/usr/local/Cellar/zeromq/4.1.4/include/"
 
 USER_PATHS="$HOME/.local/bin:$SCRIPTS/bin:$TOOLS/bin:$TOOLS/sbin"
-USER_MANPATHS="$TOOLS/man:$HOME/tools/rsnapshot/man"
-USER_LD_LIBRARY_PATHS="$TOOLS/lib"
+USER_MANPATHS="$TOOLS/man:$HOME/tools/rsnapshot/man:/usr/local/android-studio/bin/"
+USER_LD_LIBRARY_PATHS="$TOOLS/lib:/usr/local/android-studio/lib/"
 #USER_PERL5LIB_PATHS="$HOME/tools/perl-5.16.1/lib"  # For perl to locate module in @INC
 
 [[ $UNAMES == "Darwin" ]] && { USER_PATHS="$USER_PATHS:$DARWIN_PATHS"; USER_MANPATHS="$USER_MANPATHS:$DARWIN_MANPATHS"; USER_LD_LIBRARY_PATH="$USER_LD_LIBRARY_PATHS:$DARWIN_LD_LIBRARY_PATHS"; }

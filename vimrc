@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 15/06/2023 02:43:18 PM IST
+" MODIFIED: 15/11/2023 09:07:11 AM IST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -34,7 +34,7 @@ function! UpdateTimeStamp()
         if modified_line_no != 0 && modified_line_no < 8
             " Timestamp format: strftime("%d %b %Y %X")
             "exe 's/'.s:timeStampLeader.'.*/'.s:timeStampLeader.strftime("%d %m %y %X %Z")
-            let tstamp = strftime('%d').'\/'.strftime('%m').'\/'.strftime('%Y').strftime(' %r')
+            let tstamp = strftime('%d').'\/'.strftime('%m').'\/'.strftime('%y').strftime(' %r')
             exe 's/'.s:timeStampLeader.'.*/'.s:timeStampLeader.tstamp
         endif
         " Restore cursor position. Alternate - call setpos('.' , save_cursor)
@@ -140,7 +140,7 @@ endif
 
 if !exists("*CSettings")
 function! CSettings()
-    set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=81 wrapmargin=0
+    set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=81 wrapmargin=0 cindent
 endfunction
 endif
 
@@ -179,7 +179,7 @@ set ttyfast                         " we have a fast terminal
 set ttybuiltin                      " (default) use internal termcap
 set restorescreen                   " restore screen contents when exiting vim
 set startofline                     " place cursor on non-white char of line
-"set undofile                        " place .<filename>.un~ file in file dir
+set undofile                        " place .<filename>.un~ file in file dir
 
 set noautoindent                    " set automatic indenting - deprecated in favor of smartindent
 set nocindent                       " no cindent initially - later enabled for C files
@@ -199,8 +199,8 @@ set hlsearch                        " highlight matches
 set incsearch                       " show matches as regular expression typed
 set wrapscan                        " do search/scan cyclically
 
-set nosmartindent                     " smart indent the files - disable for C in favor of cindent
-set nosmartcase                       " ...if it didn't begin with a capital letter
+set nosmartindent                   " smart indent the files - disable for C in favor of cindent
+set nosmartcase                     " ...if it didn't begin with a capital letter
 
 set tabstop=4                       " number of spaces for a <TAB>
 set softtabstop=4                   " how many spaces that vim uses when you hit <TAB>
@@ -236,7 +236,7 @@ set foldmethod=syntax               " fold based on indentation. ex, manual
 set cpoptions+=n                    " show "showbreak" characters in line-number area
 set showbreak=->\                   " characters to show on visual-only line-break
 set shortmess=aoI                   " Set vim to use abbrevations in place of 'long messages'. t - truncates
-set cinoptions=(0                   " C indent func args. Default: cinoptions='0{,0},0),:,0#,!^F,o,O,e'
+set cinoptions=(0u0                 " C indent func args. Default: cinoptions='0{,0},0),:,0#,!^F,o,O,e'
 set cinoptions+=:0                  " C indent switch-case statements
 set background=dark                 " set background to dark/light. colorscheme may override this
 set visualbell t_vb=                " silence the bell, use a flash instead
@@ -399,7 +399,7 @@ if !exists("autocommands_loaded")
     "autocmd BufEnter,BufNewFile,BufRead,BufLeave *.c,*.h,*.cpp,*.hpp,*.cxx,*.hxx,*.cc colorscheme solarized
 
     autocmd BufNewFile,BufRead wscript,meson.build,*.py,*.pyw call PythonSettings()
-    autocmd BufRead *.c,*.h,*.cpp,*.hpp,*.cxx,*.hxx,*.cc call CSettings()
+    autocmd BufRead *.c,*.h,*.cpp,*.hpp,*.cxx,*.hxx,*.cc,*.C,*.H call CSettings()
     autocmd BufNewFile,BufRead *.md,*.txt call MarkdownSettings()
     autocmd BufNewFile,BufRead *.html,*.htm,*.js,*.css call HTMLSettings()
     autocmd BufNewFile,BufRead *.proto setfiletype proto

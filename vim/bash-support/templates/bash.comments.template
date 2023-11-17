@@ -31,7 +31,7 @@
 #    echo "Usage: |FILENAME| [-h|]"
 #    echo "Options:"
 #    echo "  -h          - print this help"
-#    echo "  -z          - dry run thi script"
+#    echo "  -z          - dry run this script"
 #}
 #
 ## Each shell script has to be independently testable.
