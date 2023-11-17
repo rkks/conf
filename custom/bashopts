@@ -51,7 +51,6 @@ alias bc='bc -q'
 alias top='top -H'              # cat /proc/<pid>/task/<threadid>/status
 alias dmesg='dmesg -T'          # timestamp in human readable format. all bets off if system was suspended
 alias gdb='gdb --readnow'
-alias tne='tmux.sh -n rk -e ~/.tmux_cmds'   # dev environment
 
 # Causes problem with some build environments
 # Unused: set -o vi (enable vi mode), noclobber (prevent overwriting files with >), ignoreeof (stops ctrl+d from logging out)
