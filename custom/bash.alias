@@ -212,9 +212,9 @@ fi
 
 if own tmux.sh; then
     alias tl='tmux.sh -l'
-    alias ta='tmux.sh -a rk'
+    alias ta='tmux.sh -a'
     alias tmux='env -i TERM="$TERM" PATH="$PATH" tmux -2'   # always assume 256 color support. Key to bright colors
-    alias tne='tmux.sh -n ~/.tmux_wins -e ~/.tmux_cmds'     # dev environment
+    alias tne='tmux.sh -b -w ~/.tmux_wins -e ~/.tmux_cmds'  # dev environment
 fi
 
 if own convert.sh; then
