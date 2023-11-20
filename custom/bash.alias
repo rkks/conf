@@ -14,6 +14,7 @@ alias a='source $CUST_CONFS/bash.alias'
 alias b='env -i bash -norc -noprofile'
 alias c='clear'
 alias d='date'
+alias f='cd /usr/share/bpftrace/tools'
 alias h='hostname -s'
 alias j='jobs -l'
 alias l='ls'
@@ -214,8 +215,8 @@ fi
 if own tmux.sh; then
     alias tl='tmux.sh -l'
     alias ta='tmux.sh -a'
+    alias te='tmux.sh -e ~/.tmux_cmds'          # dev environment
     alias tmux='env -i TERM="$TERM" PATH="$PATH" tmux -2'   # always assume 256 color support. Key to bright colors
-    alias tne='tmux.sh -b -w ~/.tmux_wins -e ~/.tmux_cmds'  # dev environment
 fi
 
 if own convert.sh; then
@@ -301,4 +302,5 @@ if own wakeonlan; then
     alias wol='wakeonlan -f ~/.wol'     # power up the device
 fi
 
+# Sourced in the end on purpose, to allow company conf to override generic conf
 [[ -f $COMP_CONFS/bash.alias ]] && { source_script $COMP_CONFS/bash.alias; }

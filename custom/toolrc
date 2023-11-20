@@ -41,6 +41,7 @@ unset NEW_PATH; unset NEW_MANPATH; unset NEW_LD_LIBRARY_PATH;   #unset NEW_PERL5
 unset USER_PATHS; unset USER_MANPATHS; unset USER_LD_LIBRARY_PATHS; #unset USER_PERL5LIB_PATHS;
 unset COMMON_PATHS; unset COMMON_MANPATHS; unset COMMON_LD_LIBRARY_PATHS;
 
+# Sourced in the end on purpose, to allow company conf to override generic conf
 [[ -f $COMP_CONFS/toolrc ]]  && { source_script $COMP_CONFS/toolrc; }
 
 log DEBUG "[EXPORT] PATH: $PATH LD_LIBRARY_PATH: $LD_LIBRARY_PATH MANPATH: $MANPATH PERL5LIB: $PERL5LIB"

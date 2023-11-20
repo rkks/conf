@@ -5,7 +5,7 @@ ulimit -c 100000000 # '-c unlimited' fails for non-root user. use 'ulimit -S -c 
 # vim & gnome-terminal support 256 colours. debian/ubuntu need ncurses-term package
 # Works for most environments. Should be set in ~/.profile for Fedora
 [[ -z $TMUX ]] && term
-[[ -z $TERM || "$TERM" == dumb ]] && export TERM=xterm     # default terminal option; xterm-256color breaks cisco cli
+[[ -z $TERM || "$TERM" == dumb ]] && export TERM=xterm-256color     # xterm-256color breaks cisco cli, use xterm there
 
 : ${HOSTFILE=~/.ssh/known_hosts}        # complete hostnames from this file
 #: ${INPUTRC=~/.inputrc}                 # readline config
@@ -85,5 +85,5 @@ if own python; then
     export PYTHONPATH="$HOME/scripts/utils/python:$HOME/ws/netmiko"
 fi
 
-# Company overrides, specifics - if any
+# Sourced in the end on purpose, to allow company conf to override generic conf
 [[ -f $COMP_CONFS/envopts ]] && { source_script $COMP_CONFS/envopts; }
