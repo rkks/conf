@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 07/02/2023 04:37:10 PM IST
+# MODIFIED: 02/12/23 08:20:03 IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -29,10 +29,10 @@ export PATH=".:$HOME/scripts/bin:$HOME/tools/$UNAMES/bin:/usr/games:/usr/gnu/bin
 test -z "$IUSER" && return
 
 if [ ! -z $(which toilet) ]; then
-    toilet -f wideterm -F border "# -- PLEASE DO NOT USE THIS MACHINE -- ##CONTACT:RAVIKIRANKS@VERSA-NETWORKS.COM#"
+    toilet -f wideterm -F border "# -- PLEASE DO NOT USE THIS MACHINE -- ##CONTACT:RAVIKIRANDOTKS@GMAIL.COM#"
 else
     printf "##########################################################################\n"
-    printf "# PLEASE DO NOT USE THIS MACHINE, CONTACT RAVIKIRANKS@VERSA-NETWORKS.COM #\n"
+    printf "# PLEASE DO NOT USE THIS MACHINE, CONTACT RAVIKIRANDOTKS@GMAIL.COM #\n"
     printf "##########################################################################\n"
 fi
 

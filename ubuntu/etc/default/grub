@@ -9,7 +9,10 @@ GRUB_DEFAULT="1>2" # 2nd index in main menu, 3rd index in sub-menu, default=0
 GRUB_TIMEOUT_STYLE=menu
 GRUB_TIMEOUT=10
 GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
-GRUB_CMDLINE_LINUX_DEFAULT="nomodeset ipv6.disable=1 console=tty0 console=ttyS0 console=ttyS0,115200n8 cgroup_enable=memory swapaccount=1"
+# For console font change: sudo dpkg-reconfigure console-setup
+# Check options: cgroup_enable=memory swapaccount=1
+# vga=795: low-res grub menu/console, nomodeset: disable high-res intel graphics
+GRUB_CMDLINE_LINUX_DEFAULT="net.ifnames=0 nomodeset ipv6.disable=1 console=tty0 console=ttyS0,115200n8"
 GRUB_CMDLINE_LINUX=""
 
 # Uncomment to enable BadRAM filtering, modify to suit your needs
