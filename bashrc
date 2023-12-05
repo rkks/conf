@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 02/12/23 08:20:03 IST
+# MODIFIED: 05/12/23 15:10:45 IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -25,15 +25,15 @@ export XDG_SESSION_TYPE=x11
 export PATH=".:$HOME/scripts/bin:$HOME/tools/$UNAMES/bin:/usr/games:/usr/gnu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 [[ -e ~/.bashrc.ext ]] && { source ~/.bashrc.ext; }         # External bashrc.
-[[ -z $COMP_EMAIL ]] && { export MAILTO=friends4web@gmail.com; } || { export MAILTO=$COMP_EMAIL; }  # used by file_rotate()/batch_run()
+[[ -z $COMP_EMAIL ]] && { export MAILTO=ravikirandotks@gmail.com; } || { export MAILTO=$COMP_EMAIL; }  # used by file_rotate()/batch_run()
 test -z "$IUSER" && return
 
 if [ ! -z $(which toilet) ]; then
-    toilet -f wideterm -F border "# -- PLEASE DO NOT USE THIS MACHINE -- ##CONTACT:RAVIKIRANDOTKS@GMAIL.COM#"
+    toilet -f wideterm -F border "# -- PLEASE DO NOT USE THIS MACHINE -- ##CONTACT:$MAILTO#"
 else
-    printf "##########################################################################\n"
-    printf "# PLEASE DO NOT USE THIS MACHINE, CONTACT RAVIKIRANDOTKS@GMAIL.COM #\n"
-    printf "##########################################################################\n"
+    printf "###########################################################################\n"
+    printf "# PLEASE DO NOT USE THIS MACHINE, CONTACT $MAILTO #\n"
+    printf "###########################################################################\n"
 fi
 
 [[ -f $HOME/conf/custom/bashopts ]] && { source $HOME/conf/custom/bashopts; }    # history+term enable always

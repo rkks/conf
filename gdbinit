@@ -64,6 +64,7 @@ set trace-commands on
 # Breakpoints - very imp to set bp pending option below to allow bp in future.
 set breakpoint pending on
 break main
+#b <func>
 
 # Hack to send Ctrl-C signal to process instead of gdb
 handle SIGINT stop pass
