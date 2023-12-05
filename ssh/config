@@ -1,0 +1,40 @@
+# To debug SSH issues w/ git, export GIT_SSH_COMMAND="ssh -vvv"
+
+#Host <git-server-FQDN>
+#    LogLevel (QUIET|FATAL|ERROR|INFO|VERBOSE|DEBUG|DEBUG1|DEBUG2|DEBUG3)
+#    User root
+#    ForwardAgent no
+#    Ciphers blowfish-cbc|
+#    ForwardX11 yes
+#    GSSAPIAuthentication no
+#    CompressionLevel 6
+#    StrictHostKeyChecking   no
+#    ControlMaster auto
+#    ControlPath ~/.ssh/sockets/%r@%h-%p
+#    ControlPersist 600
+#Host 10.40.122.2
+#    PreferredAuthentications=publickey
+#    HostKeyAlgorithms +ssh-rsa
+
+# To debug SSH issues w/ git, export GIT_SSH_COMMAND="ssh -vvv"
+Include ~/.ssh/config.d/*
+
+Host *
+    AddressFamily inet
+    IdentityFile ~/.ssh/id_ed25519
+    Port 22
+    Compression yes
+    ServerAliveInterval 60
+    ServerAliveCountMax 20
+    TCPKeepAlive yes
+    GSSAPIAuthentication no
+
+#To directly connect to internal host through jump server, we can use -J option
+#as: ssh -J <jump-svr-ip-fqdn> <internal-host-ip-fqdn>, instead of below circus
+#https://askubuntu.com/questions/311447/how-do-i-ssh-to-machine-a-via-b-in-one-command
+#Host jump_server
+#    Hostname=<jump-svr-ip-fqdn>    # jump-server IP/FQDN
+#    User=root
+#
+#Host internal_host
+#    ProxyCommand ssh jump_server nc <internal-host-ip-fqdn> 22
