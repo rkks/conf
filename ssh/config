@@ -22,12 +22,12 @@ Include ~/.ssh/config.d/*
 Host *
     AddressFamily inet
     IdentityFile ~/.ssh/id_ed25519
-    Port 22
     Compression yes
     ServerAliveInterval 60
     ServerAliveCountMax 20
     TCPKeepAlive yes
     GSSAPIAuthentication no
+    #Port 22
 
 #To directly connect to internal host through jump server, we can use -J option
 #as: ssh -J <jump-svr-ip-fqdn> <internal-host-ip-fqdn>, instead of below circus
