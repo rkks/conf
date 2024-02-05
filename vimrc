@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 27/11/23 21:48:43 IST
+" MODIFIED: 10/01/24 10:41:01 PM +0530 +0530
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -33,8 +33,8 @@ function! UpdateTimeStamp()
         " There is a match in first 10 lines Go to the : in modified:
         if modified_line_no != 0 && modified_line_no < 8
             " Timestamp format: strftime("%d %b %Y %X")
-            "exe 's/'.s:timeStampLeader.'.*/'.s:timeStampLeader.strftime("%d %m %y %X %Z")
-            let tstamp = strftime('%d').'\/'.strftime('%m').'\/'.strftime('%y').strftime(' %T').strftime(' %Z')
+            "exe 's/'.s:timeStampLeader.'.*/'.s:timeStampLeader.strftime("%d %m %y %X %Z"), .strftime(' %Z')
+            let tstamp = strftime('%d').'\/'.strftime('%m').'\/'.strftime('%y').strftime(' %r')
             exe 's/'.s:timeStampLeader.'.*/'.s:timeStampLeader.tstamp
         endif
         " Restore cursor position. Alternate - call setpos('.' , save_cursor)

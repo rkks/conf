@@ -7,6 +7,9 @@
 |AUTHORREF| = rkks
 |EMAIL|     = ravikirandotks@gmail.com
 |COPYRIGHT| = Copyright (c) |YEAR|, |AUTHOR|
+SetFormat( 'DATE', '%D'      )
+SetFormat( 'TIME', '%H:%M'   )
+SetFormat( 'YEAR', 'year %Y' )
 §
 § =============================================================
 § ========== FILE INCLUDES ====================================

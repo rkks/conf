@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 08/12/23 12:54:33 IST
+# MODIFIED: 18/12/23 13:03:46 UTC
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -14,7 +14,7 @@
 #set -uvx   # debugging. exec 2> ~/bash.$$.log && exit 0
 umask 0022  # override default umask in /etc/profile. 0022 is too limiting, 0077 is too liberal.
 export XDG_SESSION_TYPE=x11
-# UID=$(id -u) is already exported, GID=$(id -g) is usually same as UID
+export UID; # UID=$(id -u) is already defined, GID=$(id -g) is usually same as UID
 
 # Global info. Available to all sub-shells.
 [[ -z $TERM || "$TERM" == "dumb" ]] && export TERM=xterm

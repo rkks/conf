@@ -105,7 +105,6 @@ if own cleartool; then
     alias ctd='ct diff -serial_format -pred -opt -blank_ignore '
     alias ctdiff='ct diff -serial_format -opt -blank_ignore '
     alias ctupdate='ct update -log log'
-    alias edcs='ct edcs'
     alias findhijacked='ct ls -recurse | grep "hijacked"'
     alias lsco='ct lsco -cview -s -r'
     alias lscoall='ct lsco -avobs -areplicas -s -r'
