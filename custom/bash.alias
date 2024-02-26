@@ -55,7 +55,6 @@ alias xs='cd'
 
 # Admin Power Tools
 (own dstat)     && alias dstata='dstat -cdngmsply --bw'
-(own minicom)   && alias minicom='minicom -c on'
 (own nmon)      && alias nmon='nmon -g $CUST_CONFS/nmon_disks.dat'
 (own pgrep)     && alias pgrep='pgrep -u $(id -nu)'
 (own pkill)     && alias pkill='pkill -u $(id -nu)'
@@ -82,6 +81,13 @@ alias xs='cd'
 # handy alias (pbcopy in mac) in xterm to copy text to clipboard via pipe cmd. ex: $ ls -l | copy
 #(own xclip)     && alias copy='xclip -sel clip'        # sudo apt install xclip
 (own xsel)      && alias copy='xsel -ib'                # sudo apt install xsel
+
+if own minicom; then
+    alias minicom="sudo minicom -c on -z -C=$HOME/.logs/minicom.log"
+    alias minicomrc='minicom ~/conf/minirc.dfl'                 # minirc.dfl has device name like /dev/ttyUSB0
+    alias minicomd='minicom -D'                                 # -D /dev/ttyUSB0
+    alias minicoms='minicom -S=$HOME/scripts/bin/minicom.sh'    # script to run on startup
+fi
 
 if own apachectl; then
     alias web='cd /Library/WebServer/Documents/'
@@ -193,7 +199,8 @@ if own vim; then
     alias vo='vim -u ~/.vimrc'                  # typo
     alias v="vim -u ~/.vimrc -R"                # read-only
     alias vd="vim -u ~/.vimrc -d"               # diff mode
-    alias vi='vim -u ~/.vimrc'
+    alias vi="vim -u ~/.vimrc"                  # vi aliases to vim
+    alias vima='vim -c "call RestoreMySession()"'
     alias gv="gvim -u ~/.gvimrc"                # gvim
     alias vp='vim -u ~/.vimrc --noplugin'       # no plugins
     alias vt='vim -t'                           # open given tag symbol in vim

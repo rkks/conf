@@ -172,3 +172,6 @@ m4/lt~obsolete.m4
 .vagrant/
 .vimrc.local
 build/
+# Keep these 2 visible to know if they must be purged.
+#.session.vim
+#.viminfo.vim

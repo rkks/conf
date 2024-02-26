@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 10/01/24 10:41:01 PM +0530 +0530
+" MODIFIED: 26/02/24 10:45:28 AM IST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -9,7 +9,7 @@
 " :set      - show different config settings
 
 filetype plugin on  " switch on plugins. filetype indent on -- no file based indent aut-selection
-syntax on           " set syntax highlighting
+syntax enable       " on/enable have no difference on set syntax highlighting
 
 " Functions ===============================================================
 " Search first 10 lines for timestamp, update using TimeStamp() function
@@ -141,6 +141,19 @@ endif
 if !exists("*CSettings")
 function! CSettings()
     set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=81 wrapmargin=0 cindent
+    " Highlight extra whitespace - *.[ch] Or *.[cpp|pl|pm|sh|py|exp|mk|xml] does
+    " not work. Other regex: /^\s* \s*\|\s\+$/
+    autocmd BufEnter * match RedundantSpaces /\s\+$\| \+\ze\t\|\t/ 
+    highlight RedundantSpaces ctermbg=lightgray guibg=lightgray
+    "set eventignore-=RedundantSpaces
+endfunction
+endif
+
+if !exists("*VPPSettings")
+function! VPPSettings()
+    set tabstop=8 softtabstop=8 shiftwidth=8
+    "none of this works -- autocmd!/noautocmd/eventsignore RedundantSpaces
+    highlight RedundantSpaces NONE
 endfunction
 endif
 
@@ -167,6 +180,7 @@ command Dos2unix %s//\r/g " Replace (Ctrl-V) Ctrl-M with newline. Useful in scr
 " Common command mistakes =================================================
 
 " Settings ================================================================
+set printoptions=""
 set nocompatible                    " set no compatible mode
 set cscopetag                       " use cscope tag instead of default tag
 if (&diff == 0)
@@ -210,11 +224,12 @@ set wrapmargin=0                    " disable auto-wrap magin
 " Vim ver 7.3+ has both colorcolumn (alternate, if exists('+syntax')) and numberwidth (alt, if exists('+linebreak'))
 if v:version >= 703
   set colorcolumn=+0                " highlight column after 'textwidth'
+  highlight ColorColumn ctermbg=lightgray guibg=lightgray
   set numberwidth=4                 " width of number column
 else
-  highlight OverLength ctermbg=lightgray guibg=lightgray
   " vim7.2 onwards use colorcolumn
   match OverLength /\%81v.\+/
+  highlight OverLength ctermbg=lightgray guibg=lightgray
 endif
 
 set textwidth=80                    " Wrap after text-width
@@ -296,9 +311,9 @@ map <c-a> ggVG
 " Disable ctr-c, ctrl-s, and ctrl-x
 "map <C-C> <C-W>c
 map <C-C> <nop>
-" Ctrl-S saves last session. This does not work
-"map <C-S> :call SaveMySession()<CR>:wqa!<CR>
-map <C-S> <nop>
+" Ctrl-S saves last session. Press F9 to restore session
+map <C-S> :call SaveMySession()<CR>:wqa!<CR>
+"map <C-S> <nop>
 " Quit, But not when there are changes
 "map <C-X> :qa<CR>
 map <C-X> <nop>
@@ -322,7 +337,8 @@ nnoremap <silent> <F6> :set nu!<cr>
 nnoremap <silent> <F7> :VCSVimDiff<cr>
 nnoremap <silent> <F8> :TlistToggle<CR>
 nnoremap <silent> <F9> :call RestoreMySession()<CR>
-nnoremap <silent> <F10> :set hlsearch!<cr>
+"nnoremap <silent> <F10> :set hlsearch!<cr>
+nnoremap <silent> <F10> :call VPPSettings()<CR>
 nnoremap <silent> <F11> :Vexplore!<CR>
 nnoremap <silent> <F12> :call BufferList()<CR>
 " Mappings ================================================================
@@ -405,8 +421,8 @@ if !exists("autocommands_loaded")
     autocmd BufNewFile,BufRead *.proto setfiletype proto
     autocmd BufNewFile,BufRead *.yang setfiletype yang
     autocmd FileType gitcommit set textwidth=72
-    autocmd FileType yaml setlocal ts=2 sw=2 sts=2
-    autocmd FileType ruby setlocal ts=2 sw=2 sts=2
+    " ts=2 sw=2 sts=2
+    autocmd FileType yaml,ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
     " update MODIFIED time stamp on write. Automatically restores the cursor position internally.
     autocmd BufWritePre,FileWritePre * call UpdateTimeStamp()
@@ -415,15 +431,11 @@ if !exists("autocommands_loaded")
     " remember last read line
     au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
-    " Highlight extra whitespace - *.[ch] Or *.[cpp|pl|pm|sh|py|exp|mk|xml] does not work
-    "Other regex: /^\s* \s*\|\s\+$/
-    autocmd BufEnter * match RedundantSpaces /\s\+$\| \+\ze\t\|\t/ 
 
     let autocommands_loaded = 1
 endif
 " Autocommands ============================================================
 
 " Hardcoded Color Overrides ===============================================
-highlight RedundantSpaces ctermbg=lightgray guibg=lightgray
-highlight ColorColumn ctermbg=lightgray guibg=lightgray
+"highlight ColorColumn ctermbg=lightgray guibg=lightgray
 " Hardcoded Color Overrides ===============================================

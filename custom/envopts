@@ -10,7 +10,6 @@ ulimit -c 100000000 # '-c unlimited' fails for non-root user. use 'ulimit -S -c 
 : ${HOSTFILE=~/.ssh/known_hosts}        # complete hostnames from this file
 #: ${INPUTRC=~/.inputrc}                 # readline config
 
-CLICOLOR=1 # This will enable colors in ls by default
 export NMON=cmgknt                  # export is must for child process to see it
 
 PRINTER=termite
@@ -39,13 +38,22 @@ export PAGER=less;      # Export is required for it to work
 # CSCOPE_EDITOR is unnecessary with EDITOR defined. For vim, emacs CSCOPE_LINEFLAG_AFTER_FILE=yes; not needed.
 (own vim)   && { export EDITOR=vim; export VISUAL=vim; }    # for mc/cvs/svn/etc. 'export' is must, else confuses cscope
 
-if [ "FreeBSD" != "$UNAMES" ] || [ "SunOS" != "$UNAMES" ]; then
+if [ "FreeBSD" != "$UNAMES" ] && [ "SunOS" != "$UNAMES" ]; then
     if own tput && tput setaf 1 >&/dev/null; then
         # Adjust the less highlight colors
         LESS_TERMCAP_so="$(printf 'rev\nbold\nsetaf 3\n' | tput -S)"
         LESS_TERMCAP_se="$(tput sgr0)"
         color_prompt=yes
     fi
+fi
+
+# https://unix.stackexchange.com/questions/2897/clicolor-and-ls-colors-in-bash
+if [ "FreeBSD" == "$UNAMES" ] || [ "Darwin" == "$UNAMES" ]; then
+    CLICOLOR=1 # This will enable colors in ls by default
+fi
+
+if [ "FreeBSD" == "$UNAMES" ] || [ "Darwin" == "$UNAMES" ]; then
+    export LSCOLORS=Exfxcxdxbxegedabagacad
 fi
 
 # clearcase stuff
