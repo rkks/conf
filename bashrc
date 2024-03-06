@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 18/12/23 13:03:46 UTC
+# MODIFIED: 05/03/24 09:56:05 AM +0530
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -14,6 +14,7 @@
 #set -uvx   # debugging. exec 2> ~/bash.$$.log && exit 0
 umask 0022  # override default umask in /etc/profile. 0022 is too limiting, 0077 is too liberal.
 export XDG_SESSION_TYPE=x11
+export DISABLE_TELEMETRY=true
 export UID; # UID=$(id -u) is already defined, GID=$(id -g) is usually same as UID
 
 # Global info. Available to all sub-shells.
