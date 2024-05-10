@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 26/02/24 10:45:28 AM IST
+" MODIFIED: 10/05/24 09:02:10 AM IST
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -222,10 +222,10 @@ set shiftwidth=4                    " number of spaces to shift on >>, <<
 set nosmarttab
 set wrapmargin=0                    " disable auto-wrap magin
 " Vim ver 7.3+ has both colorcolumn (alternate, if exists('+syntax')) and numberwidth (alt, if exists('+linebreak'))
-if v:version >= 703
+if v:version >= 703                 "ColorColumn highlight moved to end of file
   set colorcolumn=+0                " highlight column after 'textwidth'
-  highlight ColorColumn ctermbg=lightgray guibg=lightgray
   set numberwidth=4                 " width of number column
+
 else
   " vim7.2 onwards use colorcolumn
   match OverLength /\%81v.\+/
@@ -437,5 +437,5 @@ endif
 " Autocommands ============================================================
 
 " Hardcoded Color Overrides ===============================================
-"highlight ColorColumn ctermbg=lightgray guibg=lightgray
+highlight ColorColumn ctermbg=lightgray guibg=lightgray
 " Hardcoded Color Overrides ===============================================
