@@ -33,6 +33,7 @@ alias dfh=$(echo "df -h")       # disk freespace is human
 alias dush='du -sh'             # disk usage is human
 alias filesize='du -k'          # works on all platforms. alternate: 'stat -c "%s"' on Linux, 'stat -f "%z"' on FreeBSD
 alias greprinse='grep -rinse'
+alias jc='journalctl -p 3 -xb'
 alias l.='ls .*'
 alias la='ls -A'
 alias lh='ls -lh'

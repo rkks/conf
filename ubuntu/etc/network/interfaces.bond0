@@ -1,0 +1,48 @@
+# interfaces(5) file used by ifup(8) and ifdown(8)
+# Include files from /etc/network/interfaces.d:
+#source-directory /etc/network/interfaces.d
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface (enp2s0/eno0)
+allow-hotplug eth0
+auto eth0
+iface eth0 inet manual
+	bond-master bond0
+
+# The secondary network interface (enp3s0/eno1)
+allow-hotplug eth1
+auto eth1
+#iface eth1 inet dhcp
+iface eth1 inet manual
+	bond-master bond0
+
+# Bonding config: mode 2, xmit_hash_policy 2
+#	bond-slaves eth0 eth1   # does not work
+#	bond-downdelay 0
+#	bond-updelay 0
+#	bond-lacp-rate 1        # fast: not reqd
+auto bond0
+iface bond0 inet manual
+	post-up ifenslave bond0 eth0 eth1
+	pre-down ifenslave -d bond0 eth0 eth1
+	bond-slaves none
+	bond-mode balance-xor
+	bond-miimon 100
+	bond-xmit_hash_policy layer3+4
+
+# Bridge interface
+#	bridge_ports eth0   # eth1: not reqd, use bond0
+#	bridge_stp off
+#	bridge_maxwait 0
+#	bridge_fd 0
+#	bridge_hello 2
+#	bridge_maxage 12
+auto br0
+iface br0 inet static
+ 	bridge_ports bond0
+	address 192.168.Y.XX
+	netmask 255.255.255.0
+	gateway 192.168.Y.1

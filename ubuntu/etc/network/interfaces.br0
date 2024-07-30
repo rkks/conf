@@ -1,0 +1,36 @@
+# interfaces(5) file used by ifup(8) and ifdown(8)
+# Include files from /etc/network/interfaces.d:
+#    dns-nameserver 202.38.180.7
+#    dns-nameserver 10.208.0.3
+#source-directory /etc/network/interfaces.d
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface (enp2s0/eno1)
+allow-hotplug eth0
+auto eth0
+#iface eth0 inet static
+
+# The secondary network interface (enp3s0/eno2)
+allow-hotplug eth1
+auto eth1
+#iface eth1 inet dhcp
+
+# Bridge interface
+#	bridge_ports eth1
+#	bridge_stp off
+#	bridge_maxwait 0
+#	bridge_fd 0
+#	bridge_hello 2
+#	bridge_maxage 12
+auto br0
+iface br0 inet static
+	bridge_ports eth0
+	address 192.168.Y.XX
+	netmask 255.255.255.0
+	gateway 192.168.Y.1
+#	dns-search abc.com
+#	dns-nameservers 192.168.Y.1
+#	post-up ip route del default via 192.168.Y.1 dev br0
