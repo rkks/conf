@@ -1,7 +1,7 @@
 " DETAILS : My vim configuration file
 " AUTHOR  : Ravikiran K.S., ravikirandotks@gmail.com
 " CREATED : 23 Aug 2006 10:20:19
-" MODIFIED: 10/05/24 09:02:10 AM IST
+" MODIFIED: 06/08/24 09:51:49 AM +0530
 
 " MOST IMP: Be frugal in adding to vimrc. To keep vim load times to moderate.
 " :highlight- show different highlight settings
@@ -134,7 +134,7 @@ endif
 
 if !exists("*MarkdownSettings")
 function! MarkdownSettings()
-    set textwidth=160 wrapmargin=0 linebreak syntax=markdown
+    set ts=2 sw=2 sts=2 textwidth=160 wrapmargin=0 linebreak syntax=markdown
 endfunction
 endif
 
@@ -421,7 +421,6 @@ if !exists("autocommands_loaded")
     autocmd BufNewFile,BufRead *.proto setfiletype proto
     autocmd BufNewFile,BufRead *.yang setfiletype yang
     autocmd FileType gitcommit set textwidth=72
-    " ts=2 sw=2 sts=2
     autocmd FileType yaml,ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
     " update MODIFIED time stamp on write. Automatically restores the cursor position internally.

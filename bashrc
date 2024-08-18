@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 05/03/24 09:56:05 AM +0530
+# MODIFIED: 11/08/24 03:28:38 PM +0530
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -52,3 +52,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+[[ ! -z $(which terraform) ]] && { complete -C /usr/bin/terraform terraform; }
+[[ ! -z $(which hcloud) ]] && { hcb=$(mktemp); hcloud completion bash > $hcb; source $hcb; }
