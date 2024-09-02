@@ -170,7 +170,8 @@ m4/ltsugar.m4
 m4/ltversion.m4
 m4/lt~obsolete.m4
 .vagrant/
-.vimrc.local
+.*.local*
+.*.un*
 build/
 # Keep these 2 visible to know if they must be purged.
 #.session.vim
