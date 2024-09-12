@@ -72,8 +72,8 @@ alias xs='cd'
 (own hexdump)   && alias hexdumpc='hexdump -C'              # canonical hex dump
 (own od)        && alias hd='od -Ax -tx1z -v'               # what most people want from od (hexdump)
 (own script)    && alias scripta='script -a script-$(date +%Y%m%d-%T).log'
-(own ssh)       && alias ssh='ssh -p 22 -Y'                 # -vvvv is extra verbose. X11-fwd with -Y better than -X. secret-key-fwd using -A is dangerous
-(own ssh)       && alias sshj='ssh -J'                      # ssh to internal host through a jump-server. ssh -J <jump-svr-ip> <internal-host-ip>
+(own ssh)       && alias sshy='ssh -Y'                # -vvvv is extra verbose. X11-fwd with -Y better than -X. secret-key-fwd using -A is dangerous
+(own ssh)       && alias sshj='ssh -J'                # ssh to internal host through a jump-server. ssh -J <jump-svr-ip> <internal-host-ip>
 (own ssh-keygen)&& alias ssh-keygen-rk='f(){ ssh-keygen -f $1 -C $1; }; f'
 (own ssh-keygen)&& alias ssh-keygen-rm='f(){ ssh-keygen -R $1; rm -f ~/.ssh/sockets/*$1*; }; f'
 # Good way to check current sessions: Each ~/.vnc/<prefix>*.pid file indicates a VNC session opened by user in prefix host
@@ -198,16 +198,14 @@ if own screen; then
 fi
 
 if own vim; then
-    alias vo='vim -u ~/.vimrc'                  # typo
-    alias v="vim -u ~/.vimrc -R"                # read-only
-    alias vd="vim -u ~/.vimrc -d"               # diff mode
-    alias vi="vim -u ~/.vimrc"                  # vi aliases to vim
+    alias vo='vim'                  # typo
+    alias v="vim -R"                # read-only
+    alias vd="vim -d"               # diff mode
+    alias vi='vim'                  # vi aliases to vim
     alias vima='vim -c "call RestoreMySession()"'
-    alias gv="gvim -u ~/.gvimrc"                # gvim
-    alias vp='vim -u ~/.vimrc --noplugin'       # no plugins
+    alias gv="gvim -u ~/.gvimrc -R"             # gvim
     alias vt='vim -t'                           # open given tag symbol in vim
-    alias vu='vim -u NONE --noplugin'           # no ~/.vimrc, no plugins
-    alias vim='vim -u ~/.vimrc'
+    alias vin='vim -u NONE --noplugin'           # no ~/.vimrc, no plugins
 fi
 
 if own git.sh; then
