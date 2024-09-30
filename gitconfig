@@ -1,6 +1,6 @@
 #  DETAILS: git global configuration to be used.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 28/06/24 06:03:17 PM +0530
+# MODIFIED: 19/09/24 10:52:57 PM IST
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -125,7 +125,7 @@
     ls = log --name-status -r --oneline     # list of files changed. ex, cvs update. --date=short --pretty=format:\"%H | %ad\"
     lu = log -u                             # show changes to a file.
     lx = log --all --graph --decorate --simplify-by-decoration  # graph
-    pa = !git pull --recurse-submodules --all && git submodule update --init --recursive # --remote is not needed
+    pa = !git pull --all && git submodule update --init --recursive # --remote is not needed --recurse-submodules 
     rc = rebase --continue
     rs = rebase --skip
     ra = rebase --abort
@@ -178,3 +178,9 @@
 
 #[color "diff"]
     #whitespace = tabwidth=4
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
