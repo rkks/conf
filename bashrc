@@ -1,6 +1,6 @@
 #  DETAILS: bash configuration to be sourced.
 #  CREATED: 07/01/06 15:24:33 IST
-# MODIFIED: 11/08/24 03:28:38 PM +0530
+# MODIFIED: 14/09/24 05:17:12 PM +0530
 #
 #   AUTHOR: Ravikiran K.S., ravikirandotks@gmail.com
 #  LICENCE: Copyright (c) 2013, Ravikiran K.S.
@@ -24,7 +24,7 @@ export UID; # UID=$(id -u) is already defined, GID=$(id -g) is usually same as U
 [[ -z $HOSTNAME ]]  && export HOSTNAME=$(uname -n)  # hostname setting
 [[ -z $SHELL ]]     && export SHELL=$BASH           # complete path is necessary. otherwise, breaks 'script'./bin/bash
 [[ -z $UNAMES ]]    && export UNAMES=$(uname -s)    # machine type: Linux, FreeBSD, Darwin, SunOS
-export PATH=".:$HOME/scripts/bin:$HOME/tools/$UNAMES/bin:/usr/games:/usr/gnu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH=".:$HOME/scripts/bin:$HOME/tools/$UNAMES/bin:/usr/local/go/bin:/usr/games:/usr/gnu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 [[ -e ~/.bashrc.ext ]] && { source ~/.bashrc.ext; }         # External bashrc.
 [[ -z $COMP_EMAIL ]] && { export MAILTO=ravikirandotks@gmail.com; } || { export MAILTO=$COMP_EMAIL; }  # used by file_rotate()/batch_run()
